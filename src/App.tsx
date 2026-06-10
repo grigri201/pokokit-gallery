@@ -33,6 +33,7 @@ type PokemonColorEntry = {
 
 const pokemonColorEntries = pokemonColorsData.pokemon as PokemonColorEntry[];
 const pokemonColorBySlug = new Map(pokemonColorEntries.map(entry => [entry.slug, entry]));
+const POKOKIT_HOME_URL = 'https://www.pokokit.com';
 
 interface GalleryCopy {
   brandTitle: string;
@@ -394,7 +395,7 @@ export function App(): ReactElement {
   return (
     <main className="app-shell">
       <header className="topbar">
-        <a className="brand-lockup" href={config.sceneEditorUrl} aria-label={`pokokit ${t.brandTitle}`}>
+        <a className="brand-lockup" href={POKOKIT_HOME_URL} aria-label={`pokokit ${t.brandTitle}`}>
           <span className="brand-pokokit">pokokit</span>
           <span className="brand-product">{t.brandTitle}</span>
         </a>
