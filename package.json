@@ -1,0 +1,33 @@
+{
+  "name": "pokokit-gallery",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pokokit Gallery frontend for browsing public and owned Pokopia scenes.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --environment jsdom",
+    "verify": "pnpm run test && pnpm run typecheck && pnpm run build"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.87.0",
+    "lucide-react": "^0.561.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "jsdom": "^27.2.0",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.1.6"
+  },
+  "packageManager": "pnpm@10.33.2"
+}

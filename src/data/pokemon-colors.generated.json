@@ -1,0 +1,6225 @@
+{
+  "schemaVersion": "pokemon-index.v2",
+  "pokemon": [
+    {
+      "slug": "bulbasaur",
+      "name": "Bulbasaur",
+      "zhName": "妙蛙种子",
+      "primaryColor": "#91E7D8",
+      "palette": [
+        {
+          "hex": "#91E7D8",
+          "percent": 18.2
+        },
+        {
+          "hex": "#79C4B9",
+          "percent": 20.3
+        },
+        {
+          "hex": "#4AA330",
+          "percent": 16.6
+        }
+      ]
+    },
+    {
+      "slug": "ivysaur",
+      "name": "Ivysaur",
+      "zhName": "妙蛙草",
+      "primaryColor": "#449031",
+      "palette": [
+        {
+          "hex": "#449031",
+          "percent": 24.1
+        },
+        {
+          "hex": "#60B9CA",
+          "percent": 23.7
+        },
+        {
+          "hex": "#FA4876",
+          "percent": 13.8
+        }
+      ]
+    },
+    {
+      "slug": "venusaur",
+      "name": "Venusaur",
+      "zhName": "妙蛙花",
+      "primaryColor": "#02C0D8",
+      "palette": [
+        {
+          "hex": "#02C0D8",
+          "percent": 13.4
+        },
+        {
+          "hex": "#FC497C",
+          "percent": 13.8
+        },
+        {
+          "hex": "#4AA030",
+          "percent": 15.9
+        }
+      ]
+    },
+    {
+      "slug": "charmander",
+      "name": "Charmander",
+      "zhName": "小火龙",
+      "primaryColor": "#ED7B01",
+      "palette": [
+        {
+          "hex": "#ED7B01",
+          "percent": 32.9
+        },
+        {
+          "hex": "#FF9400",
+          "percent": 14.9
+        },
+        {
+          "hex": "#EBE379",
+          "percent": 9.4
+        }
+      ]
+    },
+    {
+      "slug": "charmeleon",
+      "name": "Charmeleon",
+      "zhName": "火恐龙",
+      "primaryColor": "#D9332E",
+      "palette": [
+        {
+          "hex": "#D9332E",
+          "percent": 31.1
+        },
+        {
+          "hex": "#F34830",
+          "percent": 17.7
+        },
+        {
+          "hex": "#BA3018",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "charizard",
+      "name": "Charizard",
+      "zhName": "喷火龙",
+      "primaryColor": "#F48F02",
+      "palette": [
+        {
+          "hex": "#F48F02",
+          "percent": 25
+        },
+        {
+          "hex": "#026070",
+          "percent": 18.8
+        },
+        {
+          "hex": "#D77803",
+          "percent": 10.4
+        }
+      ]
+    },
+    {
+      "slug": "squirtle",
+      "name": "Squirtle",
+      "zhName": "杰尼龟",
+      "primaryColor": "#65B9E2",
+      "palette": [
+        {
+          "hex": "#65B9E2",
+          "percent": 38.2
+        },
+        {
+          "hex": "#78DFFF",
+          "percent": 24.1
+        },
+        {
+          "hex": "#DED1A9",
+          "percent": 13.3
+        }
+      ]
+    },
+    {
+      "slug": "wartortle",
+      "name": "Wartortle",
+      "zhName": "卡咪龟",
+      "primaryColor": "#BFD6F8",
+      "palette": [
+        {
+          "hex": "#BFD6F8",
+          "percent": 20.5
+        },
+        {
+          "hex": "#A8B9F7",
+          "percent": 16.5
+        },
+        {
+          "hex": "#91A8DE",
+          "percent": 16.8
+        }
+      ]
+    },
+    {
+      "slug": "blastoise",
+      "name": "Blastoise",
+      "zhName": "水箭龟",
+      "primaryColor": "#8F6030",
+      "palette": [
+        {
+          "hex": "#8F6030",
+          "percent": 26.7
+        },
+        {
+          "hex": "#76ACD0",
+          "percent": 16.2
+        },
+        {
+          "hex": "#744822",
+          "percent": 15.1
+        }
+      ]
+    },
+    {
+      "slug": "pidgey",
+      "name": "Pidgey",
+      "zhName": "波波",
+      "primaryColor": "#A36830",
+      "palette": [
+        {
+          "hex": "#A36830",
+          "percent": 32.6
+        },
+        {
+          "hex": "#F4F0BD",
+          "percent": 14.8
+        },
+        {
+          "hex": "#D2C191",
+          "percent": 11.2
+        }
+      ]
+    },
+    {
+      "slug": "pidgeotto",
+      "name": "Pidgeotto",
+      "zhName": "比比鸟",
+      "primaryColor": "#F4F0BB",
+      "palette": [
+        {
+          "hex": "#F4F0BB",
+          "percent": 34.6
+        },
+        {
+          "hex": "#E3D7A5",
+          "percent": 20.9
+        },
+        {
+          "hex": "#E04260",
+          "percent": 10.9
+        }
+      ]
+    },
+    {
+      "slug": "pidgeot",
+      "name": "Pidgeot",
+      "zhName": "大比鸟",
+      "primaryColor": "#E4DAA7",
+      "palette": [
+        {
+          "hex": "#E4DAA7",
+          "percent": 40.9
+        },
+        {
+          "hex": "#F4F0C0",
+          "percent": 9.4
+        },
+        {
+          "hex": "#C23048",
+          "percent": 10.5
+        }
+      ]
+    },
+    {
+      "slug": "oddish",
+      "name": "Oddish",
+      "zhName": "走路草",
+      "primaryColor": "#4CA430",
+      "palette": [
+        {
+          "hex": "#4CA430",
+          "percent": 34.5
+        },
+        {
+          "hex": "#60C339",
+          "percent": 23.8
+        },
+        {
+          "hex": "#5390AD",
+          "percent": 16.7
+        }
+      ]
+    },
+    {
+      "slug": "gloom",
+      "name": "Gloom",
+      "zhName": "臭臭花",
+      "primaryColor": "#FF8E00",
+      "palette": [
+        {
+          "hex": "#FF8E00",
+          "percent": 13.4
+        },
+        {
+          "hex": "#608BB5",
+          "percent": 18
+        },
+        {
+          "hex": "#ED7802",
+          "percent": 11.2
+        }
+      ]
+    },
+    {
+      "slug": "vileplume",
+      "name": "Vileplume",
+      "zhName": "霸王花",
+      "primaryColor": "#F84859",
+      "palette": [
+        {
+          "hex": "#F84859",
+          "percent": 39.5
+        },
+        {
+          "hex": "#D83A4A",
+          "percent": 23.3
+        },
+        {
+          "hex": "#618CB4",
+          "percent": 14.2
+        }
+      ]
+    },
+    {
+      "slug": "bellossom",
+      "name": "Bellossom",
+      "zhName": "美丽花",
+      "primaryColor": "#F84530",
+      "palette": [
+        {
+          "hex": "#F84530",
+          "percent": 15.3
+        },
+        {
+          "hex": "#FFDE45",
+          "percent": 11.6
+        },
+        {
+          "hex": "#48962F",
+          "percent": 14.5
+        }
+      ]
+    },
+    {
+      "slug": "paras",
+      "name": "Paras",
+      "zhName": "派拉斯",
+      "primaryColor": "#F75E34",
+      "palette": [
+        {
+          "hex": "#F75E34",
+          "percent": 31.8
+        },
+        {
+          "hex": "#FE7E48",
+          "percent": 26.8
+        },
+        {
+          "hex": "#FE0148",
+          "percent": 6.5
+        }
+      ]
+    },
+    {
+      "slug": "parasect",
+      "name": "Parasect",
+      "zhName": "派拉斯特",
+      "primaryColor": "#F85C34",
+      "palette": [
+        {
+          "hex": "#F85C34",
+          "percent": 21
+        },
+        {
+          "hex": "#CB0230",
+          "percent": 18.9
+        },
+        {
+          "hex": "#E40049",
+          "percent": 16.4
+        }
+      ]
+    },
+    {
+      "slug": "venonat",
+      "name": "Venonat",
+      "zhName": "毛球",
+      "primaryColor": "#7A318B",
+      "palette": [
+        {
+          "hex": "#7A318B",
+          "percent": 32.7
+        },
+        {
+          "hex": "#9031A9",
+          "percent": 15.5
+        },
+        {
+          "hex": "#CE012D",
+          "percent": 7.8
+        }
+      ]
+    },
+    {
+      "slug": "venomoth",
+      "name": "Venomoth",
+      "zhName": "摩鲁蛾",
+      "primaryColor": "#D2A8DB",
+      "palette": [
+        {
+          "hex": "#D2A8DB",
+          "percent": 38.8
+        },
+        {
+          "hex": "#BC92C3",
+          "percent": 23.9
+        },
+        {
+          "hex": "#E4C0F1",
+          "percent": 10
+        }
+      ]
+    },
+    {
+      "slug": "bellsprout",
+      "name": "Bellsprout",
+      "zhName": "喇叭芽",
+      "primaryColor": "#ADEA90",
+      "palette": [
+        {
+          "hex": "#ADEA90",
+          "percent": 34.8
+        },
+        {
+          "hex": "#FFFF18",
+          "percent": 13.6
+        },
+        {
+          "hex": "#F0ED19",
+          "percent": 10.3
+        }
+      ]
+    },
+    {
+      "slug": "weepinbell",
+      "name": "Weepinbell",
+      "zhName": "口呆花",
+      "primaryColor": "#B3ED95",
+      "palette": [
+        {
+          "hex": "#B3ED95",
+          "percent": 23.7
+        },
+        {
+          "hex": "#DCD519",
+          "percent": 12.3
+        },
+        {
+          "hex": "#FFFF18",
+          "percent": 8
+        }
+      ]
+    },
+    {
+      "slug": "victreebel",
+      "name": "Victreebel",
+      "zhName": "大食花",
+      "primaryColor": "#ADE48E",
+      "palette": [
+        {
+          "hex": "#ADE48E",
+          "percent": 27.3
+        },
+        {
+          "hex": "#DCD719",
+          "percent": 14.1
+        },
+        {
+          "hex": "#F2F019",
+          "percent": 10.1
+        }
+      ]
+    },
+    {
+      "slug": "slowpoke",
+      "name": "Slowpoke",
+      "zhName": "呆呆兽",
+      "primaryColor": "#FFC1CF",
+      "palette": [
+        {
+          "hex": "#FFC1CF",
+          "percent": 32.2
+        },
+        {
+          "hex": "#F2AABA",
+          "percent": 32.6
+        },
+        {
+          "hex": "#D995A7",
+          "percent": 11.8
+        }
+      ]
+    },
+    {
+      "slug": "slowbro",
+      "name": "Slowbro",
+      "zhName": "呆壳兽",
+      "primaryColor": "#EEAAB8",
+      "palette": [
+        {
+          "hex": "#EEAAB8",
+          "percent": 26.4
+        },
+        {
+          "hex": "#FFC1D0",
+          "percent": 15.2
+        },
+        {
+          "hex": "#E6D3AA",
+          "percent": 11.8
+        }
+      ]
+    },
+    {
+      "slug": "slowking",
+      "name": "Slowking",
+      "zhName": "呆呆王",
+      "primaryColor": "#EFABB7",
+      "palette": [
+        {
+          "hex": "#EFABB7",
+          "percent": 29.7
+        },
+        {
+          "hex": "#FFC1CF",
+          "percent": 10.1
+        },
+        {
+          "hex": "#D790A6",
+          "percent": 11
+        }
+      ]
+    },
+    {
+      "slug": "magnemite",
+      "name": "Magnemite",
+      "zhName": "小磁怪",
+      "primaryColor": "#A8C4D4",
+      "palette": [
+        {
+          "hex": "#A8C4D4",
+          "percent": 18.6
+        },
+        {
+          "hex": "#ECF0F1",
+          "percent": 16.2
+        },
+        {
+          "hex": "#91B0BA",
+          "percent": 15.9
+        }
+      ]
+    },
+    {
+      "slug": "magneton",
+      "name": "Magneton",
+      "zhName": "三合一磁怪",
+      "primaryColor": "#EAF0F0",
+      "palette": [
+        {
+          "hex": "#EAF0F0",
+          "percent": 22.5
+        },
+        {
+          "hex": "#BCE5F4",
+          "percent": 11
+        },
+        {
+          "hex": "#A9C6D3",
+          "percent": 13.5
+        }
+      ]
+    },
+    {
+      "slug": "magnezone",
+      "name": "Magnezone",
+      "zhName": "自爆磁怪",
+      "primaryColor": "#92A7BE",
+      "palette": [
+        {
+          "hex": "#92A7BE",
+          "percent": 21.7
+        },
+        {
+          "hex": "#A9BDD7",
+          "percent": 12.4
+        },
+        {
+          "hex": "#73787D",
+          "percent": 16.8
+        }
+      ]
+    },
+    {
+      "slug": "onix",
+      "name": "Onix",
+      "zhName": "大岩蛇",
+      "primaryColor": "#A4A8AA",
+      "palette": [
+        {
+          "hex": "#A4A8AA",
+          "percent": 45.6
+        },
+        {
+          "hex": "#8F9093",
+          "percent": 28.4
+        },
+        {
+          "hex": "#BBC0C2",
+          "percent": 17
+        }
+      ]
+    },
+    {
+      "slug": "steelix",
+      "name": "Steelix",
+      "zhName": "大钢蛇",
+      "primaryColor": "#667890",
+      "palette": [
+        {
+          "hex": "#667890",
+          "percent": 34.7
+        },
+        {
+          "hex": "#C0D7F1",
+          "percent": 16.9
+        },
+        {
+          "hex": "#ABBED8",
+          "percent": 14.5
+        }
+      ]
+    },
+    {
+      "slug": "cubone",
+      "name": "Cubone",
+      "zhName": "卡拉卡拉",
+      "primaryColor": "#D6D9D7",
+      "palette": [
+        {
+          "hex": "#D6D9D7",
+          "percent": 20.8
+        },
+        {
+          "hex": "#DCA561",
+          "percent": 11.6
+        },
+        {
+          "hex": "#EDF1EF",
+          "percent": 14.3
+        }
+      ]
+    },
+    {
+      "slug": "marowak",
+      "name": "Marowak",
+      "zhName": "嘎啦嘎啦",
+      "primaryColor": "#DCA561",
+      "palette": [
+        {
+          "hex": "#DCA561",
+          "percent": 15.3
+        },
+        {
+          "hex": "#D5D9D8",
+          "percent": 20.7
+        },
+        {
+          "hex": "#F8C276",
+          "percent": 8.3
+        }
+      ]
+    },
+    {
+      "slug": "tyrogue",
+      "name": "Tyrogue",
+      "zhName": "无畏小子",
+      "primaryColor": "#F2D8F9",
+      "palette": [
+        {
+          "hex": "#F2D8F9",
+          "percent": 30.8
+        },
+        {
+          "hex": "#D8C0DC",
+          "percent": 25.9
+        },
+        {
+          "hex": "#976033",
+          "percent": 9.7
+        }
+      ]
+    },
+    {
+      "slug": "hitmonlee",
+      "name": "Hitmonlee",
+      "zhName": "飞腿郎",
+      "primaryColor": "#A57960",
+      "palette": [
+        {
+          "hex": "#A57960",
+          "percent": 34.8
+        },
+        {
+          "hex": "#C2936F",
+          "percent": 25.4
+        },
+        {
+          "hex": "#D8AC7C",
+          "percent": 7.5
+        }
+      ]
+    },
+    {
+      "slug": "hitmonchan",
+      "name": "Hitmonchan",
+      "zhName": "快拳郎",
+      "primaryColor": "#BA9560",
+      "palette": [
+        {
+          "hex": "#BA9560",
+          "percent": 16.3
+        },
+        {
+          "hex": "#FE4732",
+          "percent": 10.1
+        },
+        {
+          "hex": "#ECC179",
+          "percent": 7.9
+        }
+      ]
+    },
+    {
+      "slug": "hitmontop",
+      "name": "Hitmontop",
+      "zhName": "战舞郎",
+      "primaryColor": "#BD9277",
+      "palette": [
+        {
+          "hex": "#BD9277",
+          "percent": 26
+        },
+        {
+          "hex": "#D9A883",
+          "percent": 18
+        },
+        {
+          "hex": "#3375B7",
+          "percent": 13.3
+        }
+      ]
+    },
+    {
+      "slug": "koffing",
+      "name": "Koffing",
+      "zhName": "瓦斯弹",
+      "primaryColor": "#ADA760",
+      "palette": [
+        {
+          "hex": "#ADA760",
+          "percent": 27.6
+        },
+        {
+          "hex": "#8F91CD",
+          "percent": 24.4
+        },
+        {
+          "hex": "#A8A9E9",
+          "percent": 10.9
+        }
+      ]
+    },
+    {
+      "slug": "weezing",
+      "name": "Weezing",
+      "zhName": "双弹瓦斯",
+      "primaryColor": "#A590B2",
+      "palette": [
+        {
+          "hex": "#A590B2",
+          "percent": 36.5
+        },
+        {
+          "hex": "#BEA9C4",
+          "percent": 25
+        },
+        {
+          "hex": "#9C904C",
+          "percent": 12.6
+        }
+      ]
+    },
+    {
+      "slug": "tangela",
+      "name": "Tangela",
+      "zhName": "蔓藤怪",
+      "primaryColor": "#48A8F4",
+      "palette": [
+        {
+          "hex": "#48A8F4",
+          "percent": 21.1
+        },
+        {
+          "hex": "#318EDC",
+          "percent": 17.7
+        },
+        {
+          "hex": "#3178BB",
+          "percent": 16.5
+        }
+      ]
+    },
+    {
+      "slug": "prof-tangrowth",
+      "name": "Prof. Tangrowth",
+      "zhName": "巨蔓藤（博士）",
+      "primaryColor": "#79A5AC",
+      "palette": [
+        {
+          "hex": "#79A5AC",
+          "percent": 28.5
+        },
+        {
+          "hex": "#EFF0F0",
+          "percent": 16
+        },
+        {
+          "hex": "#5F7591",
+          "percent": 9.6
+        }
+      ]
+    },
+    {
+      "slug": "tangrowth",
+      "name": "Tangrowth",
+      "zhName": "巨蔓藤",
+      "primaryColor": "#3197B5",
+      "palette": [
+        {
+          "hex": "#3197B5",
+          "percent": 64.1
+        },
+        {
+          "hex": "#47B1D8",
+          "percent": 12.7
+        },
+        {
+          "hex": "#30789E",
+          "percent": 6.3
+        }
+      ]
+    },
+    {
+      "slug": "scyther",
+      "name": "Scyther",
+      "zhName": "飞天螳螂",
+      "primaryColor": "#63B849",
+      "palette": [
+        {
+          "hex": "#63B849",
+          "percent": 28.7
+        },
+        {
+          "hex": "#78DE5B",
+          "percent": 17.8
+        },
+        {
+          "hex": "#E5D990",
+          "percent": 8.9
+        }
+      ]
+    },
+    {
+      "slug": "scizor",
+      "name": "Scizor",
+      "zhName": "巨钳螳螂",
+      "primaryColor": "#CB3035",
+      "palette": [
+        {
+          "hex": "#CB3035",
+          "percent": 44.7
+        },
+        {
+          "hex": "#FF484B",
+          "percent": 12.7
+        },
+        {
+          "hex": "#F03048",
+          "percent": 8.4
+        }
+      ]
+    },
+    {
+      "slug": "pinsir",
+      "name": "Pinsir",
+      "zhName": "凯罗斯",
+      "primaryColor": "#AD8778",
+      "palette": [
+        {
+          "hex": "#AD8778",
+          "percent": 31.4
+        },
+        {
+          "hex": "#907362",
+          "percent": 13.7
+        },
+        {
+          "hex": "#D1A894",
+          "percent": 9
+        }
+      ]
+    },
+    {
+      "slug": "magikarp",
+      "name": "Magikarp",
+      "zhName": "鲤鱼王",
+      "primaryColor": "#FD4E15",
+      "palette": [
+        {
+          "hex": "#FD4E15",
+          "percent": 21.9
+        },
+        {
+          "hex": "#D73501",
+          "percent": 14.5
+        },
+        {
+          "hex": "#F3F0F0",
+          "percent": 20.3
+        }
+      ]
+    },
+    {
+      "slug": "gyarados",
+      "name": "Gyarados",
+      "zhName": "暴鲤龙",
+      "primaryColor": "#36BBF3",
+      "palette": [
+        {
+          "hex": "#36BBF3",
+          "percent": 17.5
+        },
+        {
+          "hex": "#36A7D8",
+          "percent": 12.1
+        },
+        {
+          "hex": "#C8BE7A",
+          "percent": 14.3
+        }
+      ]
+    },
+    {
+      "slug": "ditto",
+      "name": "Ditto",
+      "zhName": "百变怪",
+      "primaryColor": "#DCBFFF",
+      "palette": [
+        {
+          "hex": "#DCBFFF",
+          "percent": 39.8
+        },
+        {
+          "hex": "#BFA8FA",
+          "percent": 28.4
+        },
+        {
+          "hex": "#A891D5",
+          "percent": 23.7
+        }
+      ]
+    },
+    {
+      "slug": "hoothoot",
+      "name": "Hoothoot",
+      "zhName": "咕咕",
+      "primaryColor": "#FF7960",
+      "palette": [
+        {
+          "hex": "#FF7960",
+          "percent": 12.2
+        },
+        {
+          "hex": "#BC9066",
+          "percent": 17.5
+        },
+        {
+          "hex": "#C2A88A",
+          "percent": 11.1
+        }
+      ]
+    },
+    {
+      "slug": "noctowl",
+      "name": "Noctowl",
+      "zhName": "猫头夜鹰",
+      "primaryColor": "#4C3023",
+      "palette": [
+        {
+          "hex": "#4C3023",
+          "percent": 19.7
+        },
+        {
+          "hex": "#A67960",
+          "percent": 19.7
+        },
+        {
+          "hex": "#DABE91",
+          "percent": 16.3
+        }
+      ]
+    },
+    {
+      "slug": "heracross",
+      "name": "Heracross",
+      "zhName": "赫拉克罗斯",
+      "primaryColor": "#618DB6",
+      "palette": [
+        {
+          "hex": "#618DB6",
+          "percent": 49.1
+        },
+        {
+          "hex": "#6EA8DC",
+          "percent": 17.2
+        },
+        {
+          "hex": "#49779F",
+          "percent": 17.2
+        }
+      ]
+    },
+    {
+      "slug": "volbeat",
+      "name": "Volbeat",
+      "zhName": "电萤虫",
+      "primaryColor": "#FC014F",
+      "palette": [
+        {
+          "hex": "#FC014F",
+          "percent": 15.3
+        },
+        {
+          "hex": "#2E3848",
+          "percent": 15.7
+        },
+        {
+          "hex": "#90BBE5",
+          "percent": 7.8
+        }
+      ]
+    },
+    {
+      "slug": "illumise",
+      "name": "Illumise",
+      "zhName": "甜甜萤",
+      "primaryColor": "#A891D6",
+      "palette": [
+        {
+          "hex": "#A891D6",
+          "percent": 14.2
+        },
+        {
+          "hex": "#78D2FA",
+          "percent": 9
+        },
+        {
+          "hex": "#86F2FF",
+          "percent": 7.9
+        }
+      ]
+    },
+    {
+      "slug": "gulpin",
+      "name": "Gulpin",
+      "zhName": "溶食兽",
+      "primaryColor": "#A3C07A",
+      "palette": [
+        {
+          "hex": "#A3C07A",
+          "percent": 34.7
+        },
+        {
+          "hex": "#8CA866",
+          "percent": 26.1
+        },
+        {
+          "hex": "#BCDC90",
+          "percent": 20.7
+        }
+      ]
+    },
+    {
+      "slug": "swalot",
+      "name": "Swalot",
+      "zhName": "吞食兽",
+      "primaryColor": "#908FDE",
+      "palette": [
+        {
+          "hex": "#908FDE",
+          "percent": 40.6
+        },
+        {
+          "hex": "#7B78C0",
+          "percent": 31.3
+        },
+        {
+          "hex": "#A897F1",
+          "percent": 13.5
+        }
+      ]
+    },
+    {
+      "slug": "cacnea",
+      "name": "Cacnea",
+      "zhName": "刺球仙人掌",
+      "primaryColor": "#A4DD60",
+      "palette": [
+        {
+          "hex": "#A4DD60",
+          "percent": 21.5
+        },
+        {
+          "hex": "#C1FB75",
+          "percent": 14.2
+        },
+        {
+          "hex": "#497929",
+          "percent": 18.3
+        }
+      ]
+    },
+    {
+      "slug": "cacturne",
+      "name": "Cacturne",
+      "zhName": "梦歌仙人掌",
+      "primaryColor": "#D9FF90",
+      "palette": [
+        {
+          "hex": "#D9FF90",
+          "percent": 20.3
+        },
+        {
+          "hex": "#ACD677",
+          "percent": 24.5
+        },
+        {
+          "hex": "#C0EF86",
+          "percent": 18.7
+        }
+      ]
+    },
+    {
+      "slug": "combee",
+      "name": "Combee",
+      "zhName": "三蜜蜂",
+      "primaryColor": "#F4A200",
+      "palette": [
+        {
+          "hex": "#F4A200",
+          "percent": 19.7
+        },
+        {
+          "hex": "#FFCB00",
+          "percent": 16.9
+        },
+        {
+          "hex": "#FF8E00",
+          "percent": 10.3
+        }
+      ]
+    },
+    {
+      "slug": "vespiquen",
+      "name": "Vespiquen",
+      "zhName": "蜂女王",
+      "primaryColor": "#F69D01",
+      "palette": [
+        {
+          "hex": "#F69D01",
+          "percent": 25.6
+        },
+        {
+          "hex": "#E47C01",
+          "percent": 17.3
+        },
+        {
+          "hex": "#FFCF00",
+          "percent": 13.9
+        }
+      ]
+    },
+    {
+      "slug": "shellos-east-sea",
+      "name": "Shellos (East Sea)",
+      "zhName": "无壳海兔（东海）",
+      "primaryColor": "#00C0FF",
+      "palette": [
+        {
+          "hex": "#00C0FF",
+          "percent": 29.3
+        },
+        {
+          "hex": "#01A7E3",
+          "percent": 28.5
+        },
+        {
+          "hex": "#90D301",
+          "percent": 10.3
+        }
+      ]
+    },
+    {
+      "slug": "shellos-west-sea",
+      "name": "Shellos (West Sea)",
+      "zhName": "无壳海兔（西海）",
+      "primaryColor": "#EA94B3",
+      "palette": [
+        {
+          "hex": "#EA94B3",
+          "percent": 31.8
+        },
+        {
+          "hex": "#FC4D90",
+          "percent": 8.7
+        },
+        {
+          "hex": "#FFA9CE",
+          "percent": 7.7
+        }
+      ]
+    },
+    {
+      "slug": "gastrodon-east-sea",
+      "name": "Gastrodon (East Sea)",
+      "zhName": "海兔兽（东海）",
+      "primaryColor": "#0EA9DF",
+      "palette": [
+        {
+          "hex": "#0EA9DF",
+          "percent": 27.2
+        },
+        {
+          "hex": "#09A96C",
+          "percent": 18.1
+        },
+        {
+          "hex": "#099060",
+          "percent": 10.2
+        }
+      ]
+    },
+    {
+      "slug": "gastrodon-west-sea",
+      "name": "Gastrodon (West Sea)",
+      "zhName": "海兔兽（西海）",
+      "primaryColor": "#F29EBE",
+      "palette": [
+        {
+          "hex": "#F29EBE",
+          "percent": 36.1
+        },
+        {
+          "hex": "#A47861",
+          "percent": 25.1
+        },
+        {
+          "hex": "#FFBADB",
+          "percent": 8.5
+        }
+      ]
+    },
+    {
+      "slug": "drifloon",
+      "name": "Drifloon",
+      "zhName": "飘飘球",
+      "primaryColor": "#BF9CDA",
+      "palette": [
+        {
+          "hex": "#BF9CDA",
+          "percent": 36
+        },
+        {
+          "hex": "#FFE148",
+          "percent": 11
+        },
+        {
+          "hex": "#D8B3F0",
+          "percent": 9.8
+        }
+      ]
+    },
+    {
+      "slug": "drifblim",
+      "name": "Drifblim",
+      "zhName": "随风球",
+      "primaryColor": "#FFE348",
+      "palette": [
+        {
+          "hex": "#FFE348",
+          "percent": 15
+        },
+        {
+          "hex": "#786390",
+          "percent": 24.3
+        },
+        {
+          "hex": "#BEA8C5",
+          "percent": 12.5
+        }
+      ]
+    },
+    {
+      "slug": "drilbur",
+      "name": "Drilbur",
+      "zhName": "螺钉地鼠",
+      "primaryColor": "#F2F0EF",
+      "palette": [
+        {
+          "hex": "#F2F0EF",
+          "percent": 15.6
+        },
+        {
+          "hex": "#6D635D",
+          "percent": 15.5
+        },
+        {
+          "hex": "#8B7C78",
+          "percent": 12.9
+        }
+      ]
+    },
+    {
+      "slug": "excadrill",
+      "name": "Excadrill",
+      "zhName": "龙头地鼠",
+      "primaryColor": "#5E4B48",
+      "palette": [
+        {
+          "hex": "#5E4B48",
+          "percent": 41.1
+        },
+        {
+          "hex": "#E1DBD5",
+          "percent": 21.9
+        },
+        {
+          "hex": "#686060",
+          "percent": 10.3
+        }
+      ]
+    },
+    {
+      "slug": "timburr",
+      "name": "Timburr",
+      "zhName": "搬运小匠",
+      "primaryColor": "#935F24",
+      "palette": [
+        {
+          "hex": "#935F24",
+          "percent": 22
+        },
+        {
+          "hex": "#C3B6A4",
+          "percent": 24.3
+        },
+        {
+          "hex": "#DFD6C0",
+          "percent": 13.6
+        }
+      ]
+    },
+    {
+      "slug": "gurdurr",
+      "name": "Gurdurr",
+      "zhName": "铁骨土人",
+      "primaryColor": "#903148",
+      "palette": [
+        {
+          "hex": "#903148",
+          "percent": 17
+        },
+        {
+          "hex": "#ACA390",
+          "percent": 22
+        },
+        {
+          "hex": "#C4BAA8",
+          "percent": 15.3
+        }
+      ]
+    },
+    {
+      "slug": "conkeldurr",
+      "name": "Conkeldurr",
+      "zhName": "修建老匠",
+      "primaryColor": "#BF8F7B",
+      "palette": [
+        {
+          "hex": "#BF8F7B",
+          "percent": 16.7
+        },
+        {
+          "hex": "#A37B65",
+          "percent": 11
+        },
+        {
+          "hex": "#A7A8A8",
+          "percent": 14.3
+        }
+      ]
+    },
+    {
+      "slug": "litwick",
+      "name": "Litwick",
+      "zhName": "烛光灵",
+      "primaryColor": "#D5D9E8",
+      "palette": [
+        {
+          "hex": "#D5D9E8",
+          "percent": 39.8
+        },
+        {
+          "hex": "#F0F0F2",
+          "percent": 21.5
+        },
+        {
+          "hex": "#7878C7",
+          "percent": 16.4
+        }
+      ]
+    },
+    {
+      "slug": "lampent",
+      "name": "Lampent",
+      "zhName": "灯火幽灵",
+      "primaryColor": "#BFC3EC",
+      "palette": [
+        {
+          "hex": "#BFC3EC",
+          "percent": 14.9
+        },
+        {
+          "hex": "#5A6066",
+          "percent": 22.5
+        },
+        {
+          "hex": "#D8DDFF",
+          "percent": 8.4
+        }
+      ]
+    },
+    {
+      "slug": "chandelure",
+      "name": "Chandelure",
+      "zhName": "水晶灯火灵",
+      "primaryColor": "#7878C8",
+      "palette": [
+        {
+          "hex": "#7878C8",
+          "percent": 25
+        },
+        {
+          "hex": "#474D54",
+          "percent": 27.7
+        },
+        {
+          "hex": "#60656C",
+          "percent": 20.5
+        }
+      ]
+    },
+    {
+      "slug": "axew",
+      "name": "Axew",
+      "zhName": "牙牙",
+      "primaryColor": "#949B75",
+      "palette": [
+        {
+          "hex": "#949B75",
+          "percent": 34
+        },
+        {
+          "hex": "#73794D",
+          "percent": 23.9
+        },
+        {
+          "hex": "#C0C79F",
+          "percent": 9.7
+        }
+      ]
+    },
+    {
+      "slug": "fraxure",
+      "name": "Fraxure",
+      "zhName": "斧牙龙",
+      "primaryColor": "#7A8B19",
+      "palette": [
+        {
+          "hex": "#7A8B19",
+          "percent": 9.2
+        },
+        {
+          "hex": "#726760",
+          "percent": 14.2
+        },
+        {
+          "hex": "#8D827A",
+          "percent": 13.3
+        }
+      ]
+    },
+    {
+      "slug": "haxorus",
+      "name": "Haxorus",
+      "zhName": "双斧战龙",
+      "primaryColor": "#BCAB02",
+      "palette": [
+        {
+          "hex": "#BCAB02",
+          "percent": 20.4
+        },
+        {
+          "hex": "#D8C301",
+          "percent": 12.7
+        },
+        {
+          "hex": "#655E56",
+          "percent": 22
+        }
+      ]
+    },
+    {
+      "slug": "goomy",
+      "name": "Goomy",
+      "zhName": "黏黏宝",
+      "primaryColor": "#ECDEF0",
+      "palette": [
+        {
+          "hex": "#ECDEF0",
+          "percent": 25.5
+        },
+        {
+          "hex": "#BFADE7",
+          "percent": 17.5
+        },
+        {
+          "hex": "#D8C1E1",
+          "percent": 17.9
+        }
+      ]
+    },
+    {
+      "slug": "sliggoo",
+      "name": "Sliggoo",
+      "zhName": "黏美儿",
+      "primaryColor": "#D5C3D9",
+      "palette": [
+        {
+          "hex": "#D5C3D9",
+          "percent": 29.3
+        },
+        {
+          "hex": "#EBD9F1",
+          "percent": 20
+        },
+        {
+          "hex": "#BCA9E6",
+          "percent": 16.7
+        }
+      ]
+    },
+    {
+      "slug": "goodra",
+      "name": "Goodra",
+      "zhName": "黏美龙",
+      "primaryColor": "#EDD9F1",
+      "palette": [
+        {
+          "hex": "#EDD9F1",
+          "percent": 20.6
+        },
+        {
+          "hex": "#D3C1D9",
+          "percent": 22.1
+        },
+        {
+          "hex": "#BBA9C4",
+          "percent": 23.3
+        }
+      ]
+    },
+    {
+      "slug": "cramorant",
+      "name": "Cramorant",
+      "zhName": "古月鸟",
+      "primaryColor": "#0163BE",
+      "palette": [
+        {
+          "hex": "#0163BE",
+          "percent": 34.9
+        },
+        {
+          "hex": "#0278DB",
+          "percent": 20.2
+        },
+        {
+          "hex": "#CFD7F0",
+          "percent": 6.8
+        }
+      ]
+    },
+    {
+      "slug": "pichu",
+      "name": "Pichu",
+      "zhName": "皮丘",
+      "primaryColor": "#F0DB44",
+      "palette": [
+        {
+          "hex": "#F0DB44",
+          "percent": 36.8
+        },
+        {
+          "hex": "#FFF148",
+          "percent": 15
+        },
+        {
+          "hex": "#DBBF34",
+          "percent": 12.2
+        }
+      ]
+    },
+    {
+      "slug": "peakychu",
+      "name": "Peakychu",
+      "zhName": "皮卡丘（浅色）",
+      "primaryColor": "#F0F0EF",
+      "palette": [
+        {
+          "hex": "#F0F0EF",
+          "percent": 66.2
+        },
+        {
+          "hex": "#E5D3D2",
+          "percent": 7.8
+        },
+        {
+          "hex": "#BFA9B6",
+          "percent": 7
+        }
+      ]
+    },
+    {
+      "slug": "pikachu",
+      "name": "Pikachu",
+      "zhName": "皮卡丘",
+      "primaryColor": "#FFE200",
+      "palette": [
+        {
+          "hex": "#FFE200",
+          "percent": 42.3
+        },
+        {
+          "hex": "#F0C601",
+          "percent": 39.5
+        },
+        {
+          "hex": "#F0DE1E",
+          "percent": 4.4
+        }
+      ]
+    },
+    {
+      "slug": "raichu",
+      "name": "Raichu",
+      "zhName": "雷丘",
+      "primaryColor": "#DBC003",
+      "palette": [
+        {
+          "hex": "#DBC003",
+          "percent": 19.1
+        },
+        {
+          "hex": "#F3A302",
+          "percent": 16.3
+        },
+        {
+          "hex": "#FFD001",
+          "percent": 15.9
+        }
+      ]
+    },
+    {
+      "slug": "zubat",
+      "name": "Zubat",
+      "zhName": "超音蝠",
+      "primaryColor": "#B3A7F0",
+      "palette": [
+        {
+          "hex": "#B3A7F0",
+          "percent": 25.2
+        },
+        {
+          "hex": "#A691DD",
+          "percent": 25.4
+        },
+        {
+          "hex": "#03AEEB",
+          "percent": 9.5
+        }
+      ]
+    },
+    {
+      "slug": "golbat",
+      "name": "Golbat",
+      "zhName": "大嘴蝠",
+      "primaryColor": "#B8A7EF",
+      "palette": [
+        {
+          "hex": "#B8A7EF",
+          "percent": 49.3
+        },
+        {
+          "hex": "#05AEE7",
+          "percent": 12.1
+        },
+        {
+          "hex": "#A890D8",
+          "percent": 12.5
+        }
+      ]
+    },
+    {
+      "slug": "crobat",
+      "name": "Crobat",
+      "zhName": "叉字蝠",
+      "primaryColor": "#78BEDE",
+      "palette": [
+        {
+          "hex": "#78BEDE",
+          "percent": 23.1
+        },
+        {
+          "hex": "#C074DB",
+          "percent": 21.7
+        },
+        {
+          "hex": "#A862C1",
+          "percent": 20.7
+        }
+      ]
+    },
+    {
+      "slug": "meowth",
+      "name": "Meowth",
+      "zhName": "喵喵",
+      "primaryColor": "#E0D291",
+      "palette": [
+        {
+          "hex": "#E0D291",
+          "percent": 29.5
+        },
+        {
+          "hex": "#F5EDA8",
+          "percent": 20.1
+        },
+        {
+          "hex": "#CD5C1A",
+          "percent": 11.4
+        }
+      ]
+    },
+    {
+      "slug": "persian",
+      "name": "Persian",
+      "zhName": "猫老大",
+      "primaryColor": "#E3D37C",
+      "palette": [
+        {
+          "hex": "#E3D37C",
+          "percent": 56.4
+        },
+        {
+          "hex": "#FCF490",
+          "percent": 18.6
+        },
+        {
+          "hex": "#C3B464",
+          "percent": 12.9
+        }
+      ]
+    },
+    {
+      "slug": "psyduck",
+      "name": "Psyduck",
+      "zhName": "可达鸭",
+      "primaryColor": "#FFD130",
+      "palette": [
+        {
+          "hex": "#FFD130",
+          "percent": 28.5
+        },
+        {
+          "hex": "#E5A719",
+          "percent": 16.6
+        },
+        {
+          "hex": "#F0BF2A",
+          "percent": 15.5
+        }
+      ]
+    },
+    {
+      "slug": "golduck",
+      "name": "Golduck",
+      "zhName": "哥达鸭",
+      "primaryColor": "#78A8E2",
+      "palette": [
+        {
+          "hex": "#78A8E2",
+          "percent": 36.8
+        },
+        {
+          "hex": "#90C6FF",
+          "percent": 17.3
+        },
+        {
+          "hex": "#628EC5",
+          "percent": 21.6
+        }
+      ]
+    },
+    {
+      "slug": "growlithe",
+      "name": "Growlithe",
+      "zhName": "卡蒂狗",
+      "primaryColor": "#FFF2D4",
+      "palette": [
+        {
+          "hex": "#FFF2D4",
+          "percent": 22.3
+        },
+        {
+          "hex": "#FAAD5A",
+          "percent": 18.5
+        },
+        {
+          "hex": "#EED8BD",
+          "percent": 20.2
+        }
+      ]
+    },
+    {
+      "slug": "arcanine",
+      "name": "Arcanine",
+      "zhName": "风速狗",
+      "primaryColor": "#EFDABA",
+      "palette": [
+        {
+          "hex": "#EFDABA",
+          "percent": 36.3
+        },
+        {
+          "hex": "#FFF2D5",
+          "percent": 21.6
+        },
+        {
+          "hex": "#FBAA5A",
+          "percent": 12.2
+        }
+      ]
+    },
+    {
+      "slug": "farfetchd",
+      "name": "Farfetch'd",
+      "zhName": "大葱鸭",
+      "primaryColor": "#E2C8A8",
+      "palette": [
+        {
+          "hex": "#E2C8A8",
+          "percent": 23.8
+        },
+        {
+          "hex": "#C4A590",
+          "percent": 21.8
+        },
+        {
+          "hex": "#FADDC0",
+          "percent": 11.6
+        }
+      ]
+    },
+    {
+      "slug": "grimer",
+      "name": "Grimer",
+      "zhName": "臭泥",
+      "primaryColor": "#908EC9",
+      "palette": [
+        {
+          "hex": "#908EC9",
+          "percent": 36.8
+        },
+        {
+          "hex": "#7876B4",
+          "percent": 25.2
+        },
+        {
+          "hex": "#A8A9EB",
+          "percent": 11.5
+        }
+      ]
+    },
+    {
+      "slug": "muk",
+      "name": "Muk",
+      "zhName": "臭臭泥",
+      "primaryColor": "#9091EC",
+      "palette": [
+        {
+          "hex": "#9091EC",
+          "percent": 22.6
+        },
+        {
+          "hex": "#777AC9",
+          "percent": 25.2
+        },
+        {
+          "hex": "#A6AAFF",
+          "percent": 15.6
+        }
+      ]
+    },
+    {
+      "slug": "gastly",
+      "name": "Gastly",
+      "zhName": "鬼斯",
+      "primaryColor": "#674878",
+      "palette": [
+        {
+          "hex": "#674878",
+          "percent": 27.2
+        },
+        {
+          "hex": "#786080",
+          "percent": 21.9
+        },
+        {
+          "hex": "#313243",
+          "percent": 17.5
+        }
+      ]
+    },
+    {
+      "slug": "haunter",
+      "name": "Haunter",
+      "zhName": "鬼斯通",
+      "primaryColor": "#7865A2",
+      "palette": [
+        {
+          "hex": "#7865A2",
+          "percent": 47.6
+        },
+        {
+          "hex": "#605E90",
+          "percent": 21.1
+        },
+        {
+          "hex": "#8C78C2",
+          "percent": 17.1
+        }
+      ]
+    },
+    {
+      "slug": "gengar",
+      "name": "Gengar",
+      "zhName": "耿鬼",
+      "primaryColor": "#7866A2",
+      "palette": [
+        {
+          "hex": "#7866A2",
+          "percent": 33.9
+        },
+        {
+          "hex": "#8E78C2",
+          "percent": 21.7
+        },
+        {
+          "hex": "#605C90",
+          "percent": 17.6
+        }
+      ]
+    },
+    {
+      "slug": "voltorb",
+      "name": "Voltorb",
+      "zhName": "霹雳电球",
+      "primaryColor": "#F60034",
+      "palette": [
+        {
+          "hex": "#F60034",
+          "percent": 28.1
+        },
+        {
+          "hex": "#E72048",
+          "percent": 13.1
+        },
+        {
+          "hex": "#D70D30",
+          "percent": 7.5
+        }
+      ]
+    },
+    {
+      "slug": "electrode",
+      "name": "Electrode",
+      "zhName": "顽皮雷弹",
+      "primaryColor": "#CD1430",
+      "palette": [
+        {
+          "hex": "#CD1430",
+          "percent": 18.3
+        },
+        {
+          "hex": "#D8DAD8",
+          "percent": 35.7
+        },
+        {
+          "hex": "#F0F1F0",
+          "percent": 30.4
+        }
+      ]
+    },
+    {
+      "slug": "exeggcute",
+      "name": "Exeggcute",
+      "zhName": "蛋蛋",
+      "primaryColor": "#EFBCC6",
+      "palette": [
+        {
+          "hex": "#EFBCC6",
+          "percent": 47.3
+        },
+        {
+          "hex": "#FFD8DD",
+          "percent": 22.9
+        },
+        {
+          "hex": "#FFF0F0",
+          "percent": 9.1
+        }
+      ]
+    },
+    {
+      "slug": "exeggutor",
+      "name": "Exeggutor",
+      "zhName": "椰蛋树",
+      "primaryColor": "#499D30",
+      "palette": [
+        {
+          "hex": "#499D30",
+          "percent": 41.8
+        },
+        {
+          "hex": "#A87E5E",
+          "percent": 14.1
+        },
+        {
+          "hex": "#DAD17A",
+          "percent": 11.3
+        }
+      ]
+    },
+    {
+      "slug": "happiny",
+      "name": "Happiny",
+      "zhName": "小福蛋",
+      "primaryColor": "#FFC6D8",
+      "palette": [
+        {
+          "hex": "#FFC6D8",
+          "percent": 25.9
+        },
+        {
+          "hex": "#EDB5C0",
+          "percent": 22.7
+        },
+        {
+          "hex": "#FFD9F0",
+          "percent": 6.8
+        }
+      ]
+    },
+    {
+      "slug": "chansey",
+      "name": "Chansey",
+      "zhName": "吉利蛋",
+      "primaryColor": "#EAAAC0",
+      "palette": [
+        {
+          "hex": "#EAAAC0",
+          "percent": 29
+        },
+        {
+          "hex": "#FDC0D8",
+          "percent": 21.1
+        },
+        {
+          "hex": "#DE93A7",
+          "percent": 21.5
+        }
+      ]
+    },
+    {
+      "slug": "blissey",
+      "name": "Blissey",
+      "zhName": "幸福蛋",
+      "primaryColor": "#FEC1D7",
+      "palette": [
+        {
+          "hex": "#FEC1D7",
+          "percent": 31.5
+        },
+        {
+          "hex": "#E8A8BE",
+          "percent": 18.5
+        },
+        {
+          "hex": "#FFD9F0",
+          "percent": 9.7
+        }
+      ]
+    },
+    {
+      "slug": "elekid",
+      "name": "Elekid",
+      "zhName": "电击怪",
+      "primaryColor": "#F8D402",
+      "palette": [
+        {
+          "hex": "#F8D402",
+          "percent": 47.3
+        },
+        {
+          "hex": "#FFF500",
+          "percent": 21.2
+        },
+        {
+          "hex": "#E4BE1E",
+          "percent": 6.7
+        }
+      ]
+    },
+    {
+      "slug": "electabuzz",
+      "name": "Electabuzz",
+      "zhName": "电击兽",
+      "primaryColor": "#FEDF01",
+      "palette": [
+        {
+          "hex": "#FEDF01",
+          "percent": 40.2
+        },
+        {
+          "hex": "#E4BC05",
+          "percent": 25.6
+        },
+        {
+          "hex": "#4A5B5D",
+          "percent": 8.5
+        }
+      ]
+    },
+    {
+      "slug": "electivire",
+      "name": "Electivire",
+      "zhName": "电击魔兽",
+      "primaryColor": "#FFE246",
+      "palette": [
+        {
+          "hex": "#FFE246",
+          "percent": 29.5
+        },
+        {
+          "hex": "#EAC632",
+          "percent": 17
+        },
+        {
+          "hex": "#4F5E5C",
+          "percent": 18
+        }
+      ]
+    },
+    {
+      "slug": "lapras",
+      "name": "Lapras",
+      "zhName": "拉普拉斯",
+      "primaryColor": "#64BFF4",
+      "palette": [
+        {
+          "hex": "#64BFF4",
+          "percent": 18.8
+        },
+        {
+          "hex": "#59A8D4",
+          "percent": 18
+        },
+        {
+          "hex": "#C4B1BC",
+          "percent": 15.6
+        }
+      ]
+    },
+    {
+      "slug": "munchlax",
+      "name": "Munchlax",
+      "zhName": "小卡比兽",
+      "primaryColor": "#498EAC",
+      "palette": [
+        {
+          "hex": "#498EAC",
+          "percent": 40.6
+        },
+        {
+          "hex": "#457890",
+          "percent": 28.9
+        },
+        {
+          "hex": "#F0E4C4",
+          "percent": 6.6
+        }
+      ]
+    },
+    {
+      "slug": "mosslax",
+      "name": "Mosslax",
+      "zhName": "卡比兽（萌苔）",
+      "primaryColor": "#798D30",
+      "palette": [
+        {
+          "hex": "#798D30",
+          "percent": 44.7
+        },
+        {
+          "hex": "#91A648",
+          "percent": 16.9
+        },
+        {
+          "hex": "#495830",
+          "percent": 12.7
+        }
+      ]
+    },
+    {
+      "slug": "snorlax",
+      "name": "Snorlax",
+      "zhName": "卡比兽",
+      "primaryColor": "#017298",
+      "palette": [
+        {
+          "hex": "#017298",
+          "percent": 29
+        },
+        {
+          "hex": "#EFE6D9",
+          "percent": 25.6
+        },
+        {
+          "hex": "#FFFBF0",
+          "percent": 11.9
+        }
+      ]
+    },
+    {
+      "slug": "spinarak",
+      "name": "Spinarak",
+      "zhName": "圆丝蛛",
+      "primaryColor": "#A5DE60",
+      "palette": [
+        {
+          "hex": "#A5DE60",
+          "percent": 19.6
+        },
+        {
+          "hex": "#023E4D",
+          "percent": 14.6
+        },
+        {
+          "hex": "#C0F364",
+          "percent": 8.9
+        }
+      ]
+    },
+    {
+      "slug": "ariados",
+      "name": "Ariados",
+      "zhName": "阿利多斯",
+      "primaryColor": "#F93348",
+      "palette": [
+        {
+          "hex": "#F93348",
+          "percent": 18.7
+        },
+        {
+          "hex": "#EEC25B",
+          "percent": 11
+        },
+        {
+          "hex": "#7777B9",
+          "percent": 11.8
+        }
+      ]
+    },
+    {
+      "slug": "mareep",
+      "name": "Mareep",
+      "zhName": "咩利羊",
+      "primaryColor": "#E1DA8F",
+      "palette": [
+        {
+          "hex": "#E1DA8F",
+          "percent": 47.9
+        },
+        {
+          "hex": "#F2F0A8",
+          "percent": 16
+        },
+        {
+          "hex": "#6197BF",
+          "percent": 6.9
+        }
+      ]
+    },
+    {
+      "slug": "flaaffy",
+      "name": "Flaaffy",
+      "zhName": "茸茸羊",
+      "primaryColor": "#EC92A8",
+      "palette": [
+        {
+          "hex": "#EC92A8",
+          "percent": 19.7
+        },
+        {
+          "hex": "#FBA8C1",
+          "percent": 16.2
+        },
+        {
+          "hex": "#E2EEF1",
+          "percent": 21
+        }
+      ]
+    },
+    {
+      "slug": "ampharos",
+      "name": "Ampharos",
+      "zhName": "电龙",
+      "primaryColor": "#ECCC48",
+      "palette": [
+        {
+          "hex": "#ECCC48",
+          "percent": 41.7
+        },
+        {
+          "hex": "#FFEF5D",
+          "percent": 8.1
+        },
+        {
+          "hex": "#D8B332",
+          "percent": 8.4
+        }
+      ]
+    },
+    {
+      "slug": "azurill",
+      "name": "Azurill",
+      "zhName": "露力丽",
+      "primaryColor": "#0298D6",
+      "palette": [
+        {
+          "hex": "#0298D6",
+          "percent": 43.9
+        },
+        {
+          "hex": "#01AEF0",
+          "percent": 20.2
+        },
+        {
+          "hex": "#00CCFF",
+          "percent": 17.6
+        }
+      ]
+    },
+    {
+      "slug": "marill",
+      "name": "Marill",
+      "zhName": "玛力露",
+      "primaryColor": "#01AAEA",
+      "palette": [
+        {
+          "hex": "#01AAEA",
+          "percent": 25.9
+        },
+        {
+          "hex": "#00C7FF",
+          "percent": 20.2
+        },
+        {
+          "hex": "#0390D1",
+          "percent": 13.9
+        }
+      ]
+    },
+    {
+      "slug": "azumarill",
+      "name": "Azumarill",
+      "zhName": "玛力露丽",
+      "primaryColor": "#02A2E3",
+      "palette": [
+        {
+          "hex": "#02A2E3",
+          "percent": 35.3
+        },
+        {
+          "hex": "#00C6FF",
+          "percent": 23.8
+        },
+        {
+          "hex": "#C9D8DC",
+          "percent": 10.5
+        }
+      ]
+    },
+    {
+      "slug": "wooper",
+      "name": "Wooper",
+      "zhName": "乌波",
+      "primaryColor": "#78645E",
+      "palette": [
+        {
+          "hex": "#78645E",
+          "percent": 35.2
+        },
+        {
+          "hex": "#907976",
+          "percent": 21.9
+        },
+        {
+          "hex": "#604E48",
+          "percent": 11.7
+        }
+      ]
+    },
+    {
+      "slug": "clodsire",
+      "name": "Clodsire",
+      "zhName": "土王",
+      "primaryColor": "#544948",
+      "palette": [
+        {
+          "hex": "#544948",
+          "percent": 39.5
+        },
+        {
+          "hex": "#907875",
+          "percent": 32
+        },
+        {
+          "hex": "#726660",
+          "percent": 11
+        }
+      ]
+    },
+    {
+      "slug": "smeargle",
+      "name": "Smeargle",
+      "zhName": "图图犬",
+      "primaryColor": "#F1EEDB",
+      "palette": [
+        {
+          "hex": "#F1EEDB",
+          "percent": 29.1
+        },
+        {
+          "hex": "#EF352F",
+          "percent": 14.9
+        },
+        {
+          "hex": "#8D4A31",
+          "percent": 5.2
+        }
+      ]
+    },
+    {
+      "slug": "smearguru",
+      "name": "Smearguru",
+      "zhName": "图图犬（彩绘匠）",
+      "primaryColor": "#F0EED9",
+      "palette": [
+        {
+          "hex": "#F0EED9",
+          "percent": 30.2
+        },
+        {
+          "hex": "#EE3530",
+          "percent": 15.4
+        },
+        {
+          "hex": "#8D4831",
+          "percent": 5.4
+        }
+      ]
+    },
+    {
+      "slug": "torchic",
+      "name": "Torchic",
+      "zhName": "火稚鸡",
+      "primaryColor": "#F07801",
+      "palette": [
+        {
+          "hex": "#F07801",
+          "percent": 29.8
+        },
+        {
+          "hex": "#FF9100",
+          "percent": 19.6
+        },
+        {
+          "hex": "#FFE600",
+          "percent": 16.5
+        }
+      ]
+    },
+    {
+      "slug": "combusken",
+      "name": "Combusken",
+      "zhName": "力壮鸡",
+      "primaryColor": "#FEDD61",
+      "palette": [
+        {
+          "hex": "#FEDD61",
+          "percent": 28.3
+        },
+        {
+          "hex": "#F27819",
+          "percent": 16.2
+        },
+        {
+          "hex": "#FFF978",
+          "percent": 8.7
+        }
+      ]
+    },
+    {
+      "slug": "blaziken",
+      "name": "Blaziken",
+      "zhName": "火焰鸡",
+      "primaryColor": "#D8322C",
+      "palette": [
+        {
+          "hex": "#D8322C",
+          "percent": 22.1
+        },
+        {
+          "hex": "#F3BD2F",
+          "percent": 17
+        },
+        {
+          "hex": "#F84830",
+          "percent": 9.3
+        }
+      ]
+    },
+    {
+      "slug": "wingull",
+      "name": "Wingull",
+      "zhName": "长翅鸥",
+      "primaryColor": "#F4FFFF",
+      "palette": [
+        {
+          "hex": "#F4FFFF",
+          "percent": 25
+        },
+        {
+          "hex": "#E3ECF0",
+          "percent": 27.2
+        },
+        {
+          "hex": "#D4D8D8",
+          "percent": 16.7
+        }
+      ]
+    },
+    {
+      "slug": "pelipper",
+      "name": "Pelipper",
+      "zhName": "大嘴鸥",
+      "primaryColor": "#E8C718",
+      "palette": [
+        {
+          "hex": "#E8C718",
+          "percent": 32.9
+        },
+        {
+          "hex": "#FFE71C",
+          "percent": 11.6
+        },
+        {
+          "hex": "#0295CC",
+          "percent": 10.8
+        }
+      ]
+    },
+    {
+      "slug": "makuhita",
+      "name": "Makuhita",
+      "zhName": "幕下力士",
+      "primaryColor": "#F6D161",
+      "palette": [
+        {
+          "hex": "#F6D161",
+          "percent": 37.2
+        },
+        {
+          "hex": "#FFF169",
+          "percent": 19.4
+        },
+        {
+          "hex": "#DDBE4B",
+          "percent": 14.2
+        }
+      ]
+    },
+    {
+      "slug": "hariyama",
+      "name": "Hariyama",
+      "zhName": "铁掌力士",
+      "primaryColor": "#FFDC46",
+      "palette": [
+        {
+          "hex": "#FFDC46",
+          "percent": 25.2
+        },
+        {
+          "hex": "#F17833",
+          "percent": 21.7
+        },
+        {
+          "hex": "#FF8948",
+          "percent": 14.2
+        }
+      ]
+    },
+    {
+      "slug": "absol",
+      "name": "Absol",
+      "zhName": "阿勃梭鲁",
+      "primaryColor": "#E2EBF2",
+      "palette": [
+        {
+          "hex": "#E2EBF2",
+          "percent": 27.5
+        },
+        {
+          "hex": "#3577B5",
+          "percent": 20
+        },
+        {
+          "hex": "#C8D1D8",
+          "percent": 25.5
+        }
+      ]
+    },
+    {
+      "slug": "piplup",
+      "name": "Piplup",
+      "zhName": "波加曼",
+      "primaryColor": "#0078D5",
+      "palette": [
+        {
+          "hex": "#0078D5",
+          "percent": 33.3
+        },
+        {
+          "hex": "#0160BE",
+          "percent": 11.1
+        },
+        {
+          "hex": "#96D7EF",
+          "percent": 11.6
+        }
+      ]
+    },
+    {
+      "slug": "prinplup",
+      "name": "Prinplup",
+      "zhName": "波皇子",
+      "primaryColor": "#015B9B",
+      "palette": [
+        {
+          "hex": "#015B9B",
+          "percent": 29.4
+        },
+        {
+          "hex": "#A9F2FF",
+          "percent": 12.4
+        },
+        {
+          "hex": "#94D8EF",
+          "percent": 11.3
+        }
+      ]
+    },
+    {
+      "slug": "empoleon",
+      "name": "Empoleon",
+      "zhName": "帝王拿波",
+      "primaryColor": "#303B49",
+      "palette": [
+        {
+          "hex": "#303B49",
+          "percent": 33.2
+        },
+        {
+          "hex": "#49BAFF",
+          "percent": 7.9
+        },
+        {
+          "hex": "#485664",
+          "percent": 14.4
+        }
+      ]
+    },
+    {
+      "slug": "audino",
+      "name": "Audino",
+      "zhName": "差不多娃娃",
+      "primaryColor": "#F0DB9F",
+      "palette": [
+        {
+          "hex": "#F0DB9F",
+          "percent": 28
+        },
+        {
+          "hex": "#E999A8",
+          "percent": 25.2
+        },
+        {
+          "hex": "#FFFFC0",
+          "percent": 14.8
+        }
+      ]
+    },
+    {
+      "slug": "trubbish",
+      "name": "Trubbish",
+      "zhName": "破破袋",
+      "primaryColor": "#487565",
+      "palette": [
+        {
+          "hex": "#487565",
+          "percent": 56.8
+        },
+        {
+          "hex": "#306057",
+          "percent": 19
+        },
+        {
+          "hex": "#4B9078",
+          "percent": 6.8
+        }
+      ]
+    },
+    {
+      "slug": "garbodor",
+      "name": "Garbodor",
+      "zhName": "灰尘山",
+      "primaryColor": "#9F8E62",
+      "palette": [
+        {
+          "hex": "#9F8E62",
+          "percent": 28.8
+        },
+        {
+          "hex": "#4A7469",
+          "percent": 20.5
+        },
+        {
+          "hex": "#8C7848",
+          "percent": 15.6
+        }
+      ]
+    },
+    {
+      "slug": "zorua",
+      "name": "Zorua",
+      "zhName": "索罗亚",
+      "primaryColor": "#656087",
+      "palette": [
+        {
+          "hex": "#656087",
+          "percent": 20.1
+        },
+        {
+          "hex": "#4F4871",
+          "percent": 19.5
+        },
+        {
+          "hex": "#7978A7",
+          "percent": 14.9
+        }
+      ]
+    },
+    {
+      "slug": "zoroark",
+      "name": "Zoroark",
+      "zhName": "索罗亚克",
+      "primaryColor": "#9E1930",
+      "palette": [
+        {
+          "hex": "#9E1930",
+          "percent": 16.4
+        },
+        {
+          "hex": "#1A2B4B",
+          "percent": 16.2
+        },
+        {
+          "hex": "#5C6063",
+          "percent": 19.3
+        }
+      ]
+    },
+    {
+      "slug": "minccino",
+      "name": "Minccino",
+      "zhName": "泡沫栗鼠",
+      "primaryColor": "#BFC1C0",
+      "palette": [
+        {
+          "hex": "#BFC1C0",
+          "percent": 35.1
+        },
+        {
+          "hex": "#A8AAA7",
+          "percent": 26.3
+        },
+        {
+          "hex": "#D7D8D8",
+          "percent": 25.6
+        }
+      ]
+    },
+    {
+      "slug": "cinccino",
+      "name": "Cinccino",
+      "zhName": "奇诺栗鼠",
+      "primaryColor": "#D9D8D8",
+      "palette": [
+        {
+          "hex": "#D9D8D8",
+          "percent": 31.5
+        },
+        {
+          "hex": "#F0F0EF",
+          "percent": 21.6
+        },
+        {
+          "hex": "#C0C1C0",
+          "percent": 19.3
+        }
+      ]
+    },
+    {
+      "slug": "grubbin",
+      "name": "Grubbin",
+      "zhName": "强颚鸡母虫",
+      "primaryColor": "#FFE579",
+      "palette": [
+        {
+          "hex": "#FFE579",
+          "percent": 20.5
+        },
+        {
+          "hex": "#FE7D30",
+          "percent": 15.1
+        },
+        {
+          "hex": "#F2FEFF",
+          "percent": 10.9
+        }
+      ]
+    },
+    {
+      "slug": "charjabug",
+      "name": "Charjabug",
+      "zhName": "虫电宝",
+      "primaryColor": "#789443",
+      "palette": [
+        {
+          "hex": "#789443",
+          "percent": 33
+        },
+        {
+          "hex": "#607B31",
+          "percent": 22.1
+        },
+        {
+          "hex": "#90AE48",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "vikavolt",
+      "name": "Vikavolt",
+      "zhName": "锹农炮虫",
+      "primaryColor": "#025F79",
+      "palette": [
+        {
+          "hex": "#025F79",
+          "percent": 19.1
+        },
+        {
+          "hex": "#027895",
+          "percent": 12.6
+        },
+        {
+          "hex": "#034859",
+          "percent": 9.2
+        }
+      ]
+    },
+    {
+      "slug": "mimikyu",
+      "name": "Mimikyu",
+      "zhName": "谜拟丘",
+      "primaryColor": "#CAC58D",
+      "palette": [
+        {
+          "hex": "#CAC58D",
+          "percent": 26.9
+        },
+        {
+          "hex": "#B2A779",
+          "percent": 17.9
+        },
+        {
+          "hex": "#F0E7A9",
+          "percent": 12.2
+        }
+      ]
+    },
+    {
+      "slug": "pawmi",
+      "name": "Pawmi",
+      "zhName": "布拨",
+      "primaryColor": "#F78801",
+      "palette": [
+        {
+          "hex": "#F78801",
+          "percent": 53.3
+        },
+        {
+          "hex": "#D87302",
+          "percent": 11.8
+        },
+        {
+          "hex": "#FFA800",
+          "percent": 8
+        }
+      ]
+    },
+    {
+      "slug": "pawmo",
+      "name": "Pawmo",
+      "zhName": "布土拨",
+      "primaryColor": "#F4BD60",
+      "palette": [
+        {
+          "hex": "#F4BD60",
+          "percent": 39.8
+        },
+        {
+          "hex": "#DDA64A",
+          "percent": 18
+        },
+        {
+          "hex": "#FFD866",
+          "percent": 12.3
+        }
+      ]
+    },
+    {
+      "slug": "pawmot",
+      "name": "Pawmot",
+      "zhName": "巴布土拨",
+      "primaryColor": "#F7A201",
+      "palette": [
+        {
+          "hex": "#F7A201",
+          "percent": 47.3
+        },
+        {
+          "hex": "#D88B02",
+          "percent": 16.9
+        },
+        {
+          "hex": "#FFF1C1",
+          "percent": 11.3
+        }
+      ]
+    },
+    {
+      "slug": "tatsugiri-curly-form",
+      "name": "Tatsugiri (Curly Form)",
+      "zhName": "米立龙（上弓姿势）",
+      "primaryColor": "#FD6630",
+      "palette": [
+        {
+          "hex": "#FD6630",
+          "percent": 24.9
+        },
+        {
+          "hex": "#FF7A52",
+          "percent": 17.4
+        },
+        {
+          "hex": "#F29F78",
+          "percent": 12.2
+        }
+      ]
+    },
+    {
+      "slug": "tatsugiri-droopy-form",
+      "name": "Tatsugiri (Droopy Form)",
+      "zhName": "米立龙（下垂姿势）",
+      "primaryColor": "#FC4A79",
+      "palette": [
+        {
+          "hex": "#FC4A79",
+          "percent": 28.5
+        },
+        {
+          "hex": "#FF6290",
+          "percent": 11.6
+        },
+        {
+          "hex": "#F0F0F0",
+          "percent": 20.6
+        }
+      ]
+    },
+    {
+      "slug": "tatsugiri-stretchy-form",
+      "name": "Tatsugiri (Stretchy Form)",
+      "zhName": "米立龙（平挺姿势）",
+      "primaryColor": "#FFDB09",
+      "palette": [
+        {
+          "hex": "#FFDB09",
+          "percent": 26.2
+        },
+        {
+          "hex": "#FFE437",
+          "percent": 24.1
+        },
+        {
+          "hex": "#FFF018",
+          "percent": 6.8
+        }
+      ]
+    },
+    {
+      "slug": "ekans",
+      "name": "Ekans",
+      "zhName": "阿柏蛇",
+      "primaryColor": "#A578C8",
+      "palette": [
+        {
+          "hex": "#A578C8",
+          "percent": 36.6
+        },
+        {
+          "hex": "#C58FE7",
+          "percent": 24
+        },
+        {
+          "hex": "#8F64AB",
+          "percent": 13.9
+        }
+      ]
+    },
+    {
+      "slug": "arbok",
+      "name": "Arbok",
+      "zhName": "阿柏怪",
+      "primaryColor": "#908CAB",
+      "palette": [
+        {
+          "hex": "#908CAB",
+          "percent": 26.4
+        },
+        {
+          "hex": "#787791",
+          "percent": 26
+        },
+        {
+          "hex": "#ABA4C9",
+          "percent": 19.3
+        }
+      ]
+    },
+    {
+      "slug": "cleffa",
+      "name": "Cleffa",
+      "zhName": "皮宝宝",
+      "primaryColor": "#FFC6C0",
+      "palette": [
+        {
+          "hex": "#FFC6C0",
+          "percent": 29.3
+        },
+        {
+          "hex": "#D8A798",
+          "percent": 20.8
+        },
+        {
+          "hex": "#F0B2A8",
+          "percent": 16.6
+        }
+      ]
+    },
+    {
+      "slug": "clefairy",
+      "name": "Clefairy",
+      "zhName": "皮皮",
+      "primaryColor": "#ECC0C9",
+      "palette": [
+        {
+          "hex": "#ECC0C9",
+          "percent": 55.1
+        },
+        {
+          "hex": "#FFD8DB",
+          "percent": 33.1
+        },
+        {
+          "hex": "#D8A8BA",
+          "percent": 4.1
+        }
+      ]
+    },
+    {
+      "slug": "clefable",
+      "name": "Clefable",
+      "zhName": "皮可西",
+      "primaryColor": "#F6BCB5",
+      "palette": [
+        {
+          "hex": "#F6BCB5",
+          "percent": 73.2
+        },
+        {
+          "hex": "#FFD8CA",
+          "percent": 12.8
+        },
+        {
+          "hex": "#D9A89E",
+          "percent": 6.5
+        }
+      ]
+    },
+    {
+      "slug": "igglybuff",
+      "name": "Igglybuff",
+      "zhName": "宝宝丁",
+      "primaryColor": "#F0D3DA",
+      "palette": [
+        {
+          "hex": "#F0D3DA",
+          "percent": 34
+        },
+        {
+          "hex": "#FFE8F1",
+          "percent": 24.6
+        },
+        {
+          "hex": "#D8BCC1",
+          "percent": 30.3
+        }
+      ]
+    },
+    {
+      "slug": "jigglypuff",
+      "name": "Jigglypuff",
+      "zhName": "胖丁",
+      "primaryColor": "#EEC6CE",
+      "palette": [
+        {
+          "hex": "#EEC6CE",
+          "percent": 47.4
+        },
+        {
+          "hex": "#FFDAE6",
+          "percent": 23.6
+        },
+        {
+          "hex": "#D8A8BC",
+          "percent": 11
+        }
+      ]
+    },
+    {
+      "slug": "wigglytuff",
+      "name": "Wigglytuff",
+      "zhName": "胖可丁",
+      "primaryColor": "#F3CDDB",
+      "palette": [
+        {
+          "hex": "#F3CDDB",
+          "percent": 33.7
+        },
+        {
+          "hex": "#DCBBC2",
+          "percent": 17
+        },
+        {
+          "hex": "#F2F0F0",
+          "percent": 16.4
+        }
+      ]
+    },
+    {
+      "slug": "diglett",
+      "name": "Diglett",
+      "zhName": "地鼠",
+      "primaryColor": "#BB907E",
+      "palette": [
+        {
+          "hex": "#BB907E",
+          "percent": 31.6
+        },
+        {
+          "hex": "#8C9093",
+          "percent": 23.1
+        },
+        {
+          "hex": "#9CA8A8",
+          "percent": 14.3
+        }
+      ]
+    },
+    {
+      "slug": "dugtrio",
+      "name": "Dugtrio",
+      "zhName": "三地鼠",
+      "primaryColor": "#B9907F",
+      "palette": [
+        {
+          "hex": "#B9907F",
+          "percent": 32.1
+        },
+        {
+          "hex": "#D3A891",
+          "percent": 21
+        },
+        {
+          "hex": "#8D9094",
+          "percent": 12.6
+        }
+      ]
+    },
+    {
+      "slug": "machop",
+      "name": "Machop",
+      "zhName": "腕力",
+      "primaryColor": "#A6CCDD",
+      "palette": [
+        {
+          "hex": "#A6CCDD",
+          "percent": 35.6
+        },
+        {
+          "hex": "#91B6BD",
+          "percent": 25.3
+        },
+        {
+          "hex": "#C0E2F0",
+          "percent": 13.1
+        }
+      ]
+    },
+    {
+      "slug": "machoke",
+      "name": "Machoke",
+      "zhName": "豪力",
+      "primaryColor": "#CCD5F3",
+      "palette": [
+        {
+          "hex": "#CCD5F3",
+          "percent": 31.7
+        },
+        {
+          "hex": "#B2BBD8",
+          "percent": 26.7
+        },
+        {
+          "hex": "#A2A8C0",
+          "percent": 16.8
+        }
+      ]
+    },
+    {
+      "slug": "machamp",
+      "name": "Machamp",
+      "zhName": "怪力",
+      "primaryColor": "#ADD2F0",
+      "palette": [
+        {
+          "hex": "#ADD2F0",
+          "percent": 20.9
+        },
+        {
+          "hex": "#8CA8C4",
+          "percent": 22.6
+        },
+        {
+          "hex": "#9DC0D8",
+          "percent": 19.1
+        }
+      ]
+    },
+    {
+      "slug": "geodude",
+      "name": "Geodude",
+      "zhName": "小拳石",
+      "primaryColor": "#90908A",
+      "palette": [
+        {
+          "hex": "#90908A",
+          "percent": 26.9
+        },
+        {
+          "hex": "#A8A99D",
+          "percent": 24.4
+        },
+        {
+          "hex": "#C0C1B5",
+          "percent": 19.6
+        }
+      ]
+    },
+    {
+      "slug": "graveler",
+      "name": "Graveler",
+      "zhName": "隆隆石",
+      "primaryColor": "#90938A",
+      "palette": [
+        {
+          "hex": "#90938A",
+          "percent": 31.7
+        },
+        {
+          "hex": "#A8AC9F",
+          "percent": 20.6
+        },
+        {
+          "hex": "#787C75",
+          "percent": 18.2
+        }
+      ]
+    },
+    {
+      "slug": "golem",
+      "name": "Golem",
+      "zhName": "隆隆岩",
+      "primaryColor": "#93928B",
+      "palette": [
+        {
+          "hex": "#93928B",
+          "percent": 26
+        },
+        {
+          "hex": "#7E7973",
+          "percent": 22.2
+        },
+        {
+          "hex": "#BAA390",
+          "percent": 15.8
+        }
+      ]
+    },
+    {
+      "slug": "magby",
+      "name": "Magby",
+      "zhName": "鸭嘴宝宝",
+      "primaryColor": "#FC5F60",
+      "palette": [
+        {
+          "hex": "#FC5F60",
+          "percent": 53.2
+        },
+        {
+          "hex": "#EB4848",
+          "percent": 18.1
+        },
+        {
+          "hex": "#EBE27A",
+          "percent": 7.1
+        }
+      ]
+    },
+    {
+      "slug": "magmar",
+      "name": "Magmar",
+      "zhName": "鸭嘴火兽",
+      "primaryColor": "#F62532",
+      "palette": [
+        {
+          "hex": "#F62532",
+          "percent": 26.1
+        },
+        {
+          "hex": "#D3B501",
+          "percent": 16.1
+        },
+        {
+          "hex": "#ECDB01",
+          "percent": 9.1
+        }
+      ]
+    },
+    {
+      "slug": "magmortar",
+      "name": "Magmortar",
+      "zhName": "鸭嘴炎兽",
+      "primaryColor": "#FC4D33",
+      "palette": [
+        {
+          "hex": "#FC4D33",
+          "percent": 18.8
+        },
+        {
+          "hex": "#FFE030",
+          "percent": 10.8
+        },
+        {
+          "hex": "#D9382A",
+          "percent": 11.8
+        }
+      ]
+    },
+    {
+      "slug": "bonsly",
+      "name": "Bonsly",
+      "zhName": "盆才怪",
+      "primaryColor": "#46C830",
+      "palette": [
+        {
+          "hex": "#46C830",
+          "percent": 20.6
+        },
+        {
+          "hex": "#34A82D",
+          "percent": 16.5
+        },
+        {
+          "hex": "#E7A862",
+          "percent": 14.1
+        }
+      ]
+    },
+    {
+      "slug": "sudowoodo",
+      "name": "Sudowoodo",
+      "zhName": "树才怪",
+      "primaryColor": "#C98D64",
+      "palette": [
+        {
+          "hex": "#C98D64",
+          "percent": 30.4
+        },
+        {
+          "hex": "#A77956",
+          "percent": 25.5
+        },
+        {
+          "hex": "#48CB31",
+          "percent": 10.6
+        }
+      ]
+    },
+    {
+      "slug": "murkrow",
+      "name": "Murkrow",
+      "zhName": "黑暗鸦",
+      "primaryColor": "#013063",
+      "palette": [
+        {
+          "hex": "#013063",
+          "percent": 49.5
+        },
+        {
+          "hex": "#02487C",
+          "percent": 27.5
+        },
+        {
+          "hex": "#E0C561",
+          "percent": 4.5
+        }
+      ]
+    },
+    {
+      "slug": "honchkrow",
+      "name": "Honchkrow",
+      "zhName": "乌鸦头头",
+      "primaryColor": "#013060",
+      "palette": [
+        {
+          "hex": "#013060",
+          "percent": 48.9
+        },
+        {
+          "hex": "#B31830",
+          "percent": 11.4
+        },
+        {
+          "hex": "#064878",
+          "percent": 6.6
+        }
+      ]
+    },
+    {
+      "slug": "larvitar",
+      "name": "Larvitar",
+      "zhName": "幼基拉斯",
+      "primaryColor": "#A7C17B",
+      "palette": [
+        {
+          "hex": "#A7C17B",
+          "percent": 38.5
+        },
+        {
+          "hex": "#BCDB90",
+          "percent": 26.4
+        },
+        {
+          "hex": "#90A76C",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "pupitar",
+      "name": "Pupitar",
+      "zhName": "沙基拉斯",
+      "primaryColor": "#91A3CD",
+      "palette": [
+        {
+          "hex": "#91A3CD",
+          "percent": 38
+        },
+        {
+          "hex": "#A8C0F3",
+          "percent": 24.4
+        },
+        {
+          "hex": "#788DB2",
+          "percent": 19.9
+        }
+      ]
+    },
+    {
+      "slug": "tyranitar",
+      "name": "Tyranitar",
+      "zhName": "班基拉斯",
+      "primaryColor": "#BDE091",
+      "palette": [
+        {
+          "hex": "#BDE091",
+          "percent": 20.7
+        },
+        {
+          "hex": "#90A56A",
+          "percent": 25.2
+        },
+        {
+          "hex": "#A8BE7D",
+          "percent": 22.6
+        }
+      ]
+    },
+    {
+      "slug": "lotad",
+      "name": "Lotad",
+      "zhName": "莲叶童子",
+      "primaryColor": "#61BC48",
+      "palette": [
+        {
+          "hex": "#61BC48",
+          "percent": 57.8
+        },
+        {
+          "hex": "#7AE25D",
+          "percent": 11.5
+        },
+        {
+          "hex": "#487A2F",
+          "percent": 12.5
+        }
+      ]
+    },
+    {
+      "slug": "lombre",
+      "name": "Lombre",
+      "zhName": "莲帽小童",
+      "primaryColor": "#5FB549",
+      "palette": [
+        {
+          "hex": "#5FB549",
+          "percent": 24.5
+        },
+        {
+          "hex": "#489036",
+          "percent": 16.9
+        },
+        {
+          "hex": "#7CE25C",
+          "percent": 12.4
+        }
+      ]
+    },
+    {
+      "slug": "ludicolo",
+      "name": "Ludicolo",
+      "zhName": "乐天河童",
+      "primaryColor": "#A8DB61",
+      "palette": [
+        {
+          "hex": "#A8DB61",
+          "percent": 22.4
+        },
+        {
+          "hex": "#90BA50",
+          "percent": 22.5
+        },
+        {
+          "hex": "#E4BA63",
+          "percent": 13.2
+        }
+      ]
+    },
+    {
+      "slug": "mawile",
+      "name": "Mawile",
+      "zhName": "大嘴娃",
+      "primaryColor": "#5D6060",
+      "palette": [
+        {
+          "hex": "#5D6060",
+          "percent": 41.6
+        },
+        {
+          "hex": "#F1DA8C",
+          "percent": 15.3
+        },
+        {
+          "hex": "#49484E",
+          "percent": 15.2
+        }
+      ]
+    },
+    {
+      "slug": "torkoal",
+      "name": "Torkoal",
+      "zhName": "煤炭龟",
+      "primaryColor": "#E8D8B7",
+      "palette": [
+        {
+          "hex": "#E8D8B7",
+          "percent": 15.6
+        },
+        {
+          "hex": "#D7C1A6",
+          "percent": 18
+        },
+        {
+          "hex": "#F1ECD8",
+          "percent": 9.3
+        }
+      ]
+    },
+    {
+      "slug": "kricketot",
+      "name": "Kricketot",
+      "zhName": "圆法师",
+      "primaryColor": "#FFFFA9",
+      "palette": [
+        {
+          "hex": "#FFFFA9",
+          "percent": 14.9
+        },
+        {
+          "hex": "#E64A19",
+          "percent": 14.1
+        },
+        {
+          "hex": "#F5F099",
+          "percent": 10.2
+        }
+      ]
+    },
+    {
+      "slug": "kricketune",
+      "name": "Kricketune",
+      "zhName": "音箱蟀",
+      "primaryColor": "#FF6029",
+      "palette": [
+        {
+          "hex": "#FF6029",
+          "percent": 20
+        },
+        {
+          "hex": "#E3481A",
+          "percent": 18.8
+        },
+        {
+          "hex": "#6E747B",
+          "percent": 16.9
+        }
+      ]
+    },
+    {
+      "slug": "chatot",
+      "name": "Chatot",
+      "zhName": "聒噪鸟",
+      "primaryColor": "#01A2DE",
+      "palette": [
+        {
+          "hex": "#01A2DE",
+          "percent": 14.9
+        },
+        {
+          "hex": "#394948",
+          "percent": 30.9
+        },
+        {
+          "hex": "#E2EDF1",
+          "percent": 10.7
+        }
+      ]
+    },
+    {
+      "slug": "riolu",
+      "name": "Riolu",
+      "zhName": "利欧路",
+      "primaryColor": "#61BEF4",
+      "palette": [
+        {
+          "hex": "#61BEF4",
+          "percent": 20
+        },
+        {
+          "hex": "#54A8D5",
+          "percent": 18.3
+        },
+        {
+          "hex": "#606C76",
+          "percent": 27.2
+        }
+      ]
+    },
+    {
+      "slug": "lucario",
+      "name": "Lucario",
+      "zhName": "路卡利欧",
+      "primaryColor": "#0291D3",
+      "palette": [
+        {
+          "hex": "#0291D3",
+          "percent": 18
+        },
+        {
+          "hex": "#616B76",
+          "percent": 27.4
+        },
+        {
+          "hex": "#02A9F1",
+          "percent": 13.5
+        }
+      ]
+    },
+    {
+      "slug": "dj-rotom",
+      "name": "DJ Rotom",
+      "zhName": "洛托姆（立体音响洛托姆）",
+      "primaryColor": "#5C4B49",
+      "palette": [
+        {
+          "hex": "#5C4B49",
+          "percent": 30.3
+        },
+        {
+          "hex": "#D77A49",
+          "percent": 11.3
+        },
+        {
+          "hex": "#EEF1E9",
+          "percent": 12
+        }
+      ]
+    },
+    {
+      "slug": "rotom",
+      "name": "Rotom",
+      "zhName": "洛托姆",
+      "primaryColor": "#584A48",
+      "palette": [
+        {
+          "hex": "#584A48",
+          "percent": 27.1
+        },
+        {
+          "hex": "#ECF3EE",
+          "percent": 11.3
+        },
+        {
+          "hex": "#D77A48",
+          "percent": 8.4
+        }
+      ]
+    },
+    {
+      "slug": "larvesta",
+      "name": "Larvesta",
+      "zhName": "燃烧虫",
+      "primaryColor": "#BB3030",
+      "palette": [
+        {
+          "hex": "#BB3030",
+          "percent": 19
+        },
+        {
+          "hex": "#F0F0EE",
+          "percent": 25.8
+        },
+        {
+          "hex": "#DED8D3",
+          "percent": 14.7
+        }
+      ]
+    },
+    {
+      "slug": "volcarona",
+      "name": "Volcarona",
+      "zhName": "火神蛾",
+      "primaryColor": "#C82F2F",
+      "palette": [
+        {
+          "hex": "#C82F2F",
+          "percent": 21.1
+        },
+        {
+          "hex": "#E66600",
+          "percent": 16.3
+        },
+        {
+          "hex": "#A1262D",
+          "percent": 8.8
+        }
+      ]
+    },
+    {
+      "slug": "rowlet",
+      "name": "Rowlet",
+      "zhName": "木木枭",
+      "primaryColor": "#F0BF90",
+      "palette": [
+        {
+          "hex": "#F0BF90",
+          "percent": 23.2
+        },
+        {
+          "hex": "#D9A882",
+          "percent": 15.3
+        },
+        {
+          "hex": "#00B58B",
+          "percent": 10.1
+        }
+      ]
+    },
+    {
+      "slug": "dartrix",
+      "name": "Dartrix",
+      "zhName": "投羽枭",
+      "primaryColor": "#DAD8D4",
+      "palette": [
+        {
+          "hex": "#DAD8D4",
+          "percent": 19.8
+        },
+        {
+          "hex": "#613929",
+          "percent": 12.1
+        },
+        {
+          "hex": "#F0F0EE",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "decidueye",
+      "name": "Decidueye",
+      "zhName": "狙射树枭",
+      "primaryColor": "#D39560",
+      "palette": [
+        {
+          "hex": "#D39560",
+          "percent": 35.4
+        },
+        {
+          "hex": "#E6AD78",
+          "percent": 8.9
+        },
+        {
+          "hex": "#C17F48",
+          "percent": 9.9
+        }
+      ]
+    },
+    {
+      "slug": "scorbunny",
+      "name": "Scorbunny",
+      "zhName": "炎兔儿",
+      "primaryColor": "#F0EFF0",
+      "palette": [
+        {
+          "hex": "#F0EFF0",
+          "percent": 32.3
+        },
+        {
+          "hex": "#F15B01",
+          "percent": 15.2
+        },
+        {
+          "hex": "#D9D7DC",
+          "percent": 18.9
+        }
+      ]
+    },
+    {
+      "slug": "raboot",
+      "name": "Raboot",
+      "zhName": "腾蹴小将",
+      "primaryColor": "#E34601",
+      "palette": [
+        {
+          "hex": "#E34601",
+          "percent": 20.5
+        },
+        {
+          "hex": "#D9D8D6",
+          "percent": 21.2
+        },
+        {
+          "hex": "#F0F0EE",
+          "percent": 15.4
+        }
+      ]
+    },
+    {
+      "slug": "cinderace",
+      "name": "Cinderace",
+      "zhName": "闪焰王牌",
+      "primaryColor": "#CF4B2D",
+      "palette": [
+        {
+          "hex": "#CF4B2D",
+          "percent": 14.5
+        },
+        {
+          "hex": "#052D60",
+          "percent": 12.4
+        },
+        {
+          "hex": "#F1F0F0",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "skwovet",
+      "name": "Skwovet",
+      "zhName": "贪心栗鼠",
+      "primaryColor": "#716760",
+      "palette": [
+        {
+          "hex": "#716760",
+          "percent": 32.2
+        },
+        {
+          "hex": "#A2907D",
+          "percent": 24.1
+        },
+        {
+          "hex": "#605E48",
+          "percent": 14.7
+        }
+      ]
+    },
+    {
+      "slug": "chef-dente",
+      "name": "Chef Dente",
+      "zhName": "藏饱栗鼠（厨师）",
+      "primaryColor": "#905E48",
+      "palette": [
+        {
+          "hex": "#905E48",
+          "percent": 21.4
+        },
+        {
+          "hex": "#C0907C",
+          "percent": 19.5
+        },
+        {
+          "hex": "#754848",
+          "percent": 13.5
+        }
+      ]
+    },
+    {
+      "slug": "greedent",
+      "name": "Greedent",
+      "zhName": "藏饱栗鼠",
+      "primaryColor": "#905D49",
+      "palette": [
+        {
+          "hex": "#905D49",
+          "percent": 19.6
+        },
+        {
+          "hex": "#BF9083",
+          "percent": 19.9
+        },
+        {
+          "hex": "#764846",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "rolycoly",
+      "name": "Rolycoly",
+      "zhName": "小炭仔",
+      "primaryColor": "#4A4745",
+      "palette": [
+        {
+          "hex": "#4A4745",
+          "percent": 47.6
+        },
+        {
+          "hex": "#343030",
+          "percent": 31
+        },
+        {
+          "hex": "#60605B",
+          "percent": 12.3
+        }
+      ]
+    },
+    {
+      "slug": "carkol",
+      "name": "Carkol",
+      "zhName": "大炭车",
+      "primaryColor": "#4A4746",
+      "palette": [
+        {
+          "hex": "#4A4746",
+          "percent": 56.1
+        },
+        {
+          "hex": "#373030",
+          "percent": 28.2
+        },
+        {
+          "hex": "#63605C",
+          "percent": 11.7
+        }
+      ]
+    },
+    {
+      "slug": "coalossal",
+      "name": "Coalossal",
+      "zhName": "巨炭山",
+      "primaryColor": "#4B4747",
+      "palette": [
+        {
+          "hex": "#4B4747",
+          "percent": 54.4
+        },
+        {
+          "hex": "#61605C",
+          "percent": 19.5
+        },
+        {
+          "hex": "#373030",
+          "percent": 18.6
+        }
+      ]
+    },
+    {
+      "slug": "toxel",
+      "name": "Toxel",
+      "zhName": "毒电婴",
+      "primaryColor": "#A361C7",
+      "palette": [
+        {
+          "hex": "#A361C7",
+          "percent": 37.3
+        },
+        {
+          "hex": "#C17BE5",
+          "percent": 15.6
+        },
+        {
+          "hex": "#8D4CAF",
+          "percent": 11.8
+        }
+      ]
+    },
+    {
+      "slug": "toxtricity-amped-form",
+      "name": "Toxtricity (Amped Form)",
+      "zhName": "颤弦蝾螈（高调的样子）",
+      "primaryColor": "#6D4895",
+      "palette": [
+        {
+          "hex": "#6D4895",
+          "percent": 29.4
+        },
+        {
+          "hex": "#8B61B4",
+          "percent": 15.9
+        },
+        {
+          "hex": "#F8EA82",
+          "percent": 7.8
+        }
+      ]
+    },
+    {
+      "slug": "toxtricity-low-key-form",
+      "name": "Toxtricity (Low Key Form)",
+      "zhName": "颤弦蝾螈（低调的样子）",
+      "primaryColor": "#6B4A94",
+      "palette": [
+        {
+          "hex": "#6B4A94",
+          "percent": 23.5
+        },
+        {
+          "hex": "#573277",
+          "percent": 15.6
+        },
+        {
+          "hex": "#8A63B4",
+          "percent": 14.1
+        }
+      ]
+    },
+    {
+      "slug": "fidough",
+      "name": "Fidough",
+      "zhName": "狗仔包",
+      "primaryColor": "#EBDABF",
+      "palette": [
+        {
+          "hex": "#EBDABF",
+          "percent": 27
+        },
+        {
+          "hex": "#F9F0DA",
+          "percent": 21.8
+        },
+        {
+          "hex": "#F2D95D",
+          "percent": 16.4
+        }
+      ]
+    },
+    {
+      "slug": "dachsbun",
+      "name": "Dachsbun",
+      "zhName": "麻花犬",
+      "primaryColor": "#B24B19",
+      "palette": [
+        {
+          "hex": "#B24B19",
+          "percent": 26.9
+        },
+        {
+          "hex": "#C96530",
+          "percent": 18.5
+        },
+        {
+          "hex": "#904119",
+          "percent": 12.9
+        }
+      ]
+    },
+    {
+      "slug": "charcadet",
+      "name": "Charcadet",
+      "zhName": "炭小侍",
+      "primaryColor": "#FD1A16",
+      "palette": [
+        {
+          "hex": "#FD1A16",
+          "percent": 17.3
+        },
+        {
+          "hex": "#333030",
+          "percent": 23.2
+        },
+        {
+          "hex": "#D51914",
+          "percent": 5.9
+        }
+      ]
+    },
+    {
+      "slug": "armarouge",
+      "name": "Armarouge",
+      "zhName": "红莲铠骑",
+      "primaryColor": "#ECE331",
+      "palette": [
+        {
+          "hex": "#ECE331",
+          "percent": 25.7
+        },
+        {
+          "hex": "#E71818",
+          "percent": 19.9
+        },
+        {
+          "hex": "#FFFF42",
+          "percent": 6.1
+        }
+      ]
+    },
+    {
+      "slug": "ceruledge",
+      "name": "Ceruledge",
+      "zhName": "苍炎刃鬼",
+      "primaryColor": "#1D1843",
+      "palette": [
+        {
+          "hex": "#1D1843",
+          "percent": 27
+        },
+        {
+          "hex": "#302463",
+          "percent": 16.1
+        },
+        {
+          "hex": "#C9DAFF",
+          "percent": 6.8
+        }
+      ]
+    },
+    {
+      "slug": "glimmet",
+      "name": "Glimmet",
+      "zhName": "晶光芽",
+      "primaryColor": "#938FC9",
+      "palette": [
+        {
+          "hex": "#938FC9",
+          "percent": 24.4
+        },
+        {
+          "hex": "#AAACE5",
+          "percent": 13.3
+        },
+        {
+          "hex": "#C0D3F0",
+          "percent": 10.5
+        }
+      ]
+    },
+    {
+      "slug": "glimmora",
+      "name": "Glimmora",
+      "zhName": "晶光花",
+      "primaryColor": "#13339D",
+      "palette": [
+        {
+          "hex": "#13339D",
+          "percent": 20.3
+        },
+        {
+          "hex": "#021D88",
+          "percent": 17.6
+        },
+        {
+          "hex": "#184AE3",
+          "percent": 14.5
+        }
+      ]
+    },
+    {
+      "slug": "gimmighoul",
+      "name": "Gimmighoul",
+      "zhName": "索财灵",
+      "primaryColor": "#FFF390",
+      "palette": [
+        {
+          "hex": "#FFF390",
+          "percent": 10.9
+        },
+        {
+          "hex": "#B5A261",
+          "percent": 16
+        },
+        {
+          "hex": "#B24948",
+          "percent": 13.1
+        }
+      ]
+    },
+    {
+      "slug": "gholdengo",
+      "name": "Gholdengo",
+      "zhName": "赛富豪",
+      "primaryColor": "#EECB40",
+      "palette": [
+        {
+          "hex": "#EECB40",
+          "percent": 40.1
+        },
+        {
+          "hex": "#FFE548",
+          "percent": 27.5
+        },
+        {
+          "hex": "#D6B333",
+          "percent": 12.5
+        }
+      ]
+    },
+    {
+      "slug": "vulpix",
+      "name": "Vulpix",
+      "zhName": "六尾",
+      "primaryColor": "#FF9100",
+      "palette": [
+        {
+          "hex": "#FF9100",
+          "percent": 28.5
+        },
+        {
+          "hex": "#E87604",
+          "percent": 18.2
+        },
+        {
+          "hex": "#D27E47",
+          "percent": 16.2
+        }
+      ]
+    },
+    {
+      "slug": "ninetales",
+      "name": "Ninetales",
+      "zhName": "九尾",
+      "primaryColor": "#F0EB94",
+      "palette": [
+        {
+          "hex": "#F0EB94",
+          "percent": 47
+        },
+        {
+          "hex": "#E2D679",
+          "percent": 35
+        },
+        {
+          "hex": "#D0BF60",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "poliwag",
+      "name": "Poliwag",
+      "zhName": "蚊香蝌蚪",
+      "primaryColor": "#EFF0F4",
+      "palette": [
+        {
+          "hex": "#EFF0F4",
+          "percent": 23.7
+        },
+        {
+          "hex": "#618FB7",
+          "percent": 21.8
+        },
+        {
+          "hex": "#4878A3",
+          "percent": 9.7
+        }
+      ]
+    },
+    {
+      "slug": "poliwhirl",
+      "name": "Poliwhirl",
+      "zhName": "蚊香君",
+      "primaryColor": "#4A76A0",
+      "palette": [
+        {
+          "hex": "#4A76A0",
+          "percent": 18.9
+        },
+        {
+          "hex": "#6192BA",
+          "percent": 15.3
+        },
+        {
+          "hex": "#6EA8D8",
+          "percent": 11.3
+        }
+      ]
+    },
+    {
+      "slug": "poliwrath",
+      "name": "Poliwrath",
+      "zhName": "蚊香泳士",
+      "primaryColor": "#618DB6",
+      "palette": [
+        {
+          "hex": "#618DB6",
+          "percent": 23.9
+        },
+        {
+          "hex": "#49739A",
+          "percent": 17.5
+        },
+        {
+          "hex": "#EEF0F1",
+          "percent": 11.7
+        }
+      ]
+    },
+    {
+      "slug": "politoed",
+      "name": "Politoed",
+      "zhName": "蚊香蛙皇",
+      "primaryColor": "#7ECA2B",
+      "palette": [
+        {
+          "hex": "#7ECA2B",
+          "percent": 26.4
+        },
+        {
+          "hex": "#64A622",
+          "percent": 20.1
+        },
+        {
+          "hex": "#F4EA4A",
+          "percent": 14.8
+        }
+      ]
+    },
+    {
+      "slug": "abra",
+      "name": "Abra",
+      "zhName": "凯西",
+      "primaryColor": "#D9A803",
+      "palette": [
+        {
+          "hex": "#D9A803",
+          "percent": 34.5
+        },
+        {
+          "hex": "#F5C001",
+          "percent": 23.6
+        },
+        {
+          "hex": "#BE9004",
+          "percent": 13.2
+        }
+      ]
+    },
+    {
+      "slug": "kadabra",
+      "name": "Kadabra",
+      "zhName": "勇基拉",
+      "primaryColor": "#C29004",
+      "palette": [
+        {
+          "hex": "#C29004",
+          "percent": 30.9
+        },
+        {
+          "hex": "#E2AD02",
+          "percent": 24.5
+        },
+        {
+          "hex": "#A87803",
+          "percent": 10.7
+        }
+      ]
+    },
+    {
+      "slug": "alakazam",
+      "name": "Alakazam",
+      "zhName": "胡地",
+      "primaryColor": "#C29003",
+      "palette": [
+        {
+          "hex": "#C29003",
+          "percent": 31.5
+        },
+        {
+          "hex": "#DEA802",
+          "percent": 19.2
+        },
+        {
+          "hex": "#F7C000",
+          "percent": 7.4
+        }
+      ]
+    },
+    {
+      "slug": "mime-jr",
+      "name": "Mime Jr.",
+      "zhName": "魔尼尼",
+      "primaryColor": "#18608F",
+      "palette": [
+        {
+          "hex": "#18608F",
+          "percent": 33.5
+        },
+        {
+          "hex": "#EDC0DC",
+          "percent": 18.4
+        },
+        {
+          "hex": "#FEDCF2",
+          "percent": 11.5
+        }
+      ]
+    },
+    {
+      "slug": "mr-mime",
+      "name": "Mr. Mime",
+      "zhName": "魔墙人偶",
+      "primaryColor": "#186096",
+      "palette": [
+        {
+          "hex": "#186096",
+          "percent": 14.3
+        },
+        {
+          "hex": "#F66178",
+          "percent": 11.1
+        },
+        {
+          "hex": "#EAAB9F",
+          "percent": 9.3
+        }
+      ]
+    },
+    {
+      "slug": "porygon",
+      "name": "Porygon",
+      "zhName": "多边兽",
+      "primaryColor": "#FA6078",
+      "palette": [
+        {
+          "hex": "#FA6078",
+          "percent": 19.9
+        },
+        {
+          "hex": "#FF8CA8",
+          "percent": 12.9
+        },
+        {
+          "hex": "#5DBFC0",
+          "percent": 16.3
+        }
+      ]
+    },
+    {
+      "slug": "porygon2",
+      "name": "Porygon2",
+      "zhName": "多边兽Ⅱ",
+      "primaryColor": "#E41977",
+      "palette": [
+        {
+          "hex": "#E41977",
+          "percent": 31.1
+        },
+        {
+          "hex": "#4AC1E4",
+          "percent": 21
+        },
+        {
+          "hex": "#60E0FF",
+          "percent": 14.8
+        }
+      ]
+    },
+    {
+      "slug": "porygon-z",
+      "name": "Porygon-Z",
+      "zhName": "多边兽Ｚ",
+      "primaryColor": "#01A9F0",
+      "palette": [
+        {
+          "hex": "#01A9F0",
+          "percent": 24.9
+        },
+        {
+          "hex": "#00C9FF",
+          "percent": 18.1
+        },
+        {
+          "hex": "#FC0171",
+          "percent": 15.3
+        }
+      ]
+    },
+    {
+      "slug": "dratini",
+      "name": "Dratini",
+      "zhName": "迷你龙",
+      "primaryColor": "#94A3D6",
+      "palette": [
+        {
+          "hex": "#94A3D6",
+          "percent": 23.8
+        },
+        {
+          "hex": "#BCC0C4",
+          "percent": 18.4
+        },
+        {
+          "hex": "#A9B2F1",
+          "percent": 8.9
+        }
+      ]
+    },
+    {
+      "slug": "dragonair",
+      "name": "Dragonair",
+      "zhName": "哈克龙",
+      "primaryColor": "#01A9F3",
+      "palette": [
+        {
+          "hex": "#01A9F3",
+          "percent": 20.4
+        },
+        {
+          "hex": "#0390D2",
+          "percent": 18.8
+        },
+        {
+          "hex": "#D3D8D9",
+          "percent": 15.8
+        }
+      ]
+    },
+    {
+      "slug": "dragonite",
+      "name": "Dragonite",
+      "zhName": "快龙",
+      "primaryColor": "#DD8F02",
+      "palette": [
+        {
+          "hex": "#DD8F02",
+          "percent": 21.3
+        },
+        {
+          "hex": "#F4A902",
+          "percent": 20.5
+        },
+        {
+          "hex": "#E3D490",
+          "percent": 10.3
+        }
+      ]
+    },
+    {
+      "slug": "cyndaquil",
+      "name": "Cyndaquil",
+      "zhName": "火球鼠",
+      "primaryColor": "#F17B23",
+      "palette": [
+        {
+          "hex": "#F17B23",
+          "percent": 22.5
+        },
+        {
+          "hex": "#F3E590",
+          "percent": 17.8
+        },
+        {
+          "hex": "#D7D07B",
+          "percent": 19.2
+        }
+      ]
+    },
+    {
+      "slug": "quilava",
+      "name": "Quilava",
+      "zhName": "火岩鼠",
+      "primaryColor": "#F3E68F",
+      "palette": [
+        {
+          "hex": "#F3E68F",
+          "percent": 34.8
+        },
+        {
+          "hex": "#F2791C",
+          "percent": 15.4
+        },
+        {
+          "hex": "#D8D27C",
+          "percent": 14.4
+        }
+      ]
+    },
+    {
+      "slug": "typhlosion",
+      "name": "Typhlosion",
+      "zhName": "火暴兽",
+      "primaryColor": "#FFE45E",
+      "palette": [
+        {
+          "hex": "#FFE45E",
+          "percent": 42.5
+        },
+        {
+          "hex": "#EDC948",
+          "percent": 28.9
+        },
+        {
+          "hex": "#E9052F",
+          "percent": 4.8
+        }
+      ]
+    },
+    {
+      "slug": "misdreavus",
+      "name": "Misdreavus",
+      "zhName": "梦妖",
+      "primaryColor": "#397590",
+      "palette": [
+        {
+          "hex": "#397590",
+          "percent": 29.8
+        },
+        {
+          "hex": "#498BAB",
+          "percent": 23.3
+        },
+        {
+          "hex": "#60B7DD",
+          "percent": 11.8
+        }
+      ]
+    },
+    {
+      "slug": "mismagius",
+      "name": "Mismagius",
+      "zhName": "梦妖魔",
+      "primaryColor": "#7C609B",
+      "palette": [
+        {
+          "hex": "#7C609B",
+          "percent": 27.3
+        },
+        {
+          "hex": "#5C487B",
+          "percent": 17.8
+        },
+        {
+          "hex": "#473260",
+          "percent": 16.1
+        }
+      ]
+    },
+    {
+      "slug": "girafarig",
+      "name": "Girafarig",
+      "zhName": "麒麟奇",
+      "primaryColor": "#FFDB00",
+      "palette": [
+        {
+          "hex": "#FFDB00",
+          "percent": 25
+        },
+        {
+          "hex": "#EFC002",
+          "percent": 18.2
+        },
+        {
+          "hex": "#493023",
+          "percent": 24.7
+        }
+      ]
+    },
+    {
+      "slug": "farigiraf",
+      "name": "Farigiraf",
+      "zhName": "奇麒麟",
+      "primaryColor": "#443919",
+      "palette": [
+        {
+          "hex": "#443919",
+          "percent": 18.4
+        },
+        {
+          "hex": "#F88E48",
+          "percent": 11.6
+        },
+        {
+          "hex": "#D67B3C",
+          "percent": 10.8
+        }
+      ]
+    },
+    {
+      "slug": "ralts",
+      "name": "Ralts",
+      "zhName": "拉鲁拉丝",
+      "primaryColor": "#ACE590",
+      "palette": [
+        {
+          "hex": "#ACE590",
+          "percent": 31.1
+        },
+        {
+          "hex": "#DBE7ED",
+          "percent": 27.4
+        },
+        {
+          "hex": "#8FCC7D",
+          "percent": 10.8
+        }
+      ]
+    },
+    {
+      "slug": "kirlia",
+      "name": "Kirlia",
+      "zhName": "奇鲁莉安",
+      "primaryColor": "#A8E090",
+      "palette": [
+        {
+          "hex": "#A8E090",
+          "percent": 22
+        },
+        {
+          "hex": "#8FC87A",
+          "percent": 24.2
+        },
+        {
+          "hex": "#DFEBF1",
+          "percent": 17.5
+        }
+      ]
+    },
+    {
+      "slug": "gardevoir",
+      "name": "Gardevoir",
+      "zhName": "沙奈朵",
+      "primaryColor": "#E6EEF0",
+      "palette": [
+        {
+          "hex": "#E6EEF0",
+          "percent": 32.4
+        },
+        {
+          "hex": "#F0FFFF",
+          "percent": 20.2
+        },
+        {
+          "hex": "#AAE291",
+          "percent": 13.2
+        }
+      ]
+    },
+    {
+      "slug": "gallade",
+      "name": "Gallade",
+      "zhName": "艾路雷朵",
+      "primaryColor": "#039660",
+      "palette": [
+        {
+          "hex": "#039660",
+          "percent": 22.9
+        },
+        {
+          "hex": "#04B078",
+          "percent": 13.1
+        },
+        {
+          "hex": "#E1EBF0",
+          "percent": 17.7
+        }
+      ]
+    },
+    {
+      "slug": "plusle",
+      "name": "Plusle",
+      "zhName": "正电拍拍",
+      "primaryColor": "#FF4B60",
+      "palette": [
+        {
+          "hex": "#FF4B60",
+          "percent": 37
+        },
+        {
+          "hex": "#F0D398",
+          "percent": 22.6
+        },
+        {
+          "hex": "#FFEEAC",
+          "percent": 19
+        }
+      ]
+    },
+    {
+      "slug": "minun",
+      "name": "Minun",
+      "zhName": "负电拍拍",
+      "primaryColor": "#30C1FE",
+      "palette": [
+        {
+          "hex": "#30C1FE",
+          "percent": 37.7
+        },
+        {
+          "hex": "#F1D598",
+          "percent": 24.9
+        },
+        {
+          "hex": "#FFEDAB",
+          "percent": 18
+        }
+      ]
+    },
+    {
+      "slug": "trapinch",
+      "name": "Trapinch",
+      "zhName": "大颚蚁",
+      "primaryColor": "#FF9648",
+      "palette": [
+        {
+          "hex": "#FF9648",
+          "percent": 34.5
+        },
+        {
+          "hex": "#E77834",
+          "percent": 29.9
+        },
+        {
+          "hex": "#D36030",
+          "percent": 18.1
+        }
+      ]
+    },
+    {
+      "slug": "vibrava",
+      "name": "Vibrava",
+      "zhName": "超音波幼虫",
+      "primaryColor": "#45BF30",
+      "palette": [
+        {
+          "hex": "#45BF30",
+          "percent": 26.4
+        },
+        {
+          "hex": "#4F5547",
+          "percent": 24
+        },
+        {
+          "hex": "#30A42F",
+          "percent": 9.6
+        }
+      ]
+    },
+    {
+      "slug": "flygon",
+      "name": "Flygon",
+      "zhName": "沙漠蜻蜓",
+      "primaryColor": "#B2D378",
+      "palette": [
+        {
+          "hex": "#B2D378",
+          "percent": 33
+        },
+        {
+          "hex": "#E34262",
+          "percent": 17.5
+        },
+        {
+          "hex": "#4B9D30",
+          "percent": 10.2
+        }
+      ]
+    },
+    {
+      "slug": "swablu",
+      "name": "Swablu",
+      "zhName": "青绵鸟",
+      "primaryColor": "#CFD6DB",
+      "palette": [
+        {
+          "hex": "#CFD6DB",
+          "percent": 31.5
+        },
+        {
+          "hex": "#EDF0F0",
+          "percent": 29.5
+        },
+        {
+          "hex": "#33BEF2",
+          "percent": 12.4
+        }
+      ]
+    },
+    {
+      "slug": "altaria",
+      "name": "Altaria",
+      "zhName": "七夕青鸟",
+      "primaryColor": "#ECF0F0",
+      "palette": [
+        {
+          "hex": "#ECF0F0",
+          "percent": 43.8
+        },
+        {
+          "hex": "#D5D8DC",
+          "percent": 22.8
+        },
+        {
+          "hex": "#33A8D8",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "duskull",
+      "name": "Duskull",
+      "zhName": "夜巡灵",
+      "primaryColor": "#A8A894",
+      "palette": [
+        {
+          "hex": "#A8A894",
+          "percent": 18
+        },
+        {
+          "hex": "#787971",
+          "percent": 17.7
+        },
+        {
+          "hex": "#909087",
+          "percent": 16.2
+        }
+      ]
+    },
+    {
+      "slug": "dusclops",
+      "name": "Dusclops",
+      "zhName": "彷徨夜灵",
+      "primaryColor": "#8D9091",
+      "palette": [
+        {
+          "hex": "#8D9091",
+          "percent": 29.7
+        },
+        {
+          "hex": "#C5C0BB",
+          "percent": 18.1
+        },
+        {
+          "hex": "#77787B",
+          "percent": 17.7
+        }
+      ]
+    },
+    {
+      "slug": "dusknoir",
+      "name": "Dusknoir",
+      "zhName": "黑夜魔灵",
+      "primaryColor": "#C5CCA8",
+      "palette": [
+        {
+          "hex": "#C5CCA8",
+          "percent": 12.1
+        },
+        {
+          "hex": "#AAB290",
+          "percent": 12.9
+        },
+        {
+          "hex": "#60625B",
+          "percent": 13.6
+        }
+      ]
+    },
+    {
+      "slug": "beldum",
+      "name": "Beldum",
+      "zhName": "铁哑铃",
+      "primaryColor": "#48DBFF",
+      "palette": [
+        {
+          "hex": "#48DBFF",
+          "percent": 23.9
+        },
+        {
+          "hex": "#318CAC",
+          "percent": 23.4
+        },
+        {
+          "hex": "#48C0E8",
+          "percent": 19.4
+        }
+      ]
+    },
+    {
+      "slug": "metang",
+      "name": "Metang",
+      "zhName": "金属怪",
+      "primaryColor": "#3E8DAB",
+      "palette": [
+        {
+          "hex": "#3E8DAB",
+          "percent": 31.9
+        },
+        {
+          "hex": "#49C6E9",
+          "percent": 13.8
+        },
+        {
+          "hex": "#2F7890",
+          "percent": 10.6
+        }
+      ]
+    },
+    {
+      "slug": "metagross",
+      "name": "Metagross",
+      "zhName": "巨金怪",
+      "primaryColor": "#3798B6",
+      "palette": [
+        {
+          "hex": "#3798B6",
+          "percent": 39.2
+        },
+        {
+          "hex": "#47AFD8",
+          "percent": 13.3
+        },
+        {
+          "hex": "#317897",
+          "percent": 9.7
+        }
+      ]
+    },
+    {
+      "slug": "snivy",
+      "name": "Snivy",
+      "zhName": "藤藤蛇",
+      "primaryColor": "#03B05A",
+      "palette": [
+        {
+          "hex": "#03B05A",
+          "percent": 34.5
+        },
+        {
+          "hex": "#E2DD8B",
+          "percent": 14
+        },
+        {
+          "hex": "#FFFFB2",
+          "percent": 10.1
+        }
+      ]
+    },
+    {
+      "slug": "servine",
+      "name": "Servine",
+      "zhName": "青藤蛇",
+      "primaryColor": "#01BA60",
+      "palette": [
+        {
+          "hex": "#01BA60",
+          "percent": 16.8
+        },
+        {
+          "hex": "#F4EA9D",
+          "percent": 17.2
+        },
+        {
+          "hex": "#039B48",
+          "percent": 15.4
+        }
+      ]
+    },
+    {
+      "slug": "serperior",
+      "name": "Serperior",
+      "zhName": "君主蛇",
+      "primaryColor": "#037248",
+      "palette": [
+        {
+          "hex": "#037248",
+          "percent": 24.7
+        },
+        {
+          "hex": "#03905D",
+          "percent": 12.8
+        },
+        {
+          "hex": "#AEE8C0",
+          "percent": 8.1
+        }
+      ]
+    },
+    {
+      "slug": "froakie",
+      "name": "Froakie",
+      "zhName": "呱呱泡蛙",
+      "primaryColor": "#34ACCB",
+      "palette": [
+        {
+          "hex": "#34ACCB",
+          "percent": 21.5
+        },
+        {
+          "hex": "#4ADFFE",
+          "percent": 15.2
+        },
+        {
+          "hex": "#48C0E3",
+          "percent": 9.5
+        }
+      ]
+    },
+    {
+      "slug": "frogadier",
+      "name": "Frogadier",
+      "zhName": "呱头蛙",
+      "primaryColor": "#136199",
+      "palette": [
+        {
+          "hex": "#136199",
+          "percent": 15.2
+        },
+        {
+          "hex": "#20A4DD",
+          "percent": 11.9
+        },
+        {
+          "hex": "#1186C1",
+          "percent": 8.6
+        }
+      ]
+    },
+    {
+      "slug": "greninja",
+      "name": "Greninja",
+      "zhName": "甲贺忍蛙",
+      "primaryColor": "#0D4898",
+      "palette": [
+        {
+          "hex": "#0D4898",
+          "percent": 13.4
+        },
+        {
+          "hex": "#0D5FC8",
+          "percent": 10.2
+        },
+        {
+          "hex": "#2960A1",
+          "percent": 11.2
+        }
+      ]
+    },
+    {
+      "slug": "dedenne",
+      "name": "Dedenne",
+      "zhName": "咚咚鼠",
+      "primaryColor": "#D88F01",
+      "palette": [
+        {
+          "hex": "#D88F01",
+          "percent": 16.5
+        },
+        {
+          "hex": "#FAF4A6",
+          "percent": 17.2
+        },
+        {
+          "hex": "#F6A900",
+          "percent": 14
+        }
+      ]
+    },
+    {
+      "slug": "noibat",
+      "name": "Noibat",
+      "zhName": "嗡蝠",
+      "primaryColor": "#F0CAF1",
+      "palette": [
+        {
+          "hex": "#F0CAF1",
+          "percent": 16.5
+        },
+        {
+          "hex": "#D8BADB",
+          "percent": 18.7
+        },
+        {
+          "hex": "#A14AAC",
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "slug": "noivern",
+      "name": "Noivern",
+      "zhName": "音波龙",
+      "primaryColor": "#584847",
+      "palette": [
+        {
+          "hex": "#584847",
+          "percent": 29.3
+        },
+        {
+          "hex": "#A860DC",
+          "percent": 15.8
+        },
+        {
+          "hex": "#423030",
+          "percent": 16.6
+        }
+      ]
+    },
+    {
+      "slug": "rookidee",
+      "name": "Rookidee",
+      "zhName": "稚山雀",
+      "primaryColor": "#302E1A",
+      "palette": [
+        {
+          "hex": "#302E1A",
+          "percent": 25
+        },
+        {
+          "hex": "#31639A",
+          "percent": 17.2
+        },
+        {
+          "hex": "#4878BA",
+          "percent": 16.3
+        }
+      ]
+    },
+    {
+      "slug": "corvisquire",
+      "name": "Corvisquire",
+      "zhName": "蓝鸦",
+      "primaryColor": "#31301C",
+      "palette": [
+        {
+          "hex": "#31301C",
+          "percent": 31.2
+        },
+        {
+          "hex": "#3178B7",
+          "percent": 12
+        },
+        {
+          "hex": "#483E32",
+          "percent": 15.4
+        }
+      ]
+    },
+    {
+      "slug": "corviknight",
+      "name": "Corviknight",
+      "zhName": "钢铠鸦",
+      "primaryColor": "#342F55",
+      "palette": [
+        {
+          "hex": "#342F55",
+          "percent": 56.3
+        },
+        {
+          "hex": "#49496E",
+          "percent": 31
+        },
+        {
+          "hex": "#605C91",
+          "percent": 5.2
+        }
+      ]
+    },
+    {
+      "slug": "dreepy",
+      "name": "Dreepy",
+      "zhName": "多龙梅西亚",
+      "primaryColor": "#7AA690",
+      "palette": [
+        {
+          "hex": "#7AA690",
+          "percent": 25.5
+        },
+        {
+          "hex": "#90C5A2",
+          "percent": 19.3
+        },
+        {
+          "hex": "#A9E3BD",
+          "percent": 14.4
+        }
+      ]
+    },
+    {
+      "slug": "drakloak",
+      "name": "Drakloak",
+      "zhName": "多龙奇",
+      "primaryColor": "#49626D",
+      "palette": [
+        {
+          "hex": "#49626D",
+          "percent": 21.1
+        },
+        {
+          "hex": "#77A0AB",
+          "percent": 20.4
+        },
+        {
+          "hex": "#37485F",
+          "percent": 15.6
+        }
+      ]
+    },
+    {
+      "slug": "dragapult",
+      "name": "Dragapult",
+      "zhName": "多龙巴鲁托",
+      "primaryColor": "#5AC0C0",
+      "palette": [
+        {
+          "hex": "#5AC0C0",
+          "percent": 17.6
+        },
+        {
+          "hex": "#4BA8A8",
+          "percent": 15.6
+        },
+        {
+          "hex": "#495E6B",
+          "percent": 13.6
+        }
+      ]
+    },
+    {
+      "slug": "sprigatito",
+      "name": "Sprigatito",
+      "zhName": "新叶喵",
+      "primaryColor": "#5EB118",
+      "palette": [
+        {
+          "hex": "#5EB118",
+          "percent": 22.4
+        },
+        {
+          "hex": "#BBD8AA",
+          "percent": 27.9
+        },
+        {
+          "hex": "#D4F0C1",
+          "percent": 18
+        }
+      ]
+    },
+    {
+      "slug": "floragato",
+      "name": "Floragato",
+      "zhName": "蒂蕾喵",
+      "primaryColor": "#27612D",
+      "palette": [
+        {
+          "hex": "#27612D",
+          "percent": 30.4
+        },
+        {
+          "hex": "#D6EFC2",
+          "percent": 21.8
+        },
+        {
+          "hex": "#BCD7AB",
+          "percent": 14.8
+        }
+      ]
+    },
+    {
+      "slug": "meowscarada",
+      "name": "Meowscarada",
+      "zhName": "魔幻假面喵",
+      "primaryColor": "#318A38",
+      "palette": [
+        {
+          "hex": "#318A38",
+          "percent": 18.2
+        },
+        {
+          "hex": "#F0FFDF",
+          "percent": 12.4
+        },
+        {
+          "hex": "#1A2D0B",
+          "percent": 19.9
+        }
+      ]
+    },
+    {
+      "slug": "wattrel",
+      "name": "Wattrel",
+      "zhName": "电海燕",
+      "primaryColor": "#394149",
+      "palette": [
+        {
+          "hex": "#394149",
+          "percent": 34.6
+        },
+        {
+          "hex": "#FFD931",
+          "percent": 8.3
+        },
+        {
+          "hex": "#F7AA5A",
+          "percent": 7.3
+        }
+      ]
+    },
+    {
+      "slug": "kilowattrel",
+      "name": "Kilowattrel",
+      "zhName": "大电海燕",
+      "primaryColor": "#CCA82F",
+      "palette": [
+        {
+          "hex": "#CCA82F",
+          "percent": 40.9
+        },
+        {
+          "hex": "#272D33",
+          "percent": 30.1
+        },
+        {
+          "hex": "#F0C331",
+          "percent": 3.7
+        }
+      ]
+    },
+    {
+      "slug": "tinkatink",
+      "name": "Tinkatink",
+      "zhName": "小锻匠",
+      "primaryColor": "#E94A90",
+      "palette": [
+        {
+          "hex": "#E94A90",
+          "percent": 27.2
+        },
+        {
+          "hex": "#FF60A5",
+          "percent": 10.8
+        },
+        {
+          "hex": "#D54778",
+          "percent": 9.2
+        }
+      ]
+    },
+    {
+      "slug": "tinkatuff",
+      "name": "Tinkatuff",
+      "zhName": "巧锻匠",
+      "primaryColor": "#907DA8",
+      "palette": [
+        {
+          "hex": "#907DA8",
+          "percent": 20.3
+        },
+        {
+          "hex": "#C53276",
+          "percent": 8.8
+        },
+        {
+          "hex": "#A898C0",
+          "percent": 10.7
+        }
+      ]
+    },
+    {
+      "slug": "tinkaton",
+      "name": "Tinkaton",
+      "zhName": "巨锻匠",
+      "primaryColor": "#9179A7",
+      "palette": [
+        {
+          "hex": "#9179A7",
+          "percent": 22.2
+        },
+        {
+          "hex": "#E9CDC7",
+          "percent": 13.6
+        },
+        {
+          "hex": "#A894BE",
+          "percent": 11.6
+        }
+      ]
+    },
+    {
+      "slug": "aerodactyl",
+      "name": "Aerodactyl",
+      "zhName": "化石翼龙",
+      "primaryColor": "#9C7EA4",
+      "palette": [
+        {
+          "hex": "#9C7EA4",
+          "percent": 49.9
+        },
+        {
+          "hex": "#AA9AC0",
+          "percent": 16.8
+        },
+        {
+          "hex": "#C0AED8",
+          "percent": 9.4
+        }
+      ]
+    },
+    {
+      "slug": "cranidos",
+      "name": "Cranidos",
+      "zhName": "头盖龙",
+      "primaryColor": "#79CAFF",
+      "palette": [
+        {
+          "hex": "#79CAFF",
+          "percent": 20.9
+        },
+        {
+          "hex": "#62A9E0",
+          "percent": 14.2
+        },
+        {
+          "hex": "#A0A7AB",
+          "percent": 17.7
+        }
+      ]
+    },
+    {
+      "slug": "rampardos",
+      "name": "Rampardos",
+      "zhName": "战槌龙",
+      "primaryColor": "#606D77",
+      "palette": [
+        {
+          "hex": "#606D77",
+          "percent": 23.4
+        },
+        {
+          "hex": "#798693",
+          "percent": 16.2
+        },
+        {
+          "hex": "#0578B5",
+          "percent": 7.5
+        }
+      ]
+    },
+    {
+      "slug": "shieldon",
+      "name": "Shieldon",
+      "zhName": "盾甲龙",
+      "primaryColor": "#DBBC62",
+      "palette": [
+        {
+          "hex": "#DBBC62",
+          "percent": 12.8
+        },
+        {
+          "hex": "#74787A",
+          "percent": 22.2
+        },
+        {
+          "hex": "#F1C979",
+          "percent": 10
+        }
+      ]
+    },
+    {
+      "slug": "bastiodon",
+      "name": "Bastiodon",
+      "zhName": "护城龙",
+      "primaryColor": "#76787B",
+      "palette": [
+        {
+          "hex": "#76787B",
+          "percent": 28.6
+        },
+        {
+          "hex": "#8C9090",
+          "percent": 19
+        },
+        {
+          "hex": "#606064",
+          "percent": 17.6
+        }
+      ]
+    },
+    {
+      "slug": "tyrunt",
+      "name": "Tyrunt",
+      "zhName": "宝宝暴龙",
+      "primaryColor": "#746049",
+      "palette": [
+        {
+          "hex": "#746049",
+          "percent": 26.9
+        },
+        {
+          "hex": "#5C483A",
+          "percent": 26.6
+        },
+        {
+          "hex": "#8F7561",
+          "percent": 11.6
+        }
+      ]
+    },
+    {
+      "slug": "tyrantrum",
+      "name": "Tyrantrum",
+      "zhName": "怪颚龙",
+      "primaryColor": "#814648",
+      "palette": [
+        {
+          "hex": "#814648",
+          "percent": 18.2
+        },
+        {
+          "hex": "#A26060",
+          "percent": 14.9
+        },
+        {
+          "hex": "#D7D9D7",
+          "percent": 11.2
+        }
+      ]
+    },
+    {
+      "slug": "amaura",
+      "name": "Amaura",
+      "zhName": "冰雪龙",
+      "primaryColor": "#79B0D6",
+      "palette": [
+        {
+          "hex": "#79B0D6",
+          "percent": 33.8
+        },
+        {
+          "hex": "#90D1F6",
+          "percent": 22.6
+        },
+        {
+          "hex": "#A7EFFF",
+          "percent": 6.4
+        }
+      ]
+    },
+    {
+      "slug": "aurorus",
+      "name": "Aurorus",
+      "zhName": "冰雪巨龙",
+      "primaryColor": "#78A5E1",
+      "palette": [
+        {
+          "hex": "#78A5E1",
+          "percent": 22.6
+        },
+        {
+          "hex": "#8DC2FC",
+          "percent": 13.8
+        },
+        {
+          "hex": "#638FC7",
+          "percent": 11.7
+        }
+      ]
+    },
+    {
+      "slug": "eevee",
+      "name": "Eevee",
+      "zhName": "伊布",
+      "primaryColor": "#EFA849",
+      "palette": [
+        {
+          "hex": "#EFA849",
+          "percent": 19.8
+        },
+        {
+          "hex": "#CC8F48",
+          "percent": 19.8
+        },
+        {
+          "hex": "#B47633",
+          "percent": 13.8
+        }
+      ]
+    },
+    {
+      "slug": "vaporeon",
+      "name": "Vaporeon",
+      "zhName": "水伊布",
+      "primaryColor": "#32A7C3",
+      "palette": [
+        {
+          "hex": "#32A7C3",
+          "percent": 25
+        },
+        {
+          "hex": "#35C0DE",
+          "percent": 21.6
+        },
+        {
+          "hex": "#41D8F4",
+          "percent": 10.7
+        }
+      ]
+    },
+    {
+      "slug": "jolteon",
+      "name": "Jolteon",
+      "zhName": "雷伊布",
+      "primaryColor": "#FFDB00",
+      "palette": [
+        {
+          "hex": "#FFDB00",
+          "percent": 33.8
+        },
+        {
+          "hex": "#F0BF03",
+          "percent": 19.4
+        },
+        {
+          "hex": "#D8A603",
+          "percent": 12.4
+        }
+      ]
+    },
+    {
+      "slug": "flareon",
+      "name": "Flareon",
+      "zhName": "火伊布",
+      "primaryColor": "#F2EA95",
+      "palette": [
+        {
+          "hex": "#F2EA95",
+          "percent": 23.6
+        },
+        {
+          "hex": "#F89245",
+          "percent": 18.1
+        },
+        {
+          "hex": "#DE7832",
+          "percent": 17.9
+        }
+      ]
+    },
+    {
+      "slug": "espeon",
+      "name": "Espeon",
+      "zhName": "太阳伊布",
+      "primaryColor": "#E7C0D6",
+      "palette": [
+        {
+          "hex": "#E7C0D6",
+          "percent": 38.9
+        },
+        {
+          "hex": "#F9D8F1",
+          "percent": 27.4
+        },
+        {
+          "hex": "#D3A8C0",
+          "percent": 16.3
+        }
+      ]
+    },
+    {
+      "slug": "umbreon",
+      "name": "Umbreon",
+      "zhName": "月亮伊布",
+      "primaryColor": "#3D4947",
+      "palette": [
+        {
+          "hex": "#3D4947",
+          "percent": 47.3
+        },
+        {
+          "hex": "#4B6060",
+          "percent": 19.4
+        },
+        {
+          "hex": "#2E3030",
+          "percent": 18.6
+        }
+      ]
+    },
+    {
+      "slug": "leafeon",
+      "name": "Leafeon",
+      "zhName": "叶伊布",
+      "primaryColor": "#FFEB92",
+      "palette": [
+        {
+          "hex": "#FFEB92",
+          "percent": 18.6
+        },
+        {
+          "hex": "#79DCA2",
+          "percent": 22.1
+        },
+        {
+          "hex": "#F0D687",
+          "percent": 16.8
+        }
+      ]
+    },
+    {
+      "slug": "glaceon",
+      "name": "Glaceon",
+      "zhName": "冰伊布",
+      "primaryColor": "#BADDF0",
+      "palette": [
+        {
+          "hex": "#BADDF0",
+          "percent": 25
+        },
+        {
+          "hex": "#0578A2",
+          "percent": 16
+        },
+        {
+          "hex": "#CEF3FF",
+          "percent": 14.9
+        }
+      ]
+    },
+    {
+      "slug": "sylveon",
+      "name": "Sylveon",
+      "zhName": "仙子伊布",
+      "primaryColor": "#FBAABD",
+      "palette": [
+        {
+          "hex": "#FBAABD",
+          "percent": 21.5
+        },
+        {
+          "hex": "#F1EDF0",
+          "percent": 20.3
+        },
+        {
+          "hex": "#E192A7",
+          "percent": 12.8
+        }
+      ]
+    },
+    {
+      "slug": "kyogre",
+      "name": "Kyogre",
+      "zhName": "盖欧卡",
+      "primaryColor": "#0462B7",
+      "palette": [
+        {
+          "hex": "#0462B7",
+          "percent": 37.4
+        },
+        {
+          "hex": "#0A4C8B",
+          "percent": 18.9
+        },
+        {
+          "hex": "#0577D8",
+          "percent": 10.1
+        }
+      ]
+    },
+    {
+      "slug": "raikou",
+      "name": "Raikou",
+      "zhName": "雷公",
+      "primaryColor": "#F5D001",
+      "palette": [
+        {
+          "hex": "#F5D001",
+          "percent": 15.8
+        },
+        {
+          "hex": "#A298B2",
+          "percent": 16.1
+        },
+        {
+          "hex": "#D8BC02",
+          "percent": 8.4
+        }
+      ]
+    },
+    {
+      "slug": "entei",
+      "name": "Entei",
+      "zhName": "炎帝",
+      "primaryColor": "#975E26",
+      "palette": [
+        {
+          "hex": "#975E26",
+          "percent": 25
+        },
+        {
+          "hex": "#AD7831",
+          "percent": 10.1
+        },
+        {
+          "hex": "#93A4B0",
+          "percent": 12
+        }
+      ]
+    },
+    {
+      "slug": "suicune",
+      "name": "Suicune",
+      "zhName": "水君",
+      "primaryColor": "#5EAEBB",
+      "palette": [
+        {
+          "hex": "#5EAEBB",
+          "percent": 15
+        },
+        {
+          "hex": "#F4CCFF",
+          "percent": 8.3
+        },
+        {
+          "hex": "#BE9DDB",
+          "percent": 9.6
+        }
+      ]
+    },
+    {
+      "slug": "volcanion",
+      "name": "Volcanion",
+      "zhName": "波尔凯尼恩",
+      "primaryColor": "#9F2F31",
+      "palette": [
+        {
+          "hex": "#9F2F31",
+          "percent": 30.9
+        },
+        {
+          "hex": "#E3484A",
+          "percent": 18.4
+        },
+        {
+          "hex": "#BC3B45",
+          "percent": 13.7
+        }
+      ]
+    },
+    {
+      "slug": "articuno",
+      "name": "Articuno",
+      "zhName": "急冻鸟",
+      "primaryColor": "#5EB1DB",
+      "palette": [
+        {
+          "hex": "#5EB1DB",
+          "percent": 41.7
+        },
+        {
+          "hex": "#108DC6",
+          "percent": 23
+        },
+        {
+          "hex": "#D8EFF7",
+          "percent": 5.9
+        }
+      ]
+    },
+    {
+      "slug": "zapdos",
+      "name": "Zapdos",
+      "zhName": "闪电鸟",
+      "primaryColor": "#FFDC54",
+      "palette": [
+        {
+          "hex": "#FFDC54",
+          "percent": 57.4
+        },
+        {
+          "hex": "#E9BF4C",
+          "percent": 14.5
+        },
+        {
+          "hex": "#E29B31",
+          "percent": 7.7
+        }
+      ]
+    },
+    {
+      "slug": "moltres",
+      "name": "Moltres",
+      "zhName": "火焰鸟",
+      "primaryColor": "#F4C502",
+      "palette": [
+        {
+          "hex": "#F4C502",
+          "percent": 24.9
+        },
+        {
+          "hex": "#FF421B",
+          "percent": 21.2
+        },
+        {
+          "hex": "#F36F19",
+          "percent": 13.3
+        }
+      ]
+    },
+    {
+      "slug": "lugia",
+      "name": "Lugia",
+      "zhName": "洛奇亚",
+      "primaryColor": "#DDE5EE",
+      "palette": [
+        {
+          "hex": "#DDE5EE",
+          "percent": 37.4
+        },
+        {
+          "hex": "#BDC6D8",
+          "percent": 21.3
+        },
+        {
+          "hex": "#F1F9FF",
+          "percent": 8.7
+        }
+      ]
+    },
+    {
+      "slug": "ho-oh",
+      "name": "Ho-Oh",
+      "zhName": "凤王",
+      "primaryColor": "#FC4913",
+      "palette": [
+        {
+          "hex": "#FC4913",
+          "percent": 30.8
+        },
+        {
+          "hex": "#F4C12E",
+          "percent": 8.9
+        },
+        {
+          "hex": "#90CD07",
+          "percent": 7.8
+        }
+      ]
+    },
+    {
+      "slug": "mewtwo",
+      "name": "Mewtwo",
+      "zhName": "超梦",
+      "primaryColor": "#ECD8F1",
+      "palette": [
+        {
+          "hex": "#ECD8F1",
+          "percent": 15
+        },
+        {
+          "hex": "#D5C1D8",
+          "percent": 18.8
+        },
+        {
+          "hex": "#BFACC0",
+          "percent": 19.8
+        }
+      ]
+    },
+    {
+      "slug": "mew",
+      "name": "Mew",
+      "zhName": "梦幻",
+      "primaryColor": "#EFD4DB",
+      "palette": [
+        {
+          "hex": "#EFD4DB",
+          "percent": 44.2
+        },
+        {
+          "hex": "#FFEBF1",
+          "percent": 25.2
+        },
+        {
+          "hex": "#D8BEC4",
+          "percent": 25.9
+        }
+      ]
+    }
+  ]
+}
