@@ -5,10 +5,13 @@ export interface GalleryConfig {
   supabasePublishableKey: string | null;
 }
 
+const DEFAULT_SCENE_API_URL = 'https://scene-api.pokokit.com';
+const DEFAULT_SCENE_EDITOR_URL = 'https://scene-editor.pokokit.com';
+
 export function loadGalleryConfig(env: ImportMetaEnv = import.meta.env): GalleryConfig {
   return {
-    sceneApiUrl: normalizeBaseUrl(env.VITE_SCENE_API_URL, 'http://localhost:8787'),
-    sceneEditorUrl: normalizeBaseUrl(env.VITE_SCENE_EDITOR_URL, 'http://localhost:5174'),
+    sceneApiUrl: normalizeBaseUrl(env.VITE_SCENE_API_URL, DEFAULT_SCENE_API_URL),
+    sceneEditorUrl: normalizeBaseUrl(env.VITE_SCENE_EDITOR_URL, DEFAULT_SCENE_EDITOR_URL),
     supabaseUrl: normalizeOptionalUrl(env.VITE_SUPABASE_URL),
     supabasePublishableKey: normalizeOptionalSecret(env.VITE_SUPABASE_PUBLISHABLE_KEY),
   };

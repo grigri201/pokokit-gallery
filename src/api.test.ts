@@ -5,6 +5,13 @@ import { buildEditorSceneUrl, loadGalleryConfig } from './config';
 import { summarizeScenePse } from './scene-summary';
 
 describe('gallery config', () => {
+  it('uses production Pokokit service defaults when scene urls are not configured', () => {
+    const config = loadGalleryConfig({} as ImportMetaEnv);
+
+    expect(config.sceneApiUrl).toBe('https://scene-api.pokokit.com/');
+    expect(config.sceneEditorUrl).toBe('https://scene-editor.pokokit.com/');
+  });
+
   it('normalizes base urls and disables placeholder Supabase auth values', () => {
     const config = loadGalleryConfig({
       VITE_SCENE_API_URL: 'https://api.example.com',
