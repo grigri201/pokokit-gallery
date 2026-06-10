@@ -760,7 +760,6 @@ function AuthPanel({
           <div id="gallery-account-popover" className="auth-popover account-popover" role="dialog" aria-label={t.account}>
             <div className="account-email">
               <strong>{accountLabel}</strong>
-              {accountLabel !== userLabel ? <span>{userLabel}</span> : null}
             </div>
             <form className="account-profile-form" onSubmit={event => void handleProfileSubmit(event)}>
               <label>

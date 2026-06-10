@@ -184,7 +184,7 @@ describe('Gallery App domain session restore', () => {
     fireEvent.click(accountButton);
     const dialog = screen.getByRole('dialog', { name: 'Account' });
 
-    expect(within(dialog).getByText('local@example.com')).toBeVisible();
+    expect(within(dialog).queryByText('local@example.com')).not.toBeInTheDocument();
     expect(within(dialog).getByLabelText('Nickname')).toHaveValue('Old Panda');
 
     fireEvent.change(within(dialog).getByLabelText('Nickname'), { target: { value: 'New Panda' } });
