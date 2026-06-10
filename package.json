@@ -6,10 +6,11 @@
   "description": "Pokokit Gallery frontend for browsing public and owned Pokopia scenes.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "build": "tsc -p tsconfig.json --noEmit && vite build && node scripts/verify-bundle-secrets.mjs",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run --environment jsdom",
+    "bundle-secrets:verify": "node scripts/verify-bundle-secrets.mjs",
     "verify": "pnpm run test && pnpm run typecheck && pnpm run build"
   },
   "dependencies": {

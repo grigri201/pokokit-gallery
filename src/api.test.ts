@@ -81,7 +81,7 @@ describe('scene api client', () => {
     );
 
     const client = createSceneApiClient('https://api.example.com', fetcher);
-    await client.listMyScenes('user-token', 12);
+    await client.listMyScenes({ kind: 'bearer', token: 'user-token' }, 12);
 
     expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes?offset=12&limit=12'), {
       headers: {
@@ -101,7 +101,7 @@ describe('scene api client', () => {
     );
 
     const client = createSceneApiClient('https://api.example.com', fetcher);
-    const result = await client.updateSceneVisibility('user-token', 'owned-scene', 'public');
+    const result = await client.updateSceneVisibility({ kind: 'bearer', token: 'user-token' }, 'owned-scene', 'public');
 
     expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes/owned-scene'), {
       method: 'PUT',
@@ -120,13 +120,56 @@ describe('scene api client', () => {
     });
   });
 
+  it('loads my scenes with the domain session cookie', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: [sceneFixture('owned-cookie-scene')],
+          page: pageFixture(1),
+        }),
+        { status: 200 },
+      ),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+    await client.listMyScenes({ kind: 'domain-session' }, 0);
+
+    expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes?offset=0&limit=12'), {
+      credentials: 'include',
+      headers: {},
+    });
+  });
+
+  it('updates an owned scene visibility with the domain session cookie', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: sceneFixture('owned-cookie-scene', { visibility: 'private' }),
+        }),
+        { status: 200 },
+      ),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+    await client.updateSceneVisibility({ kind: 'domain-session' }, 'owned-cookie-scene', 'private');
+
+    expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes/owned-cookie-scene'), {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ visibility: 'private' }),
+    });
+  });
+
   it('returns API errors from the scene envelope', async () => {
     const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
       new Response(JSON.stringify({ error: { code: 'auth_missing_token', message: 'Missing token.' } }), { status: 401 }),
     );
 
     const client = createSceneApiClient('https://api.example.com', fetcher);
-    const result = await client.listMyScenes('bad-token', 1);
+    const result = await client.listMyScenes({ kind: 'bearer', token: 'bad-token' }, 1);
 
     expect(result).toEqual({
       ok: false,

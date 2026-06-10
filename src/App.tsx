@@ -3,10 +3,11 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent, ReactElement } from 'react';
 import type { Session } from '@supabase/supabase-js';
 
-import { createSceneApiClient, type ApiError, type PageInfo, type SceneRecord, type SceneVisibility } from './api';
+import { createSceneApiClient, type ApiError, type PageInfo, type SceneApiAuth, type SceneRecord, type SceneVisibility } from './api';
 import { createGalleryAuthClient, type GalleryAuthClient } from './auth';
 import { buildEditorSceneUrl, loadGalleryConfig } from './config';
 import pokemonColorsData from './data/pokemon-colors.generated.json';
+import { createGalleryDomainSessionClient, type GalleryDomainSession, type GalleryDomainSessionClient } from './domain-session';
 import { summarizeScenePse, type SceneDimensionSummary } from './scene-summary';
 
 type LoadState<T> =
@@ -17,6 +18,10 @@ type LoadState<T> =
 const config = loadGalleryConfig();
 
 type GalleryLanguage = 'en' | 'zh';
+
+type GalleryAuthIdentity =
+  | { kind: 'supabase'; session: Session }
+  | { kind: 'domain-session'; session: GalleryDomainSession };
 
 type PokemonColorSwatch = {
   hex: string;
@@ -59,6 +64,7 @@ interface GalleryCopy {
   signUp: string;
   signUpSuccess: string;
   signOut: string;
+  signOutSharedError: string;
   openSignIn: string;
   publicToggle: string;
   publicToggleTitle: string;
@@ -99,6 +105,7 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     signUp: 'Register',
     signUpSuccess: 'Registration submitted. Check your email if confirmation is required.',
     signOut: 'Sign out',
+    signOutSharedError: 'Unable to clear shared Pokokit session. Try signing out again.',
     openSignIn: 'Sign in',
     publicToggle: 'Public',
     publicToggleTitle: 'Make private',
@@ -137,6 +144,7 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     signUp: '注册',
     signUpSuccess: '注册已提交。如果需要邮箱确认，请检查你的邮箱。',
     signOut: '退出登录',
+    signOutSharedError: '无法清除 Pokokit 共享登录态。请重试退出登录。',
     openSignIn: '登录',
     publicToggle: '公开',
     publicToggleTitle: '改为私有',
@@ -190,8 +198,9 @@ function normalizeNickname(value: string, email: string): string {
 export function App(): ReactElement {
   const apiClient = useMemo(() => createSceneApiClient(config.sceneApiUrl), []);
   const authClient = useMemo(() => createGalleryAuthClient(config.supabaseUrl, config.supabasePublishableKey), []);
+  const domainSessionClient = useMemo(() => createGalleryDomainSessionClient(config.sceneApiUrl), []);
   const [language, setLanguage] = useState<GalleryLanguage>(() => readInitialLanguage());
-  const [session, setSession] = useState<Session | null>(null);
+  const [authIdentity, setAuthIdentity] = useState<GalleryAuthIdentity | null>(null);
   const [authReady, setAuthReady] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
   const [publicOffset, setPublicOffset] = useState(0);
@@ -215,38 +224,69 @@ export function App(): ReactElement {
 
   useEffect(() => {
     let cancelled = false;
-    if (!authClient) {
-      setAuthReady(true);
-      return;
-    }
 
-    authClient
-      .getSession()
-      .then(nextSession => {
-        if (!cancelled) {
-          setSession(nextSession);
-          setMyOffset(0);
-          setAuthReady(true);
+    async function restoreSession(): Promise<void> {
+      try {
+        const nextSession = authClient ? await authClient.getSession() : null;
+        const domainSession = await domainSessionClient.getSession();
+        if (nextSession && domainSession && domainSession.user.id === nextSession.user.id) {
+          await syncDomainSession(domainSessionClient, nextSession.access_token);
+          if (cancelled) {
+            return;
+          }
+          setAuthIdentity({ kind: 'supabase', session: nextSession });
+        } else if (nextSession && domainSession && domainSession.user.id !== nextSession.user.id) {
+          await authClient?.signOut();
+          if (cancelled) {
+            return;
+          }
+          setAuthIdentity({ kind: 'domain-session', session: domainSession });
+        } else if (nextSession && !domainSession) {
+          await authClient?.signOut();
+          if (cancelled) {
+            return;
+          }
+          setAuthIdentity(null);
+        } else {
+          if (cancelled) {
+            return;
+          }
+          setAuthIdentity(domainSession ? { kind: 'domain-session', session: domainSession } : null);
         }
-      })
-      .catch(() => {
+        setMyOffset(0);
+        setAuthReady(true);
+      } catch {
         if (!cancelled) {
           setAuthReady(true);
           setAuthError(t.restoreSessionError);
         }
-      });
+      }
+    }
 
-    const unsubscribe = authClient.onSessionChange(nextSession => {
-      setSession(nextSession);
+    void restoreSession();
+
+    const unsubscribe = authClient?.onSessionChange((nextSession, event) => {
+      if (event === 'INITIAL_SESSION') {
+        return;
+      }
+      if (nextSession) {
+        void syncDomainSession(domainSessionClient, nextSession.access_token);
+        setAuthIdentity({ kind: 'supabase', session: nextSession });
+      } else {
+        if (event === 'SIGNED_OUT') {
+          void domainSessionClient.clear();
+        }
+        setAuthIdentity(null);
+      }
       setMyOffset(0);
       setAuthReady(true);
-    });
+    }) ?? (() => undefined);
 
     return () => {
       cancelled = true;
       unsubscribe();
     };
-  }, [authClient]);
+  }, [authClient, domainSessionClient, t.restoreSessionError]);
 
   useEffect(() => {
     let cancelled = false;
@@ -281,7 +321,8 @@ export function App(): ReactElement {
 
   useEffect(() => {
     let cancelled = false;
-    if (!session) {
+    const sceneAuth = createSceneApiAuth(authIdentity);
+    if (!sceneAuth) {
       setMyScenes(null);
       setMyLoadingMore(false);
       return;
@@ -294,7 +335,7 @@ export function App(): ReactElement {
       setMyLoadingMore(false);
       setMyScenes({ status: 'loading' });
     }
-    apiClient.listMyScenes(session.access_token, myOffset).then(result => {
+    apiClient.listMyScenes(sceneAuth, myOffset).then(result => {
       if (cancelled) {
         return;
       }
@@ -316,7 +357,7 @@ export function App(): ReactElement {
     return () => {
       cancelled = true;
     };
-  }, [apiClient, myOffset, myReloadToken, session]);
+  }, [apiClient, authIdentity, myOffset, myReloadToken]);
 
   function handlePublicRetry(): void {
     setPublicOffset(0);
@@ -343,7 +384,8 @@ export function App(): ReactElement {
   }
 
   async function updateMySceneVisibility(scene: SceneRecord, visibility: SceneVisibility): Promise<boolean> {
-    if (!session || updatingVisibilitySceneIds.has(scene.id)) {
+    const sceneAuth = createSceneApiAuth(authIdentity);
+    if (!sceneAuth || updatingVisibilitySceneIds.has(scene.id)) {
       return false;
     }
 
@@ -353,7 +395,7 @@ export function App(): ReactElement {
       next.add(scene.id);
       return next;
     });
-    const result = await apiClient.updateSceneVisibility(session.access_token, scene.id, visibility);
+    const result = await apiClient.updateSceneVisibility(sceneAuth, scene.id, visibility);
     setUpdatingVisibilitySceneIds(current => {
       const next = new Set(current);
       next.delete(scene.id);
@@ -406,9 +448,18 @@ export function App(): ReactElement {
           </button>
           <AuthPanel
             authClient={authClient}
+            domainSessionClient={domainSessionClient}
             authReady={authReady}
             authError={authError}
-            session={session}
+            authIdentity={authIdentity}
+            onSignedIn={session => {
+              setAuthIdentity({ kind: 'supabase', session });
+              setMyOffset(0);
+            }}
+            onSignedOut={() => {
+              setAuthIdentity(null);
+              setMyOffset(0);
+            }}
             onAuthError={setAuthError}
             t={t}
           />
@@ -422,7 +473,7 @@ export function App(): ReactElement {
               <h2>{t.myScenes}</h2>
             </div>
           </div>
-          {!session ? (
+          {!authIdentity ? (
             <div className="state-panel compact-state">{t.signInToViewScenes}</div>
           ) : (
             <SceneList
@@ -502,16 +553,22 @@ export function App(): ReactElement {
 
 function AuthPanel({
   authClient,
+  domainSessionClient,
   authReady,
   authError,
-  session,
+  authIdentity,
+  onSignedIn,
+  onSignedOut,
   onAuthError,
   t,
 }: {
   authClient: GalleryAuthClient | null;
+  domainSessionClient: GalleryDomainSessionClient;
   authReady: boolean;
   authError: string | null;
-  session: Session | null;
+  authIdentity: GalleryAuthIdentity | null;
+  onSignedIn: (session: Session) => void;
+  onSignedOut: () => void;
   onAuthError: (error: string | null) => void;
   t: GalleryCopy;
 }): ReactElement {
@@ -562,15 +619,33 @@ function AuthPanel({
     const result = mode === 'signIn' ? await authClient.signIn(email, password) : await authClient.signUp(email, password, normalizeNickname(nickname, email));
     if (result.error) {
       onAuthError(result.error);
-    } else if (mode === 'signIn') {
-      setIsOpen(false);
     } else {
-      setAuthNotice(t.signUpSuccess);
+      if (result.session) {
+        await syncDomainSession(domainSessionClient, result.session.access_token);
+        onSignedIn(result.session);
+      }
+      if (mode === 'signIn') {
+        setIsOpen(false);
+      } else {
+        setAuthNotice(t.signUpSuccess);
+      }
     }
     setPending(false);
   }
 
-  if (!authClient) {
+  async function handleSignOut(): Promise<void> {
+    try {
+      await domainSessionClient.clear();
+    } catch {
+      onAuthError(t.signOutSharedError);
+      return;
+    }
+    await authClient?.signOut();
+    onSignedOut();
+    setIsOpen(false);
+  }
+
+  if (!authClient && !authIdentity) {
     return <div className="auth-status disabled">{t.authNotConfigured}</div>;
   }
 
@@ -583,8 +658,8 @@ function AuthPanel({
     );
   }
 
-  if (session) {
-    const userLabel = session.user.email ?? session.user.id;
+  if (authIdentity) {
+    const userLabel = getAuthIdentityLabel(authIdentity);
     return (
       <div className="auth-menu" ref={popoverRef}>
         <button type="button" className="signed-in-user-trigger" aria-label={userLabel} aria-expanded={isOpen} aria-controls="gallery-account-popover" title={userLabel} onClick={() => setIsOpen(open => !open)}>
@@ -593,10 +668,11 @@ function AuthPanel({
         {isOpen ? (
           <div id="gallery-account-popover" className="auth-popover account-popover" role="menu">
             <p className="account-email">{userLabel}</p>
-            <button type="button" className="account-menu-item" role="menuitem" onClick={() => void authClient.signOut()}>
+            <button type="button" className="account-menu-item" role="menuitem" onClick={() => void handleSignOut()}>
               <LogOut size={16} aria-hidden="true" />
               {t.signOut}
             </button>
+            {authError ? <p className="auth-error">{authError}</p> : null}
           </div>
         ) : null}
       </div>
@@ -661,6 +737,34 @@ function AuthPanel({
       ) : null}
     </div>
   );
+}
+
+async function syncDomainSession(domainSessionClient: GalleryDomainSessionClient, accessToken: string): Promise<void> {
+  try {
+    await domainSessionClient.sync(accessToken);
+  } catch {
+    // The Supabase session remains usable on this origin even if the shared domain cookie cannot be refreshed.
+  }
+}
+
+function createSceneApiAuth(identity: GalleryAuthIdentity | null): SceneApiAuth | null {
+  if (!identity) {
+    return null;
+  }
+  if (identity.kind === 'supabase') {
+    return {
+      kind: 'bearer',
+      token: identity.session.access_token,
+    };
+  }
+  return { kind: 'domain-session' };
+}
+
+function getAuthIdentityLabel(identity: GalleryAuthIdentity): string {
+  if (identity.kind === 'supabase') {
+    return identity.session.user.email ?? identity.session.user.id;
+  }
+  return identity.session.user.id;
 }
 
 function SceneList({

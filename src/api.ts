@@ -41,11 +41,12 @@ export interface ApiError {
 }
 
 export type ApiResult<T> = { ok: true; data: T } | { ok: false; error: ApiError };
+export type SceneApiAuth = { kind: 'bearer'; token: string } | { kind: 'domain-session' };
 
 export interface SceneApiClient {
   listPublicScenes(offset: number, filters?: PublicSceneFilters): Promise<ApiResult<SceneListResult>>;
-  listMyScenes(token: string, offset: number): Promise<ApiResult<SceneListResult>>;
-  updateSceneVisibility(token: string, sceneId: string, visibility: SceneVisibility): Promise<ApiResult<SceneRecord>>;
+  listMyScenes(auth: SceneApiAuth, offset: number): Promise<ApiResult<SceneListResult>>;
+  updateSceneVisibility(auth: SceneApiAuth, sceneId: string, visibility: SceneVisibility): Promise<ApiResult<SceneRecord>>;
 }
 
 const galleryPageSize = 12;
@@ -62,27 +63,21 @@ export function createSceneApiClient(baseUrl: string, fetcher: typeof fetch = fe
       }
       return fetchSceneList(fetcher, url);
     },
-    listMyScenes(token: string, offset: number) {
-      return fetchSceneList(fetcher, new URL(`/api/v1/scenes?offset=${offset}&limit=${galleryPageSize}`, baseUrl), token);
+    listMyScenes(auth: SceneApiAuth, offset: number) {
+      return fetchSceneList(fetcher, new URL(`/api/v1/scenes?offset=${offset}&limit=${galleryPageSize}`, baseUrl), auth);
     },
-    updateSceneVisibility(token: string, sceneId: string, visibility: SceneVisibility) {
-      return updateSceneRecord(fetcher, new URL(`/api/v1/scenes/${encodeURIComponent(sceneId)}`, baseUrl), token, {
+    updateSceneVisibility(auth: SceneApiAuth, sceneId: string, visibility: SceneVisibility) {
+      return updateSceneRecord(fetcher, new URL(`/api/v1/scenes/${encodeURIComponent(sceneId)}`, baseUrl), auth, {
         visibility,
       });
     },
   };
 }
 
-async function fetchSceneList(fetcher: typeof fetch, url: URL, token?: string): Promise<ApiResult<SceneListResult>> {
+async function fetchSceneList(fetcher: typeof fetch, url: URL, auth?: SceneApiAuth): Promise<ApiResult<SceneListResult>> {
   let response: Response;
   try {
-    const init: RequestInit = token
-      ? {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      : {};
+    const init: RequestInit = auth ? createAuthRequestInit(auth) : {};
     response = await fetcher(url, init);
   } catch {
     return {
@@ -134,17 +129,14 @@ async function fetchSceneList(fetcher: typeof fetch, url: URL, token?: string): 
 async function updateSceneRecord(
   fetcher: typeof fetch,
   url: URL,
-  token: string,
+  auth: SceneApiAuth,
   body: Partial<Pick<SceneRecord, 'visibility'>>,
 ): Promise<ApiResult<SceneRecord>> {
   let response: Response;
   try {
     response = await fetcher(url, {
       method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
+      ...createAuthRequestInit(auth, { 'Content-Type': 'application/json' }),
       body: JSON.stringify(body),
     });
   } catch {
@@ -191,6 +183,22 @@ async function updateSceneRecord(
   return {
     ok: true,
     data: record,
+  };
+}
+
+function createAuthRequestInit(auth: SceneApiAuth, headers: Record<string, string> = {}): RequestInit {
+  if (auth.kind === 'bearer') {
+    return {
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${auth.token}`,
+      },
+    };
+  }
+
+  return {
+    credentials: 'include',
+    headers,
   };
 }
 

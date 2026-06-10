@@ -2,9 +2,9 @@ import { createClient, type Session, type SupabaseClient } from '@supabase/supab
 
 export interface GalleryAuthClient {
   getSession(): Promise<Session | null>;
-  onSessionChange(callback: (session: Session | null) => void): () => void;
-  signIn(email: string, password: string): Promise<{ error: string | null }>;
-  signUp(email: string, password: string, nickname: string): Promise<{ error: string | null }>;
+  onSessionChange(callback: (session: Session | null, event: string) => void): () => void;
+  signIn(email: string, password: string): Promise<{ error: string | null; session: Session | null }>;
+  signUp(email: string, password: string, nickname: string): Promise<{ error: string | null; session: Session | null }>;
   signOut(): Promise<void>;
 }
 
@@ -28,20 +28,20 @@ class SupabaseGalleryAuthClient implements GalleryAuthClient {
     return data.session;
   }
 
-  onSessionChange(callback: (session: Session | null) => void): () => void {
-    const { data } = this.supabase.auth.onAuthStateChange((_event, session) => {
-      callback(session);
+  onSessionChange(callback: (session: Session | null, event: string) => void): () => void {
+    const { data } = this.supabase.auth.onAuthStateChange((event, session) => {
+      callback(session, event);
     });
     return () => data.subscription.unsubscribe();
   }
 
-  async signIn(email: string, password: string): Promise<{ error: string | null }> {
-    const { error } = await this.supabase.auth.signInWithPassword({ email, password });
-    return { error: error?.message ?? null };
+  async signIn(email: string, password: string): Promise<{ error: string | null; session: Session | null }> {
+    const { data, error } = await this.supabase.auth.signInWithPassword({ email, password });
+    return { error: error?.message ?? null, session: data.session };
   }
 
-  async signUp(email: string, password: string, nickname: string): Promise<{ error: string | null }> {
-    const { error } = await this.supabase.auth.signUp({
+  async signUp(email: string, password: string, nickname: string): Promise<{ error: string | null; session: Session | null }> {
+    const { data, error } = await this.supabase.auth.signUp({
       email,
       password,
       options: {
@@ -50,7 +50,7 @@ class SupabaseGalleryAuthClient implements GalleryAuthClient {
         },
       },
     });
-    return { error: error?.message ?? null };
+    return { error: error?.message ?? null, session: data.session };
   }
 
   async signOut(): Promise<void> {
