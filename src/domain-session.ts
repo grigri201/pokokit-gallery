@@ -1,5 +1,6 @@
 export interface GalleryDomainSessionUser {
   id: string;
+  nickname?: string | null;
 }
 
 export interface GalleryDomainSession {
@@ -10,12 +11,15 @@ export interface GalleryDomainSession {
 
 export interface GalleryDomainSessionClient {
   getSession(): Promise<GalleryDomainSession | null>;
+  getProfile(accessToken?: string | null): Promise<GalleryDomainSession>;
   sync(accessToken: string): Promise<void>;
+  updateProfile(nickname: string, accessToken?: string | null): Promise<GalleryDomainSession>;
   clear(): Promise<void>;
 }
 
 export function createGalleryDomainSessionClient(baseUrl: string, fetcher: typeof fetch = fetch): GalleryDomainSessionClient {
   const endpoint = new URL('/api/v1/auth/session', baseUrl);
+  const profileEndpoint = new URL('/api/v1/auth/profile', baseUrl);
 
   return {
     async getSession() {
@@ -38,6 +42,26 @@ export function createGalleryDomainSessionClient(baseUrl: string, fetcher: typeo
 
       return session;
     },
+    async getProfile(accessToken) {
+      const response = await fetcher(profileEndpoint, createProfileRequestInit(accessToken));
+      if (!response.ok) {
+        throw new Error('Pokokit profile restore failed.');
+      }
+
+      let body: unknown;
+      try {
+        body = await response.json();
+      } catch {
+        throw new Error('Pokokit profile returned invalid JSON.');
+      }
+
+      const profile = parseDomainSessionEnvelope(body);
+      if (!profile) {
+        throw new Error('Pokokit profile returned an invalid payload.');
+      }
+
+      return profile;
+    },
     async sync(accessToken) {
       if (!accessToken) {
         throw new Error('Supabase access token is unavailable.');
@@ -54,6 +78,34 @@ export function createGalleryDomainSessionClient(baseUrl: string, fetcher: typeo
         throw new Error('Pokokit domain session sync failed.');
       }
     },
+    async updateProfile(nickname, accessToken) {
+      const response = await fetcher(profileEndpoint, {
+        ...createProfileRequestInit(accessToken),
+        method: 'PATCH',
+        headers: {
+          ...createProfileRequestHeaders(accessToken),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nickname }),
+      });
+      if (!response.ok) {
+        throw new Error('Pokokit profile update failed.');
+      }
+
+      let body: unknown;
+      try {
+        body = await response.json();
+      } catch {
+        throw new Error('Pokokit profile returned invalid JSON.');
+      }
+
+      const profile = parseDomainSessionEnvelope(body);
+      if (!profile) {
+        throw new Error('Pokokit profile returned an invalid payload.');
+      }
+
+      return profile;
+    },
     async clear() {
       const response = await fetcher(endpoint, {
         method: 'DELETE',
@@ -64,6 +116,16 @@ export function createGalleryDomainSessionClient(baseUrl: string, fetcher: typeo
       }
     },
   };
+}
+
+function createProfileRequestInit(accessToken: string | null | undefined): RequestInit {
+  return accessToken
+    ? { headers: createProfileRequestHeaders(accessToken) }
+    : { credentials: 'include' };
+}
+
+function createProfileRequestHeaders(accessToken: string | null | undefined): Record<string, string> {
+  return accessToken ? { Authorization: `Bearer ${accessToken}` } : {};
 }
 
 function parseDomainSessionEnvelope(value: unknown): GalleryDomainSession | null | undefined {
@@ -82,6 +144,7 @@ function parseDomainSessionEnvelope(value: unknown): GalleryDomainSession | null
   const session: GalleryDomainSession = {
     user: {
       id: user.id,
+      nickname: typeof user.nickname === 'string' ? user.nickname : null,
     },
   };
   if (typeof value.data.role === 'string') {

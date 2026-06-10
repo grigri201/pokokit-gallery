@@ -41,6 +41,7 @@ const pokemonColorBySlug = new Map(pokemonColorEntries.map(entry => [entry.slug,
 const POKOKIT_HOME_URL = 'https://www.pokokit.com';
 
 interface GalleryCopy {
+  account: string;
   brandTitle: string;
   myScenes: string;
   signInToViewScenes: string;
@@ -65,6 +66,10 @@ interface GalleryCopy {
   signUpSuccess: string;
   signOut: string;
   signOutSharedError: string;
+  saveNickname: string;
+  savingNickname: string;
+  nicknameSaved: string;
+  nicknameUpdateError: string;
   openSignIn: string;
   publicToggle: string;
   publicToggleTitle: string;
@@ -82,6 +87,7 @@ interface GalleryCopy {
 
 const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
   en: {
+    account: 'Account',
     brandTitle: 'Gallery',
     myScenes: 'My scenes',
     signInToViewScenes: 'Sign in to view scenes saved to your account.',
@@ -102,10 +108,14 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     password: 'Password',
     nickname: 'Nickname',
     signIn: 'Sign in',
-    signUp: 'Register',
+    signUp: 'Sign up',
     signUpSuccess: 'Registration submitted. Check your email if confirmation is required.',
     signOut: 'Sign out',
     signOutSharedError: 'Unable to clear shared Pokokit session. Try signing out again.',
+    saveNickname: 'Save nickname',
+    savingNickname: 'Saving',
+    nicknameSaved: 'Nickname saved',
+    nicknameUpdateError: 'Unable to update nickname.',
     openSignIn: 'Sign in',
     publicToggle: 'Public',
     publicToggleTitle: 'Make private',
@@ -121,6 +131,7 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     languageButton: '中文',
   },
   zh: {
+    account: '账号',
     brandTitle: '画廊',
     myScenes: '我的场景',
     signInToViewScenes: '登录后查看保存到你账户的场景。',
@@ -145,6 +156,10 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     signUpSuccess: '注册已提交。如果需要邮箱确认，请检查你的邮箱。',
     signOut: '退出登录',
     signOutSharedError: '无法清除 Pokokit 共享登录态。请重试退出登录。',
+    saveNickname: '保存昵称',
+    savingNickname: '保存中',
+    nicknameSaved: '昵称已保存',
+    nicknameUpdateError: '无法保存昵称。',
     openSignIn: '登录',
     publicToggle: '公开',
     publicToggleTitle: '改为私有',
@@ -383,6 +398,13 @@ export function App(): ReactElement {
     setMyOffset(myScenes.data.page.nextOffset);
   }
 
+  function refreshSceneListsAfterProfileUpdate(): void {
+    setMyOffset(0);
+    setMyReloadToken(token => token + 1);
+    setPublicOffset(0);
+    setPublicReloadToken(token => token + 1);
+  }
+
   async function updateMySceneVisibility(scene: SceneRecord, visibility: SceneVisibility): Promise<boolean> {
     const sceneAuth = createSceneApiAuth(authIdentity);
     if (!sceneAuth || updatingVisibilitySceneIds.has(scene.id)) {
@@ -460,6 +482,7 @@ export function App(): ReactElement {
               setAuthIdentity(null);
               setMyOffset(0);
             }}
+            onNicknameUpdated={refreshSceneListsAfterProfileUpdate}
             onAuthError={setAuthError}
             t={t}
           />
@@ -559,6 +582,7 @@ function AuthPanel({
   authIdentity,
   onSignedIn,
   onSignedOut,
+  onNicknameUpdated,
   onAuthError,
   t,
 }: {
@@ -569,12 +593,16 @@ function AuthPanel({
   authIdentity: GalleryAuthIdentity | null;
   onSignedIn: (session: Session) => void;
   onSignedOut: () => void;
+  onNicknameUpdated: () => void;
   onAuthError: (error: string | null) => void;
   t: GalleryCopy;
 }): ReactElement {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
+  const [profileNickname, setProfileNickname] = useState('');
+  const [profilePending, setProfilePending] = useState(false);
+  const [profileNotice, setProfileNotice] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<'signIn' | 'signUp'>('signIn');
@@ -608,6 +636,35 @@ function AuthPanel({
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!authIdentity) {
+      setProfileNickname('');
+      setProfileNotice(null);
+      return undefined;
+    }
+
+    let cancelled = false;
+    const identityUserId = getAuthIdentityUserId(authIdentity);
+    const fallbackNickname = getAuthIdentityNickname(authIdentity) ?? '';
+    setProfileNickname(fallbackNickname);
+    setProfileNotice(null);
+
+    domainSessionClient.getProfile(getAuthIdentityAccessToken(authIdentity))
+      .then(profile => {
+        if (cancelled || profile.user.id !== identityUserId) {
+          return;
+        }
+        setProfileNickname(profile.user.nickname ?? fallbackNickname);
+      })
+      .catch(() => {
+        // The account menu remains usable with the restored identity when profile refresh fails.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [authIdentity, domainSessionClient]);
+
   async function handleAuthSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
     if (!authClient || pending) {
@@ -633,7 +690,40 @@ function AuthPanel({
     setPending(false);
   }
 
+  async function handleProfileSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
+    if (!authIdentity || profilePending) {
+      return;
+    }
+
+    const nextNickname = profileNickname.trim();
+    if (!nextNickname || nextNickname.length > 80) {
+      onAuthError(t.nicknameUpdateError);
+      return;
+    }
+
+    setProfilePending(true);
+    setProfileNotice(null);
+    onAuthError(null);
+
+    try {
+      const profile = await domainSessionClient.updateProfile(nextNickname, getAuthIdentityAccessToken(authIdentity));
+      if (profile.user.id === getAuthIdentityUserId(authIdentity)) {
+        setProfileNickname(profile.user.nickname ?? nextNickname);
+      }
+      setProfileNotice(t.nicknameSaved);
+      onNicknameUpdated();
+    } catch {
+      onAuthError(t.nicknameUpdateError);
+    } finally {
+      setProfilePending(false);
+    }
+  }
+
   async function handleSignOut(): Promise<void> {
+    if (profilePending) {
+      return;
+    }
     try {
       await domainSessionClient.clear();
     } catch {
@@ -660,15 +750,41 @@ function AuthPanel({
 
   if (authIdentity) {
     const userLabel = getAuthIdentityLabel(authIdentity);
+    const accountLabel = profileNickname.trim() || userLabel;
     return (
       <div className="auth-menu" ref={popoverRef}>
-        <button type="button" className="signed-in-user-trigger" aria-label={userLabel} aria-expanded={isOpen} aria-controls="gallery-account-popover" title={userLabel} onClick={() => setIsOpen(open => !open)}>
+        <button type="button" className="signed-in-user-trigger" aria-label={accountLabel} aria-expanded={isOpen} aria-controls="gallery-account-popover" title={accountLabel} onClick={() => setIsOpen(open => !open)}>
           <User size={15} aria-hidden="true" />
         </button>
         {isOpen ? (
-          <div id="gallery-account-popover" className="auth-popover account-popover" role="menu">
-            <p className="account-email">{userLabel}</p>
-            <button type="button" className="account-menu-item" role="menuitem" onClick={() => void handleSignOut()}>
+          <div id="gallery-account-popover" className="auth-popover account-popover" role="dialog" aria-label={t.account}>
+            <div className="account-email">
+              <strong>{accountLabel}</strong>
+              {accountLabel !== userLabel ? <span>{userLabel}</span> : null}
+            </div>
+            <form className="account-profile-form" onSubmit={event => void handleProfileSubmit(event)}>
+              <label>
+                <span>{t.nickname}</span>
+                <input
+                  value={profileNickname}
+                  type="text"
+                  autoComplete="nickname"
+                  maxLength={80}
+                  disabled={profilePending}
+                  onChange={event => {
+                    setProfileNickname(event.target.value);
+                    setProfileNotice(null);
+                    onAuthError(null);
+                  }}
+                />
+              </label>
+              <button type="submit" className="primary-button account-profile-submit" disabled={profilePending || !profileNickname.trim()}>
+                {profilePending ? <LoaderCircle className="spin" size={16} aria-hidden="true" /> : <User size={16} aria-hidden="true" />}
+                {profilePending ? t.savingNickname : t.saveNickname}
+              </button>
+            </form>
+            {profileNotice ? <p className="auth-notice account-profile-notice">{profileNotice}</p> : null}
+            <button type="button" className="account-menu-item" disabled={profilePending} onClick={() => void handleSignOut()}>
               <LogOut size={16} aria-hidden="true" />
               {t.signOut}
             </button>
@@ -765,6 +881,37 @@ function getAuthIdentityLabel(identity: GalleryAuthIdentity): string {
     return identity.session.user.email ?? identity.session.user.id;
   }
   return identity.session.user.id;
+}
+
+function getAuthIdentityUserId(identity: GalleryAuthIdentity): string {
+  return identity.kind === 'supabase' ? identity.session.user.id : identity.session.user.id;
+}
+
+function getAuthIdentityAccessToken(identity: GalleryAuthIdentity): string | null {
+  return identity.kind === 'supabase' ? identity.session.access_token : null;
+}
+
+function getAuthIdentityNickname(identity: GalleryAuthIdentity): string | null {
+  if (identity.kind === 'domain-session') {
+    return identity.session.user.nickname?.trim() || null;
+  }
+
+  const metadata = identity.session.user.user_metadata;
+  if (!isRecord(metadata)) {
+    return null;
+  }
+  const nicknameFields = ['nickname', 'display_name', 'name', 'username'];
+  for (const field of nicknameFields) {
+    const value = metadata[field];
+    if (typeof value === 'string' && value.trim()) {
+      return value.trim();
+    }
+  }
+  return null;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
 function SceneList({

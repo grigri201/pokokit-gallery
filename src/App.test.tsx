@@ -22,7 +22,9 @@ const mocks = vi.hoisted(() => ({
   },
   domainSessionClient: {
     getSession: vi.fn(),
+    getProfile: vi.fn(),
     sync: vi.fn(),
+    updateProfile: vi.fn(),
     clear: vi.fn(),
   },
 }));
@@ -59,7 +61,9 @@ describe('Gallery App domain session restore', () => {
     mocks.authClient.signUp.mockResolvedValue({ error: null, session: null });
     mocks.authClient.signOut.mockResolvedValue(undefined);
     mocks.domainSessionClient.getSession.mockResolvedValue(null);
+    mocks.domainSessionClient.getProfile.mockResolvedValue(domainSession('profile-user'));
     mocks.domainSessionClient.sync.mockResolvedValue(undefined);
+    mocks.domainSessionClient.updateProfile.mockResolvedValue(domainSession('profile-user'));
     mocks.domainSessionClient.clear.mockResolvedValue(undefined);
     mocks.apiClient.listPublicScenes.mockResolvedValue(okSceneList([sceneFixture('public-scene', 'Public scene')]));
     mocks.apiClient.listMyScenes.mockResolvedValue(okSceneList([sceneFixture('owned-scene', 'Owned scene')]));
@@ -142,6 +146,57 @@ describe('Gallery App domain session restore', () => {
     expect(await screen.findByRole('button', { name: 'signed-in@example.com' })).toBeVisible();
   });
 
+  it('passes the entered nickname when Gallery sign-up is submitted', async () => {
+    render(<App />);
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Sign in' }));
+    const form = screen.getAllByRole('button', { name: 'Sign in' })
+      .find(button => button.closest('form'))
+      ?.closest('form');
+    if (!form) {
+      throw new Error('Expected sign-in form to be open.');
+    }
+
+    fireEvent.click(within(form).getByRole('button', { name: 'Sign up' }));
+    fireEvent.change(within(form).getByLabelText('Email'), { target: { value: 'new-user@example.com' } });
+    fireEvent.change(within(form).getByLabelText('Nickname'), { target: { value: 'Pixel Panda' } });
+    fireEvent.change(within(form).getByLabelText('Password'), { target: { value: 'password123' } });
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (!submitButton) {
+      throw new Error('Expected sign-up submit button.');
+    }
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(mocks.authClient.signUp).toHaveBeenCalledWith('new-user@example.com', 'password123', 'Pixel Panda');
+    });
+  });
+
+  it('updates nickname from the signed-in account menu', async () => {
+    mocks.authClient.getSession.mockResolvedValue(supabaseSession('local-user', 'local@example.com', 'local-token'));
+    mocks.domainSessionClient.getSession.mockResolvedValue(domainSession('local-user'));
+    mocks.domainSessionClient.getProfile.mockResolvedValue(domainSession('local-user', 'Old Panda'));
+    mocks.domainSessionClient.updateProfile.mockResolvedValue(domainSession('local-user', 'New Panda'));
+
+    render(<App />);
+
+    const accountButton = await screen.findByRole('button', { name: 'Old Panda' });
+    fireEvent.click(accountButton);
+    const dialog = screen.getByRole('dialog', { name: 'Account' });
+
+    expect(within(dialog).getByText('local@example.com')).toBeVisible();
+    expect(within(dialog).getByLabelText('Nickname')).toHaveValue('Old Panda');
+
+    fireEvent.change(within(dialog).getByLabelText('Nickname'), { target: { value: 'New Panda' } });
+    fireEvent.click(within(dialog).getByRole('button', { name: 'Save nickname' }));
+
+    await waitFor(() => {
+      expect(mocks.domainSessionClient.updateProfile).toHaveBeenCalledWith('New Panda', 'local-token');
+    });
+    expect(await within(dialog).findByText('Nickname saved')).toBeVisible();
+    expect(within(dialog).getByText('New Panda')).toBeVisible();
+  });
+
   it('clears the domain session on sign-out from a restored domain identity', async () => {
     mocks.domainSessionClient.getSession.mockResolvedValue(domainSession('domain-user'));
 
@@ -149,7 +204,7 @@ describe('Gallery App domain session restore', () => {
 
     const accountButton = await screen.findByRole('button', { name: 'domain-user' });
     fireEvent.click(accountButton);
-    fireEvent.click(screen.getByRole('menuitem', { name: /Sign out/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Sign out/i }));
 
     await waitFor(() => {
       expect(mocks.domainSessionClient.clear).toHaveBeenCalled();
@@ -166,7 +221,7 @@ describe('Gallery App domain session restore', () => {
 
     const accountButton = await screen.findByRole('button', { name: 'domain-user' });
     fireEvent.click(accountButton);
-    fireEvent.click(screen.getByRole('menuitem', { name: /Sign out/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Sign out/i }));
 
     await waitFor(() => {
       expect(screen.getByText('Unable to clear shared Pokokit session. Try signing out again.')).toBeVisible();
@@ -176,10 +231,11 @@ describe('Gallery App domain session restore', () => {
   });
 });
 
-function domainSession(userId: string): GalleryDomainSession {
+function domainSession(userId: string, nickname: string | null = null): GalleryDomainSession {
   return {
     user: {
       id: userId,
+      nickname,
     },
   };
 }
