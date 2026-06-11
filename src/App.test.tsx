@@ -95,6 +95,37 @@ describe('Gallery App domain session restore', () => {
     expect(mocks.apiClient.listMyScenes).not.toHaveBeenCalled();
   });
 
+  it('uses PSE author and ref links on scene cards', async () => {
+    mocks.apiClient.listPublicScenes.mockResolvedValue(okSceneList([
+      sceneFixture('pse-scene', 'PSE scene', {
+        author: 'https://saved-author.example/profile',
+        author_nickname: 'Saved Author',
+        pse: [
+          'PSE3',
+          'F.F.1',
+          'https%3A%2F%2Fauthor%2Eexample%2Fprofile',
+          'https%3A%2F%2Fref%2Eexample%2Fscene',
+          'Name.0.0._._',
+          '0.1%E5%B1%82',
+          '_',
+          '_',
+        ].join('~'),
+      }),
+    ]));
+
+    render(<App />);
+
+    expect(await screen.findByText('PSE scene')).toBeVisible();
+    const authorLink = screen.getByRole('link', { name: 'author.example/profile' });
+    expect(authorLink).toHaveAttribute('href', 'https://author.example/profile');
+    expect(authorLink).toHaveAttribute('target', '_blank');
+    expect(screen.queryByRole('link', { name: 'saved-author.example/profile' })).not.toBeInTheDocument();
+
+    const refLink = screen.getByRole('link', { name: 'Open ref link' });
+    expect(refLink).toHaveAttribute('href', 'https://ref.example/scene');
+    expect(refLink).toHaveAttribute('target', '_blank');
+  });
+
   it('treats a cleared domain session as shared sign-out truth over a local Supabase session', async () => {
     mocks.authClient.getSession.mockResolvedValue(supabaseSession('local-user', 'local@example.com', 'local-token'));
     mocks.domainSessionClient.getSession.mockResolvedValue(null);
@@ -282,7 +313,7 @@ function sceneList(scenes: SceneRecord[]): SceneListResult {
   };
 }
 
-function sceneFixture(id: string, name: string): SceneRecord {
+function sceneFixture(id: string, name: string, overrides: Partial<SceneRecord> = {}): SceneRecord {
   return {
     id,
     owner_user_id: 'owner-1',
@@ -294,5 +325,6 @@ function sceneFixture(id: string, name: string): SceneRecord {
     author_nickname: 'owner',
     created_at: '2026-06-10T00:00:00.000Z',
     updated_at: '2026-06-10T00:00:00.000Z',
+    ...overrides,
   };
 }

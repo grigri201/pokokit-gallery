@@ -4,8 +4,14 @@ export interface SceneDimensionSummary {
   height: number;
 }
 
+export interface ScenePseAttribution {
+  author: string | null;
+  ref: string | null;
+}
+
 const legacyCodecPrefix = 'PSE1';
 const dimensionedCodecPrefix = 'PSE2';
+const currentCodecPrefix = 'PSE3';
 const empty = '_';
 const radixAlphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
@@ -20,12 +26,12 @@ export function summarizeScenePse(value: string): SceneDimensionSummary | null {
     };
   }
 
-  if (prefix !== dimensionedCodecPrefix) {
+  if (prefix !== dimensionedCodecPrefix && prefix !== currentCodecPrefix) {
     return null;
   }
 
   const encodedDimensions = parts[0];
-  const encodedLevels = parts[2];
+  const encodedLevels = prefix === currentCodecPrefix ? getPse3LevelsPart(parts) : parts[2];
   if (!encodedDimensions) {
     return null;
   }
@@ -39,6 +45,70 @@ export function summarizeScenePse(value: string): SceneDimensionSummary | null {
     ...dimensions,
     height: countBuildingLevels(encodedLevels),
   };
+}
+
+export function getScenePseAttribution(value: string): ScenePseAttribution {
+  const [prefix, ...parts] = value.trim().split('~');
+  if (prefix !== currentCodecPrefix) {
+    return createEmptyAttribution();
+  }
+
+  if (parts.length >= 7) {
+    return {
+      author: decodeHttpsText(parts[1]),
+      ref: decodeHttpsText(parts[2]),
+    };
+  }
+
+  if (parts.length === 6) {
+    const [author, ref, ...extra] = (parts[1] ?? '').split('.');
+    if (extra.length > 0) {
+      return createEmptyAttribution();
+    }
+    return {
+      author: decodeHttpsText(author),
+      ref: decodeHttpsText(ref),
+    };
+  }
+
+  return createEmptyAttribution();
+}
+
+function getPse3LevelsPart(parts: string[]): string | undefined {
+  if (parts.length >= 7) {
+    return parts[4];
+  }
+  if (parts.length === 6) {
+    return parts[3];
+  }
+  return parts[2];
+}
+
+function createEmptyAttribution(): ScenePseAttribution {
+  return {
+    author: null,
+    ref: null,
+  };
+}
+
+function decodeHttpsText(value: string | undefined): string | null {
+  if (!value || value === empty) {
+    return null;
+  }
+  try {
+    const decoded = decodeURIComponent(value).trim();
+    return isHttpsUrl(decoded) ? decoded : null;
+  } catch {
+    return null;
+  }
+}
+
+function isHttpsUrl(value: string): boolean {
+  try {
+    return new URL(value).protocol === 'https:';
+  } catch {
+    return false;
+  }
 }
 
 function decodeDimensions(value: string): Pick<SceneDimensionSummary, 'length' | 'width'> | null {

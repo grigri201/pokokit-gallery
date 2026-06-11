@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { createSceneApiClient, type SceneRecord } from './api';
 import { buildEditorSceneUrl, loadGalleryConfig } from './config';
-import { summarizeScenePse } from './scene-summary';
+import { getScenePseAttribution, summarizeScenePse } from './scene-summary';
 
 describe('gallery config', () => {
   it('uses production Pokokit service defaults when scene urls are not configured', () => {
@@ -202,6 +202,52 @@ describe('scene summary', () => {
       length: 7,
       width: 7,
       height: 2,
+    });
+  });
+
+  it('summarizes PSE3 scenes and extracts split author and ref links', () => {
+    const pse = [
+      'PSE3',
+      'E.C.1',
+      'https%3A%2F%2Fauthor%2Eexample%2Fprofile',
+      'https%3A%2F%2Fref%2Eexample%2Fscene',
+      'Name.0.0._._',
+      '0.1%E5%B1%82;1.2%E5%B1%82',
+      '_',
+      '_',
+    ].join('~');
+
+    expect(summarizeScenePse(pse)).toEqual({
+      length: 16,
+      width: 14,
+      height: 2,
+    });
+    expect(getScenePseAttribution(pse)).toEqual({
+      author: 'https://author.example/profile',
+      ref: 'https://ref.example/scene',
+    });
+  });
+
+  it('extracts legacy combined PSE3 attribution and ignores non-https links', () => {
+    expect(getScenePseAttribution(
+      [
+        'PSE3',
+        'F.F.1',
+        'https%3A%2F%2Fauthor%2Eexample%2Fold.https%3A%2F%2Fref%2Eexample%2Fold',
+        'Name.0.0._._',
+        '0.1%E5%B1%82',
+        '_',
+        '_',
+      ].join('~'),
+    )).toEqual({
+      author: 'https://author.example/old',
+      ref: 'https://ref.example/old',
+    });
+    expect(getScenePseAttribution(
+      'PSE3~F.F.1~http%3A%2F%2Fauthor%2Eexample._~Name.0.0._._~0.1%E5%B1%82~_~_',
+    )).toEqual({
+      author: null,
+      ref: null,
     });
   });
 

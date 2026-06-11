@@ -1,4 +1,4 @@
-import { Languages, LoaderCircle, LogIn, LogOut, RefreshCw, Sparkles, User, UserPlus } from 'lucide-react';
+import { ExternalLink, Languages, LoaderCircle, LogIn, LogOut, RefreshCw, Sparkles, User, UserPlus } from 'lucide-react';
 import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent, ReactElement } from 'react';
 import type { Session } from '@supabase/supabase-js';
@@ -8,7 +8,7 @@ import { createGalleryAuthClient, type GalleryAuthClient } from './auth';
 import { buildEditorSceneUrl, loadGalleryConfig } from './config';
 import pokemonColorsData from './data/pokemon-colors.generated.json';
 import { createGalleryDomainSessionClient, type GalleryDomainSession, type GalleryDomainSessionClient } from './domain-session';
-import { summarizeScenePse, type SceneDimensionSummary } from './scene-summary';
+import { getScenePseAttribution, summarizeScenePse, type SceneDimensionSummary, type ScenePseAttribution } from './scene-summary';
 
 type LoadState<T> =
   | { status: 'loading' }
@@ -74,6 +74,8 @@ interface GalleryCopy {
   publicToggle: string;
   publicToggleTitle: string;
   privateToggleTitle: string;
+  openRef: string;
+  openRefTitle: string;
   confirmPublicTitle: string;
   confirmPublicBody: string;
   confirmPublicCancel: string;
@@ -120,6 +122,8 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     publicToggle: 'Public',
     publicToggleTitle: 'Make private',
     privateToggleTitle: 'Make public',
+    openRef: 'Ref',
+    openRefTitle: 'Open ref link',
     confirmPublicTitle: 'Make this scene public?',
     confirmPublicBody: 'Public scenes can be seen by other Gallery visitors.',
     confirmPublicCancel: 'Keep private',
@@ -164,6 +168,8 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     publicToggle: '公开',
     publicToggleTitle: '改为私有',
     privateToggleTitle: '改为公开',
+    openRef: 'Ref',
+    openRefTitle: '打开 Ref 链接',
     confirmPublicTitle: '公开这个场景？',
     confirmPublicBody: '公开的 scene 可以被其他 Gallery 访问者看到。',
     confirmPublicCancel: '保持私有',
@@ -1003,7 +1009,9 @@ function SceneCard({
   const editorUrl = buildEditorSceneUrl(sceneEditorUrl, scene.id);
   const pokemonImage = getPokemonImageUrl(scene.pokemon);
   const dimensions = summarizeScenePse(scene.pse);
-  const author = getSceneAuthor(scene);
+  const pseAttribution = getScenePseAttribution(scene.pse);
+  const author = getSceneAuthor(scene, pseAttribution);
+  const refUrl = pseAttribution.ref;
 
   function openEditor(): void {
     window.location.assign(editorUrl);
@@ -1026,12 +1034,13 @@ function SceneCard({
       onClick={openEditor}
       onKeyDown={handleKeyDown}
     >
-      {actions ? (
+      {actions || refUrl ? (
         <div
           className="scene-card-actions"
           onClick={event => event.stopPropagation()}
           onKeyDown={event => event.stopPropagation()}
         >
+          {refUrl ? <SceneRefLink url={refUrl} t={t} /> : null}
           {actions}
         </div>
       ) : null}
@@ -1123,6 +1132,24 @@ function ConfirmPublicSceneDialog({
   );
 }
 
+function SceneRefLink({ url, t }: { url: string; t: GalleryCopy }): ReactElement {
+  return (
+    <a
+      className="scene-ref-link"
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={t.openRefTitle}
+      title={t.openRefTitle}
+      onClick={event => event.stopPropagation()}
+      onKeyDown={event => event.stopPropagation()}
+    >
+      <ExternalLink size={13} aria-hidden="true" />
+      <span>{t.openRef}</span>
+    </a>
+  );
+}
+
 function SceneAuthor({ author, t }: { author: { label: string; url: string | null }; t: GalleryCopy }): ReactElement {
   return (
     <p className="scene-author-line">
@@ -1180,7 +1207,15 @@ function formatDimensionFormula(dimensions: SceneDimensionSummary | null): strin
   return `${dimensions.length}*${dimensions.width}*${dimensions.height}`;
 }
 
-function getSceneAuthor(scene: SceneRecord): { label: string; url: string | null } | null {
+function getSceneAuthor(scene: SceneRecord, pseAttribution: ScenePseAttribution): { label: string; url: string | null } | null {
+  const pseAuthorUrl = pseAttribution.author;
+  if (pseAuthorUrl) {
+    return {
+      label: formatAuthorUrl(pseAuthorUrl),
+      url: pseAuthorUrl,
+    };
+  }
+
   const authorUrl = scene.author?.trim();
   if (authorUrl && isHttpsUrl(authorUrl)) {
     return {
