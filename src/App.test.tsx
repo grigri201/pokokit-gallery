@@ -21,6 +21,7 @@ const mocks = vi.hoisted(() => ({
     signUp: vi.fn(),
     signOut: vi.fn(),
   },
+  createGalleryAuthClient: vi.fn(),
   domainSessionClient: {
     getSession: vi.fn(),
     getProfile: vi.fn(),
@@ -35,7 +36,7 @@ vi.mock('./api', () => ({
 }));
 
 vi.mock('./auth', () => ({
-  createGalleryAuthClient: () => mocks.authClient,
+  createGalleryAuthClient: mocks.createGalleryAuthClient,
 }));
 
 vi.mock('./config', () => ({
@@ -56,6 +57,7 @@ describe('Gallery App domain session restore', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     window.localStorage.clear();
+    mocks.createGalleryAuthClient.mockReturnValue(mocks.authClient);
     mocks.authClient.getSession.mockResolvedValue(null);
     mocks.authClient.onSessionChange.mockReturnValue(() => undefined);
     mocks.authClient.signIn.mockResolvedValue({ error: null, session: null });
@@ -95,6 +97,17 @@ describe('Gallery App domain session restore', () => {
     expect(await screen.findByText('Sign in to view scenes saved to your account.')).toBeVisible();
     expect(screen.getByText('Public scene')).toBeVisible();
     expect(mocks.apiClient.listMyScenes).not.toHaveBeenCalled();
+  });
+
+  it('waits for shared session restore before showing missing auth config', async () => {
+    mocks.createGalleryAuthClient.mockReturnValue(null);
+    mocks.domainSessionClient.getSession.mockResolvedValue(domainSession('domain-user'));
+
+    render(<App />);
+
+    expect(screen.getByText('Checking session')).toBeVisible();
+    expect(screen.queryByText('Auth not configured')).not.toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: 'domain-user' })).toBeVisible();
   });
 
   it('uses PSE author and ref links on scene cards', async () => {

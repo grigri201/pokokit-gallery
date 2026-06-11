@@ -826,10 +826,6 @@ function AuthPanel({
     setIsOpen(false);
   }
 
-  if (!authClient && !authIdentity) {
-    return <div className="auth-status disabled">{t.authNotConfigured}</div>;
-  }
-
   if (!authReady) {
     return (
       <div className="auth-status muted">
@@ -837,6 +833,10 @@ function AuthPanel({
         {t.checkingSession}
       </div>
     );
+  }
+
+  if (!authClient && !authIdentity) {
+    return <div className="auth-status disabled">{t.authNotConfigured}</div>;
   }
 
   if (authIdentity) {

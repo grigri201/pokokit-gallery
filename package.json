@@ -7,10 +7,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.json --noEmit && vite build && node scripts/verify-bundle-secrets.mjs",
+    "build:production": "tsc -p tsconfig.json --noEmit && vite build && node scripts/verify-bundle-secrets.mjs && node scripts/verify-production-config.mjs",
+    "deploy:production": "pnpm run build:production && pnpm dlx wrangler@4.98.0 pages deploy dist --project-name pokokit-gallery --branch main",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run --environment jsdom",
     "bundle-secrets:verify": "node scripts/verify-bundle-secrets.mjs",
+    "production-config:verify": "node scripts/verify-production-config.mjs",
     "verify": "pnpm run test && pnpm run typecheck && pnpm run build"
   },
   "dependencies": {
