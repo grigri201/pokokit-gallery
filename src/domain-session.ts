@@ -1,6 +1,7 @@
 export interface GalleryDomainSessionUser {
   id: string;
   nickname?: string | null;
+  is_vip: boolean;
 }
 
 export interface GalleryDomainSession {
@@ -145,6 +146,7 @@ function parseDomainSessionEnvelope(value: unknown): GalleryDomainSession | null
     user: {
       id: user.id,
       nickname: typeof user.nickname === 'string' ? user.nickname : null,
+      is_vip: typeof user.is_vip === 'boolean' ? user.is_vip : false,
     },
   };
   if (typeof value.data.role === 'string') {

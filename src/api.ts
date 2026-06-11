@@ -31,6 +31,14 @@ export interface SceneListResult {
   page: PageInfo;
 }
 
+export interface GalleryQuota {
+  is_vip: boolean;
+  saved_count: number;
+  limit: number | null;
+  remaining: number | null;
+  can_create: boolean;
+}
+
 export interface PublicSceneFilters {
   pokemon?: string;
 }
@@ -46,6 +54,7 @@ export type SceneApiAuth = { kind: 'bearer'; token: string } | { kind: 'domain-s
 export interface SceneApiClient {
   listPublicScenes(offset: number, filters?: PublicSceneFilters): Promise<ApiResult<SceneListResult>>;
   listMyScenes(auth: SceneApiAuth, offset: number): Promise<ApiResult<SceneListResult>>;
+  getGalleryQuota(auth: SceneApiAuth): Promise<ApiResult<GalleryQuota>>;
   updateSceneVisibility(auth: SceneApiAuth, sceneId: string, visibility: SceneVisibility): Promise<ApiResult<SceneRecord>>;
 }
 
@@ -66,11 +75,65 @@ export function createSceneApiClient(baseUrl: string, fetcher: typeof fetch = fe
     listMyScenes(auth: SceneApiAuth, offset: number) {
       return fetchSceneList(fetcher, new URL(`/api/v1/scenes?offset=${offset}&limit=${galleryPageSize}`, baseUrl), auth);
     },
+    getGalleryQuota(auth: SceneApiAuth) {
+      return fetchGalleryQuota(fetcher, new URL('/api/v1/scenes/quota', baseUrl), auth);
+    },
     updateSceneVisibility(auth: SceneApiAuth, sceneId: string, visibility: SceneVisibility) {
       return updateSceneRecord(fetcher, new URL(`/api/v1/scenes/${encodeURIComponent(sceneId)}`, baseUrl), auth, {
         visibility,
       });
     },
+  };
+}
+
+async function fetchGalleryQuota(fetcher: typeof fetch, url: URL, auth: SceneApiAuth): Promise<ApiResult<GalleryQuota>> {
+  let response: Response;
+  try {
+    response = await fetcher(url, createAuthRequestInit(auth));
+  } catch {
+    return {
+      ok: false,
+      error: {
+        code: 'network_error',
+        message: 'Scene API is unavailable.',
+      },
+    };
+  }
+
+  let body: unknown;
+  try {
+    body = await response.json();
+  } catch {
+    return {
+      ok: false,
+      error: {
+        code: 'invalid_response',
+        message: 'Scene API returned invalid JSON.',
+      },
+    };
+  }
+
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: readApiError(body),
+    };
+  }
+
+  const quota = parseGalleryQuotaEnvelope(body);
+  if (!quota) {
+    return {
+      ok: false,
+      error: {
+        code: 'invalid_response',
+        message: 'Scene API returned an invalid Gallery quota.',
+      },
+    };
+  }
+
+  return {
+    ok: true,
+    data: quota,
   };
 }
 
@@ -226,6 +289,31 @@ function parseSceneRecordEnvelope(value: unknown): SceneRecord | null {
   return value.data;
 }
 
+function parseGalleryQuotaEnvelope(value: unknown): GalleryQuota | null {
+  if (!isRecord(value) || !isGalleryQuota(value.data)) {
+    return null;
+  }
+  return value.data;
+}
+
+function isGalleryQuota(value: unknown): value is GalleryQuota {
+  if (!isRecord(value)) {
+    return false;
+  }
+
+  if (
+    typeof value.is_vip === 'boolean' &&
+    isNonNegativeNumber(value.saved_count) &&
+    typeof value.can_create === 'boolean'
+  ) {
+    return value.is_vip
+      ? value.limit === null && value.remaining === null && value.can_create
+      : isNonNegativeNumber(value.limit) && isNonNegativeNumber(value.remaining);
+  }
+
+  return false;
+}
+
 function isSceneRecord(value: unknown): value is SceneRecord {
   if (!isRecord(value)) {
     return false;
@@ -289,4 +377,8 @@ function readApiError(value: unknown): ApiError {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
+}
+
+function isNonNegativeNumber(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0;
 }

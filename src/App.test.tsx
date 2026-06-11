@@ -11,6 +11,7 @@ const mocks = vi.hoisted(() => ({
   apiClient: {
     listPublicScenes: vi.fn(),
     listMyScenes: vi.fn(),
+    getGalleryQuota: vi.fn(),
     updateSceneVisibility: vi.fn(),
   },
   authClient: {
@@ -267,6 +268,7 @@ function domainSession(userId: string, nickname: string | null = null): GalleryD
     user: {
       id: userId,
       nickname,
+      is_vip: false,
     },
   };
 }

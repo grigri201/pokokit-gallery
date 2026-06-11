@@ -97,6 +97,143 @@ describe('scene api client', () => {
     });
   });
 
+  it('loads non-VIP Gallery quota metadata with bearer auth', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: {
+            is_vip: false,
+            saved_count: 4,
+            limit: 5,
+            remaining: 1,
+            can_create: true,
+          },
+        }),
+        { status: 200 },
+      ),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+    const result = await client.getGalleryQuota({ kind: 'bearer', token: 'user-token' });
+
+    expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes/quota'), {
+      headers: {
+        Authorization: 'Bearer user-token',
+      },
+    });
+    expect(result).toEqual({
+      ok: true,
+      data: {
+        is_vip: false,
+        saved_count: 4,
+        limit: 5,
+        remaining: 1,
+        can_create: true,
+      },
+    });
+  });
+
+  it('loads VIP Gallery quota metadata with domain session auth', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: {
+            is_vip: true,
+            saved_count: 8,
+            limit: null,
+            remaining: null,
+            can_create: true,
+          },
+        }),
+        { status: 200 },
+      ),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+    const result = await client.getGalleryQuota({ kind: 'domain-session' });
+
+    expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes/quota'), {
+      credentials: 'include',
+      headers: {},
+    });
+    expect(result).toMatchObject({
+      ok: true,
+      data: {
+        is_vip: true,
+        limit: null,
+        remaining: null,
+      },
+    });
+  });
+
+  it('rejects missing Gallery quota envelopes', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(JSON.stringify({ data: null }), { status: 200 }),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+
+    await expect(client.getGalleryQuota({ kind: 'bearer', token: 'user-token' })).resolves.toEqual({
+      ok: false,
+      error: {
+        code: 'invalid_response',
+        message: 'Scene API returned an invalid Gallery quota.',
+      },
+    });
+  });
+
+  it('rejects malformed Gallery quota values', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: {
+            is_vip: 'yes',
+            saved_count: -1,
+            limit: 5,
+            remaining: 6,
+            can_create: true,
+          },
+        }),
+        { status: 200 },
+      ),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+
+    await expect(client.getGalleryQuota({ kind: 'bearer', token: 'user-token' })).resolves.toMatchObject({
+      ok: false,
+      error: {
+        code: 'invalid_response',
+      },
+    });
+  });
+
+  it('rejects inconsistent Gallery quota shapes', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: {
+            is_vip: false,
+            saved_count: 5,
+            limit: null,
+            remaining: null,
+            can_create: true,
+          },
+        }),
+        { status: 200 },
+      ),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+
+    await expect(client.getGalleryQuota({ kind: 'bearer', token: 'user-token' })).resolves.toMatchObject({
+      ok: false,
+      error: {
+        code: 'invalid_response',
+      },
+    });
+  });
+
   it('updates an owned scene visibility with bearer auth', async () => {
     const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
       new Response(

@@ -10,7 +10,7 @@ describe('gallery domain session client', () => {
     const client = createGalleryDomainSessionClient('https://scene-api.example.com', fetcher);
 
     await expect(client.getSession()).resolves.toEqual({
-      user: { id: 'user-1', nickname: null },
+      user: { id: 'user-1', nickname: null, is_vip: false },
       expiresAt: 1780000000,
     });
     expect(fetcher).toHaveBeenCalledWith(new URL('https://scene-api.example.com/api/v1/auth/session'), {
@@ -46,12 +46,12 @@ describe('gallery domain session client', () => {
 
   it('restores profile details with a Supabase bearer token', async () => {
     const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
-      new Response(JSON.stringify({ data: { user: { id: 'user-1', nickname: 'Pixel Panda' } } }), { status: 200 }),
+      new Response(JSON.stringify({ data: { user: { id: 'user-1', nickname: 'Pixel Panda', is_vip: true } } }), { status: 200 }),
     );
     const client = createGalleryDomainSessionClient('https://scene-api.example.com', fetcher);
 
     await expect(client.getProfile('supabase-token')).resolves.toEqual({
-      user: { id: 'user-1', nickname: 'Pixel Panda' },
+      user: { id: 'user-1', nickname: 'Pixel Panda', is_vip: true },
     });
     expect(fetcher).toHaveBeenCalledWith(new URL('https://scene-api.example.com/api/v1/auth/profile'), {
       headers: {
@@ -67,7 +67,7 @@ describe('gallery domain session client', () => {
     const client = createGalleryDomainSessionClient('https://scene-api.example.com', fetcher);
 
     await expect(client.updateProfile('New Panda')).resolves.toEqual({
-      user: { id: 'user-1', nickname: 'New Panda' },
+      user: { id: 'user-1', nickname: 'New Panda', is_vip: false },
     });
     expect(fetcher).toHaveBeenCalledWith(new URL('https://scene-api.example.com/api/v1/auth/profile'), {
       credentials: 'include',
