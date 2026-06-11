@@ -12,6 +12,7 @@ const mocks = vi.hoisted(() => ({
     listPublicScenes: vi.fn(),
     listMyScenes: vi.fn(),
     updateSceneVisibility: vi.fn(),
+    deleteScene: vi.fn(),
   },
   authClient: {
     getSession: vi.fn(),
@@ -67,6 +68,7 @@ describe('Gallery App domain session restore', () => {
     mocks.domainSessionClient.clear.mockResolvedValue(undefined);
     mocks.apiClient.listPublicScenes.mockResolvedValue(okSceneList([sceneFixture('public-scene', 'Public scene')]));
     mocks.apiClient.listMyScenes.mockResolvedValue(okSceneList([sceneFixture('owned-scene', 'Owned scene')]));
+    mocks.apiClient.deleteScene.mockResolvedValue({ ok: true, data: { deleted: true } });
   });
 
   afterEach(() => {
@@ -124,6 +126,81 @@ describe('Gallery App domain session restore', () => {
     const refLink = screen.getByRole('link', { name: 'Open ref link' });
     expect(refLink).toHaveAttribute('href', 'https://ref.example/scene');
     expect(refLink).toHaveAttribute('target', '_blank');
+  });
+
+  it('deletes an owned scene after confirmation and refreshes scene lists', async () => {
+    mocks.domainSessionClient.getSession.mockResolvedValue(domainSession('domain-user'));
+    mocks.apiClient.listMyScenes
+      .mockResolvedValueOnce(okSceneList([sceneFixture('owned-scene', 'Owned scene')]))
+      .mockResolvedValueOnce(okSceneList([]));
+    mocks.apiClient.listPublicScenes
+      .mockResolvedValueOnce(okSceneList([
+        sceneFixture('owned-scene', 'Owned scene'),
+        sceneFixture('public-scene', 'Public scene'),
+      ]))
+      .mockResolvedValueOnce(okSceneList([sceneFixture('public-scene', 'Public scene')]));
+
+    render(<App />);
+
+    const deleteButton = await screen.findByRole('button', { name: 'Delete scene' });
+    fireEvent.click(deleteButton);
+    const dialog = await screen.findByRole('dialog', { name: 'Delete this scene?' });
+    expect(within(dialog).getByText('Owned scene')).toBeVisible();
+
+    fireEvent.click(within(dialog).getByRole('button', { name: 'Delete' }));
+
+    await waitFor(() => {
+      expect(mocks.apiClient.deleteScene).toHaveBeenCalledWith({ kind: 'domain-session' } satisfies SceneApiAuth, 'owned-scene');
+    });
+    await waitFor(() => {
+      expect(mocks.apiClient.listMyScenes).toHaveBeenCalledTimes(2);
+      expect(mocks.apiClient.listPublicScenes).toHaveBeenCalledTimes(2);
+    });
+    expect(await screen.findByText('No saved scenes yet.')).toBeVisible();
+    expect(screen.queryByText('Owned scene')).not.toBeInTheDocument();
+  });
+
+  it('cancels owned scene deletion without calling the API', async () => {
+    mocks.domainSessionClient.getSession.mockResolvedValue(domainSession('domain-user'));
+
+    render(<App />);
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Delete scene' }));
+    const dialog = await screen.findByRole('dialog', { name: 'Delete this scene?' });
+    fireEvent.click(within(dialog).getByRole('button', { name: 'Cancel' }));
+
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog', { name: 'Delete this scene?' })).not.toBeInTheDocument();
+    });
+    expect(mocks.apiClient.deleteScene).not.toHaveBeenCalled();
+    expect(screen.getByText('Owned scene')).toBeVisible();
+  });
+
+  it('keeps the owned scene visible when delete fails', async () => {
+    mocks.domainSessionClient.getSession.mockResolvedValue(domainSession('domain-user'));
+    mocks.apiClient.deleteScene.mockResolvedValue({
+      ok: false,
+      error: {
+        code: 'scene_forbidden',
+        message: 'Only the scene owner can delete this scene.',
+      },
+    });
+
+    render(<App />);
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Delete scene' }));
+    const dialog = await screen.findByRole('dialog', { name: 'Delete this scene?' });
+    fireEvent.click(within(dialog).getByRole('button', { name: 'Delete' }));
+
+    expect(await within(dialog).findByText('Only the scene owner can delete this scene.')).toBeVisible();
+    expect(screen.getByRole('link', { name: 'Owned scene, 7 by 7 by 1' })).toBeVisible();
+  });
+
+  it('does not show delete actions for anonymous public scenes', async () => {
+    render(<App />);
+
+    expect(await screen.findByText('Public scene')).toBeVisible();
+    expect(screen.queryByRole('button', { name: 'Delete scene' })).not.toBeInTheDocument();
   });
 
   it('treats a cleared domain session as shared sign-out truth over a local Supabase session', async () => {

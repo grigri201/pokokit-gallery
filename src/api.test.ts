@@ -127,6 +127,28 @@ describe('scene api client', () => {
     });
   });
 
+  it('deletes an owned scene with bearer auth', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(JSON.stringify({ data: { deleted: true } }), { status: 200 }),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+    const result = await client.deleteScene({ kind: 'bearer', token: 'user-token' }, 'owned-scene');
+
+    expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes/owned-scene'), {
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Bearer user-token',
+      },
+    });
+    expect(result).toEqual({
+      ok: true,
+      data: {
+        deleted: true,
+      },
+    });
+  });
+
   it('loads my scenes with the domain session cookie', async () => {
     const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
       new Response(
@@ -167,6 +189,21 @@ describe('scene api client', () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ visibility: 'private' }),
+    });
+  });
+
+  it('deletes an owned scene with the domain session cookie', async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(JSON.stringify({ data: { deleted: true } }), { status: 200 }),
+    );
+
+    const client = createSceneApiClient('https://api.example.com', fetcher);
+    await client.deleteScene({ kind: 'domain-session' }, 'owned-cookie-scene');
+
+    expect(fetcher).toHaveBeenCalledWith(new URL('https://api.example.com/api/v1/scenes/owned-cookie-scene'), {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {},
     });
   });
 

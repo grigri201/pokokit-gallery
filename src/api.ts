@@ -47,6 +47,7 @@ export interface SceneApiClient {
   listPublicScenes(offset: number, filters?: PublicSceneFilters): Promise<ApiResult<SceneListResult>>;
   listMyScenes(auth: SceneApiAuth, offset: number): Promise<ApiResult<SceneListResult>>;
   updateSceneVisibility(auth: SceneApiAuth, sceneId: string, visibility: SceneVisibility): Promise<ApiResult<SceneRecord>>;
+  deleteScene(auth: SceneApiAuth, sceneId: string): Promise<ApiResult<{ deleted: true }>>;
 }
 
 const galleryPageSize = 12;
@@ -70,6 +71,9 @@ export function createSceneApiClient(baseUrl: string, fetcher: typeof fetch = fe
       return updateSceneRecord(fetcher, new URL(`/api/v1/scenes/${encodeURIComponent(sceneId)}`, baseUrl), auth, {
         visibility,
       });
+    },
+    deleteScene(auth: SceneApiAuth, sceneId: string) {
+      return deleteSceneRecord(fetcher, new URL(`/api/v1/scenes/${encodeURIComponent(sceneId)}`, baseUrl), auth);
     },
   };
 }
@@ -186,6 +190,64 @@ async function updateSceneRecord(
   };
 }
 
+async function deleteSceneRecord(
+  fetcher: typeof fetch,
+  url: URL,
+  auth: SceneApiAuth,
+): Promise<ApiResult<{ deleted: true }>> {
+  let response: Response;
+  try {
+    response = await fetcher(url, {
+      method: 'DELETE',
+      ...createAuthRequestInit(auth),
+    });
+  } catch {
+    return {
+      ok: false,
+      error: {
+        code: 'network_error',
+        message: 'Scene API is unavailable.',
+      },
+    };
+  }
+
+  let parsedBody: unknown;
+  try {
+    parsedBody = await response.json();
+  } catch {
+    return {
+      ok: false,
+      error: {
+        code: 'invalid_response',
+        message: 'Scene API returned invalid JSON.',
+      },
+    };
+  }
+
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: readApiError(parsedBody),
+    };
+  }
+
+  const deleted = parseDeleteSceneEnvelope(parsedBody);
+  if (!deleted) {
+    return {
+      ok: false,
+      error: {
+        code: 'invalid_response',
+        message: 'Scene API returned an invalid delete response.',
+      },
+    };
+  }
+
+  return {
+    ok: true,
+    data: deleted,
+  };
+}
+
 function createAuthRequestInit(auth: SceneApiAuth, headers: Record<string, string> = {}): RequestInit {
   if (auth.kind === 'bearer') {
     return {
@@ -224,6 +286,13 @@ function parseSceneRecordEnvelope(value: unknown): SceneRecord | null {
     return null;
   }
   return value.data;
+}
+
+function parseDeleteSceneEnvelope(value: unknown): { deleted: true } | null {
+  if (!isRecord(value) || !isRecord(value.data) || value.data.deleted !== true) {
+    return null;
+  }
+  return { deleted: true };
 }
 
 function isSceneRecord(value: unknown): value is SceneRecord {

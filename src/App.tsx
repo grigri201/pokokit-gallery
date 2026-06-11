@@ -1,4 +1,4 @@
-import { ExternalLink, Languages, LoaderCircle, LogIn, LogOut, RefreshCw, Sparkles, User, UserPlus } from 'lucide-react';
+import { ExternalLink, Languages, LoaderCircle, LogIn, LogOut, RefreshCw, Sparkles, Trash2, User, UserPlus } from 'lucide-react';
 import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent, ReactElement } from 'react';
 import type { Session } from '@supabase/supabase-js';
@@ -81,6 +81,12 @@ interface GalleryCopy {
   confirmPublicCancel: string;
   confirmPublicAction: string;
   updatingVisibility: string;
+  deleteSceneButtonTitle: string;
+  confirmDeleteTitle: string;
+  confirmDeleteBody: string;
+  confirmDeleteCancel: string;
+  confirmDeleteAction: string;
+  deletingScene: string;
   filterByPokemon: string;
   allPokemon: string;
   switchLanguage: string;
@@ -129,6 +135,12 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     confirmPublicCancel: 'Keep private',
     confirmPublicAction: 'Make public',
     updatingVisibility: 'Updating',
+    deleteSceneButtonTitle: 'Delete scene',
+    confirmDeleteTitle: 'Delete this scene?',
+    confirmDeleteBody: 'This removes the scene from your Gallery. The action cannot be undone.',
+    confirmDeleteCancel: 'Cancel',
+    confirmDeleteAction: 'Delete',
+    deletingScene: 'Deleting',
     filterByPokemon: 'Filter by Pokemon',
     allPokemon: 'All Pokemon',
     switchLanguage: 'Switch to Chinese',
@@ -175,6 +187,12 @@ const galleryCopy: Record<GalleryLanguage, GalleryCopy> = {
     confirmPublicCancel: '保持私有',
     confirmPublicAction: '确认公开',
     updatingVisibility: '正在更新',
+    deleteSceneButtonTitle: '删除场景',
+    confirmDeleteTitle: '删除这个场景？',
+    confirmDeleteBody: '这会从你的 Gallery 中移除该场景。删除后无法撤销。',
+    confirmDeleteCancel: '取消',
+    confirmDeleteAction: '删除',
+    deletingScene: '正在删除',
     filterByPokemon: '按宝可梦筛选',
     allPokemon: '全部宝可梦',
     switchLanguage: '切换到 English',
@@ -232,8 +250,11 @@ export function App(): ReactElement {
   const [publicLoadingMore, setPublicLoadingMore] = useState(false);
   const [myLoadingMore, setMyLoadingMore] = useState(false);
   const [pendingPublicScene, setPendingPublicScene] = useState<SceneRecord | null>(null);
+  const [pendingDeleteScene, setPendingDeleteScene] = useState<SceneRecord | null>(null);
   const [updatingVisibilitySceneIds, setUpdatingVisibilitySceneIds] = useState<Set<string>>(() => new Set());
+  const [deletingSceneIds, setDeletingSceneIds] = useState<Set<string>>(() => new Set());
   const [visibilityActionError, setVisibilityActionError] = useState<string | null>(null);
+  const [deleteActionError, setDeleteActionError] = useState<string | null>(null);
   const [publicScenes, setPublicScenes] = useState<LoadState<{ scenes: SceneRecord[]; page: PageInfo }>>({ status: 'loading' });
   const [myScenes, setMyScenes] = useState<LoadState<{ scenes: SceneRecord[]; page: PageInfo }> | null>(null);
   const t = galleryCopy[language];
@@ -451,6 +472,49 @@ export function App(): ReactElement {
     setPendingPublicScene(scene);
   }
 
+  function handleMySceneDelete(scene: SceneRecord): void {
+    setDeleteActionError(null);
+    setPendingDeleteScene(scene);
+  }
+
+  async function handleConfirmDeleteScene(): Promise<void> {
+    if (!pendingDeleteScene) {
+      return;
+    }
+
+    const sceneAuth = createSceneApiAuth(authIdentity);
+    if (!sceneAuth || deletingSceneIds.has(pendingDeleteScene.id)) {
+      return;
+    }
+
+    const sceneId = pendingDeleteScene.id;
+    setDeleteActionError(null);
+    setDeletingSceneIds(current => {
+      const next = new Set(current);
+      next.add(sceneId);
+      return next;
+    });
+    const result = await apiClient.deleteScene(sceneAuth, sceneId);
+    setDeletingSceneIds(current => {
+      const next = new Set(current);
+      next.delete(sceneId);
+      return next;
+    });
+
+    if (!result.ok) {
+      setDeleteActionError(result.error.message);
+      return;
+    }
+
+    setPendingDeleteScene(null);
+    setMyScenes(current => removeLoadedSceneRecord(current, sceneId));
+    setPublicScenes(current => removeLoadedSceneRecord(current, sceneId));
+    setMyOffset(0);
+    setMyReloadToken(token => token + 1);
+    setPublicOffset(0);
+    setPublicReloadToken(token => token + 1);
+  }
+
   async function handleConfirmPublicScene(): Promise<void> {
     if (!pendingPublicScene) {
       return;
@@ -514,12 +578,20 @@ export function App(): ReactElement {
               isLoadingMore={myLoadingMore}
               cardVariant="owned"
               renderActions={scene => (
-                <PublicVisibilityToggle
-                  scene={scene}
-                  pending={updatingVisibilitySceneIds.has(scene.id)}
-                  onToggle={handleMySceneVisibilityToggle}
-                  t={t}
-                />
+                <>
+                  <PublicVisibilityToggle
+                    scene={scene}
+                    pending={updatingVisibilitySceneIds.has(scene.id)}
+                    onToggle={handleMySceneVisibilityToggle}
+                    t={t}
+                  />
+                  <DeleteSceneButton
+                    scene={scene}
+                    pending={deletingSceneIds.has(scene.id)}
+                    onDelete={handleMySceneDelete}
+                    t={t}
+                  />
+                </>
               )}
               t={t}
             />
@@ -573,6 +645,19 @@ export function App(): ReactElement {
             setVisibilityActionError(null);
           }}
           onConfirm={() => void handleConfirmPublicScene()}
+          t={t}
+        />
+      ) : null}
+      {pendingDeleteScene ? (
+        <ConfirmDeleteSceneDialog
+          scene={pendingDeleteScene}
+          pending={deletingSceneIds.has(pendingDeleteScene.id)}
+          error={deleteActionError}
+          onCancel={() => {
+            setPendingDeleteScene(null);
+            setDeleteActionError(null);
+          }}
+          onConfirm={() => void handleConfirmDeleteScene()}
           t={t}
         />
       ) : null}
@@ -1096,6 +1181,35 @@ function PublicVisibilityToggle({
   );
 }
 
+function DeleteSceneButton({
+  scene,
+  pending,
+  onDelete,
+  t,
+}: {
+  scene: SceneRecord;
+  pending: boolean;
+  onDelete: (scene: SceneRecord) => void;
+  t: GalleryCopy;
+}): ReactElement {
+  return (
+    <button
+      type="button"
+      className="delete-scene-button"
+      aria-label={pending ? t.deletingScene : t.deleteSceneButtonTitle}
+      title={pending ? t.deletingScene : t.deleteSceneButtonTitle}
+      disabled={pending}
+      onClick={event => {
+        event.preventDefault();
+        event.stopPropagation();
+        onDelete(scene);
+      }}
+    >
+      {pending ? <LoaderCircle className="spin" size={13} aria-hidden="true" /> : <Trash2 size={13} aria-hidden="true" />}
+    </button>
+  );
+}
+
 function ConfirmPublicSceneDialog({
   scene,
   pending,
@@ -1125,6 +1239,42 @@ function ConfirmPublicSceneDialog({
           <button type="button" className="primary-button" disabled={pending} onClick={onConfirm}>
             {pending ? <LoaderCircle className="spin" size={16} aria-hidden="true" /> : null}
             {pending ? t.updatingVisibility : t.confirmPublicAction}
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ConfirmDeleteSceneDialog({
+  scene,
+  pending,
+  error,
+  onCancel,
+  onConfirm,
+  t,
+}: {
+  scene: SceneRecord;
+  pending: boolean;
+  error: string | null;
+  onCancel: () => void;
+  onConfirm: () => void;
+  t: GalleryCopy;
+}): ReactElement {
+  return (
+    <div className="confirm-backdrop" role="presentation">
+      <section className="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-delete-title">
+        <h2 id="confirm-delete-title">{t.confirmDeleteTitle}</h2>
+        <p className="confirm-scene-name">{scene.name}</p>
+        <p>{t.confirmDeleteBody}</p>
+        {error ? <p className="confirm-error" role="status">{error}</p> : null}
+        <div className="confirm-dialog-actions">
+          <button type="button" className="secondary-button" disabled={pending} onClick={onCancel}>
+            {t.confirmDeleteCancel}
+          </button>
+          <button type="button" className="danger-button" disabled={pending} onClick={onConfirm}>
+            {pending ? <LoaderCircle className="spin" size={16} aria-hidden="true" /> : null}
+            {pending ? t.deletingScene : t.confirmDeleteAction}
           </button>
         </div>
       </section>
@@ -1269,6 +1419,35 @@ function updateLoadedSceneRecord(
     data: {
       ...state.data,
       scenes: state.data.scenes.map(scene => scene.id === record.id ? record : scene),
+    },
+  };
+}
+
+function removeLoadedSceneRecord(
+  state: LoadState<{ scenes: SceneRecord[]; page: PageInfo }>,
+  sceneId: string,
+): LoadState<{ scenes: SceneRecord[]; page: PageInfo }>;
+function removeLoadedSceneRecord(
+  state: LoadState<{ scenes: SceneRecord[]; page: PageInfo }> | null,
+  sceneId: string,
+): LoadState<{ scenes: SceneRecord[]; page: PageInfo }> | null;
+function removeLoadedSceneRecord(
+  state: LoadState<{ scenes: SceneRecord[]; page: PageInfo }> | null,
+  sceneId: string,
+): LoadState<{ scenes: SceneRecord[]; page: PageInfo }> | null {
+  if (state?.status !== 'loaded') {
+    return state;
+  }
+
+  return {
+    status: 'loaded',
+    data: {
+      ...state.data,
+      scenes: state.data.scenes.filter(scene => scene.id !== sceneId),
+      page: {
+        ...state.data.page,
+        total: Math.max(0, state.data.page.total - (state.data.scenes.some(scene => scene.id === sceneId) ? 1 : 0)),
+      },
     },
   };
 }
